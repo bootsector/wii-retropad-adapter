@@ -1,0 +1,1285 @@
+Archive member included because of file (symbol)
+
+D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+                              ./PS2X_lib.o (map(long, long, long, long, long))
+D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                              ./PS2X_lib.o (port_to_output_PGM)
+D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                              ./PS2X_lib.o (millis)
+D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                              ./NESPad.o (pinMode)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+                              ./PS2X_lib.o (__subsf3)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o) (__addsf3x)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+                              ./PS2X_lib.o (__ltsf2)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                              ./PS2X_lib.o (__fixunssfsi)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                              ./PS2X_lib.o (__floatunsisf)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o) (__fp_cmp)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o) (__fp_inf)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o) (__fp_nan)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o) (__fp_pscA)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o) (__fp_pscB)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_round.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o) (__fp_round)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o) (__fp_split3)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o) (__fp_zero)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                              ./PS2X_lib.o (__gtsf2)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+                              D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o) (__mulsi3)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+                              D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o) (__divmodsi4)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o (exit)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+                              ./NESPad.o (__do_copy_data)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+                              ./NESPad.o (__do_clear_bss)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+                              ./wrc.o (__do_global_ctors)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o) (__udivmodsi4)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_tablejump.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o) (__tablejump__)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+                              D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o) (random)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memcmp.o)
+                              ./wrc.o (memcmp)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memset.o)
+                              ./wrc.o (memset)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o) (__prologue_saves__)
+d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o) (__epilogue_restores__)
+
+Discarded input sections
+
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+ .text          0x00000000        0x0 ./NESPad.o
+ .data          0x00000000        0x0 ./NESPad.o
+ .bss           0x00000000        0x0 ./NESPad.o
+ .text._ZN6NESPadC1Eiii
+                0x00000000        0x0 ./NESPad.o
+ .text._ZN6NESPadC2Eiii
+                0x00000000        0x0 ./NESPad.o
+ .text._ZN6NESPadC2Ev
+                0x00000000        0x0 ./NESPad.o
+ .text          0x00000000        0x0 ./PS2X_lib.o
+ .data          0x00000000        0x0 ./PS2X_lib.o
+ .bss           0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X14NewButtonStateEv
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X14NewButtonStateEj
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X13ButtonPressedEj
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X14ButtonReleasedEj
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X14ButtonDataByteEv
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X12maskToBitNumEh
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X8readTypeEv
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X12enableRumbleEv
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X15enablePressuresEv
+                0x00000000        0x0 ./PS2X_lib.o
+ .text._ZN4PS2X14config_gamepadEhhhh
+                0x00000000        0x0 ./PS2X_lib.o
+ .text          0x00000000        0x0 ./genesis.o
+ .data          0x00000000        0x0 ./genesis.o
+ .bss           0x00000000        0x0 ./genesis.o
+ .text          0x00000000        0x0 ./main.o
+ .data          0x00000000        0x0 ./main.o
+ .bss           0x00000000        0x0 ./main.o
+ .text          0x00000000        0x0 ./wrc.o
+ .data          0x00000000        0x0 ./wrc.o
+ .bss           0x00000000        0x0 ./wrc.o
+ .text._Z7wm_ror8hh
+                0x00000000        0x0 ./wrc.o
+ .text._Z16wiimote_set_byteih
+                0x00000000        0x0 ./wrc.o
+ .text._Z20wiimote_swap_buffersPh
+                0x00000000        0x0 ./wrc.o
+ .text          0x00000000        0x0 ./Wire/utility/twi.o
+ .data          0x00000000        0x0 ./Wire/utility/twi.o
+ .bss           0x00000000        0x0 ./Wire/utility/twi.o
+ .text.twi_readFrom
+                0x00000000        0x0 ./Wire/utility/twi.o
+ .text.twi_writeTo
+                0x00000000        0x0 ./Wire/utility/twi.o
+ .text.twi_reply
+                0x00000000        0x0 ./Wire/utility/twi.o
+ .text.twi_stop
+                0x00000000        0x0 ./Wire/utility/twi.o
+ .text.twi_releaseBus
+                0x00000000        0x0 ./Wire/utility/twi.o
+ .text          0x00000000        0x0 ./Wire/Wire.o
+ .data          0x00000000        0x0 ./Wire/Wire.o
+ .bss           0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWireC2Ev
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWireC1Ev
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWire17beginTransmissionEh
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWire17beginTransmissionEi
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWire9availableEv
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWire4sendEi
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWire4sendEPc
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWire15endTransmissionEv
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWire11requestFromEhh
+                0x00000000        0x0 ./Wire/Wire.o
+ .text._ZN7TwoWire11requestFromEii
+                0x00000000        0x0 ./Wire/Wire.o
+ .bss._ZN7TwoWire9txAddressE
+                0x00000000        0x0 ./Wire/Wire.o
+ .text          0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+ .data          0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+ .bss           0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+ .text._Z8makeWordj
+                0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+ .text._Z8makeWordhh
+                0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+ .text._Z6randoml
+                0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+ .text._Z6randomll
+                0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+ .text._Z10randomSeedj
+                0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+ .text          0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+ .data          0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+ .bss           0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+ .text          0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+ .data          0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+ .bss           0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+ .text.micros   0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+ .text          0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+ .data          0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+ .bss           0x00000000        0x0 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_round.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_round.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_round.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(gesf2.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(gesf2.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(gesf2.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+ .text.libgcc   0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_tablejump.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_tablejump.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_tablejump.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memcmp.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memcmp.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memset.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memset.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+ .text.libgcc   0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+ .text          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+ .data          0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+ .bss           0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+ .text.libgcc   0x00000000        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+LOAD ./NESPad.o
+LOAD ./PS2X_lib.o
+LOAD ./genesis.o
+LOAD ./main.o
+LOAD ./wrc.o
+LOAD ./Wire/utility/twi.o
+LOAD ./Wire/Wire.o
+LOAD D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a
+LOAD d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a
+LOAD d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
+LOAD d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a
+LOAD d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x33a2
+ *(.vectors)
+ .vectors       0x00000000       0x68 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000068      0xa2a ./wrc.o
+ .progmem.data  0x00000a92       0x5a D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                0x00000a92                port_to_mode_PGM
+                0x00000ab0                digital_pin_to_port_PGM
+                0x00000ac4                digital_pin_to_bit_mask_PGM
+                0x00000a9c                port_to_output_PGM
+                0x00000aa6                port_to_input_PGM
+                0x00000ad8                digital_pin_to_timer_PGM
+                0x00000aec                . = ALIGN (0x2)
+                0x00000aec                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000aec        0x0 linker stubs
+ *(.trampolines*)
+                0x00000aec                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000aec                __ctors_start = .
+ *(.ctors)
+ .ctors         0x00000aec        0x2 ./wrc.o
+ .ctors         0x00000aee        0x2 ./Wire/Wire.o
+                0x00000af0                __ctors_end = .
+                0x00000af0                __dtors_start = .
+ *(.dtors)
+                0x00000af0                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000af0        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+                0x00000af0                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000af0        0xc d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000afc       0x16 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+                0x00000afc                __do_copy_data
+ .init4         0x00000b12       0x10 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+                0x00000b12                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ .init6         0x00000b22       0x16 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+                0x00000b22                __do_global_ctors
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000b38        0x8 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+ *(.init9)
+ *(.text)
+ .text          0x00000b40        0x4 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+                0x00000b40                __vector_22
+                0x00000b40                __vector_1
+                0x00000b40                __vector_12
+                0x00000b40                __bad_interrupt
+                0x00000b40                __vector_6
+                0x00000b40                __vector_3
+                0x00000b40                __vector_23
+                0x00000b40                __vector_25
+                0x00000b40                __vector_11
+                0x00000b40                __vector_13
+                0x00000b40                __vector_17
+                0x00000b40                __vector_19
+                0x00000b40                __vector_7
+                0x00000b40                __vector_5
+                0x00000b40                __vector_4
+                0x00000b40                __vector_9
+                0x00000b40                __vector_2
+                0x00000b40                __vector_21
+                0x00000b40                __vector_15
+                0x00000b40                __vector_8
+                0x00000b40                __vector_14
+                0x00000b40                __vector_10
+                0x00000b40                __vector_18
+                0x00000b40                __vector_20
+ .text          0x00000b44       0x1a d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memcmp.o)
+                0x00000b44                memcmp
+ .text          0x00000b5e        0xe d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memset.o)
+                0x00000b5e                memset
+                0x00000b6c                . = ALIGN (0x2)
+ *(.text.*)
+ .text._ZN6NESPad4readEi
+                0x00000b6c       0xae ./NESPad.o
+                0x00000b6c                NESPad::read(int)
+ .text._ZN6NESPad5setupEiii
+                0x00000c1a       0x38 ./NESPad.o
+                0x00000c1a                NESPad::setup(int, int, int)
+ .text._ZN6NESPadC1Ev
+                0x00000c52       0x12 ./NESPad.o
+                0x00000c52                NESPad::NESPad()
+ .text._ZN4PS2X6ButtonEj
+                0x00000c64       0x1a ./PS2X_lib.o
+                0x00000c64                PS2X::Button(unsigned int)
+ .text._ZN4PS2X6AnalogEh
+                0x00000c7e        0xa ./PS2X_lib.o
+                0x00000c7e                PS2X::Analog(unsigned char)
+ .text._ZN4PS2X19_gamepad_shiftinoutEc
+                0x00000c88      0x116 ./PS2X_lib.o
+                0x00000c88                PS2X::_gamepad_shiftinout(char)
+ .text._ZN4PS2X17sendCommandStringEPhh
+                0x00000d9e       0xaa ./PS2X_lib.o
+                0x00000d9e                PS2X::sendCommandString(unsigned char*, unsigned char)
+ .text._ZN4PS2X16reconfig_gamepadEv
+                0x00000e48       0x52 ./PS2X_lib.o
+                0x00000e48                PS2X::reconfig_gamepad()
+ .text._ZN4PS2X12read_gamepadEhh
+                0x00000e9a      0x276 ./PS2X_lib.o
+                0x00000e9a                PS2X::read_gamepad(unsigned char, unsigned char)
+ .text._ZN4PS2X12read_gamepadEv
+                0x00001110        0xa ./PS2X_lib.o
+                0x00001110                PS2X::read_gamepad()
+ .text._ZN4PS2X14config_gamepadEhhhhbb
+                0x0000111a      0x3e4 ./PS2X_lib.o
+                0x0000111a                PS2X::config_gamepad(unsigned char, unsigned char, unsigned char, unsigned char, bool, bool)
+ .text._Z12genesis_initv
+                0x000014fe       0x1e ./genesis.o
+                0x000014fe                genesis_init()
+ .text._Z12genesis_readv
+                0x0000151c      0x1c8 ./genesis.o
+                0x0000151c                genesis_read()
+ .text.main     0x000016e4        0xe ./main.o
+                0x000016e4                main
+ .text._Z20wiimote_write_bufferPhiiiiiiiiiiiiihhhhii
+                0x000016f2      0x186 ./wrc.o
+                0x000016f2                wiimote_write_buffer(unsigned char*, int, int, int, int, int, int, int, int, int, int, int, int, int, unsigned char, unsigned char, unsigned char, unsigned char, int, int)
+ .text._Z15stream_callbackPh
+                0x00001878      0x11c ./wrc.o
+                0x00001878                stream_callback(unsigned char*)
+ .text.loop     0x00001994       0x10 ./wrc.o
+                0x00001994                loop
+ .text._GLOBAL__I__Z7wm_ror8hh
+                0x000019a4       0x4e ./wrc.o
+ .text._Z8psx_loopv
+                0x000019f2      0x2ec ./wrc.o
+                0x000019f2                psx_loop()
+ .text._Z8nes_loopv
+                0x00001cde       0xd0 ./wrc.o
+                0x00001cde                nes_loop()
+ .text._Z12genesis_loopv
+                0x00001dae       0xc8 ./wrc.o
+                0x00001dae                genesis_loop()
+ .text._Z10getPadModev
+                0x00001e76       0x26 ./wrc.o
+                0x00001e76                getPadMode()
+ .text._Z12wiimote_initv
+                0x00001e9c      0x170 ./wrc.o
+                0x00001e9c                wiimote_init()
+ .text.setup    0x0000200c       0x6e ./wrc.o
+                0x0000200c                setup
+ .text._ZL9send_dataPhhh
+                0x0000207a       0x82 ./wrc.o
+ .text._ZL14handle_requestv
+                0x000020fc       0x82 ./wrc.o
+ .text._Z10wm_gentabsv
+                0x0000217e      0x49e ./wrc.o
+                0x0000217e                wm_gentabs()
+ .text._ZL13receive_bytesi
+                0x0000261c      0x12e ./wrc.o
+ .text.twi_init
+                0x0000274a       0x26 ./Wire/utility/twi.o
+                0x0000274a                twi_init
+ .text.twi_setAddress
+                0x00002770        0x8 ./Wire/utility/twi.o
+                0x00002770                twi_setAddress
+ .text.twi_transmit
+                0x00002778       0x36 ./Wire/utility/twi.o
+                0x00002778                twi_transmit
+ .text.twi_attachSlaveRxEvent
+                0x000027ae        0xa ./Wire/utility/twi.o
+                0x000027ae                twi_attachSlaveRxEvent
+ .text.twi_attachSlaveTxEvent
+                0x000027b8        0xa ./Wire/utility/twi.o
+                0x000027b8                twi_attachSlaveTxEvent
+ .text.__vector_24
+                0x000027c2      0x2f6 ./Wire/utility/twi.o
+                0x000027c2                __vector_24
+ .text._ZN7TwoWire7receiveEv
+                0x00002ab8       0x22 ./Wire/Wire.o
+                0x00002ab8                TwoWire::receive()
+ .text._ZN7TwoWire16onReceiveServiceEPhi
+                0x00002ada       0x4a ./Wire/Wire.o
+                0x00002ada                TwoWire::onReceiveService(unsigned char*, int)
+ .text._ZN7TwoWire16onRequestServiceEv
+                0x00002b24       0x18 ./Wire/Wire.o
+                0x00002b24                TwoWire::onRequestService()
+ .text._ZN7TwoWire9onReceiveEPFviE
+                0x00002b3c        0xa ./Wire/Wire.o
+                0x00002b3c                TwoWire::onReceive(void (*)(int))
+ .text._ZN7TwoWire9onRequestEPFvvE
+                0x00002b46        0xa ./Wire/Wire.o
+                0x00002b46                TwoWire::onRequest(void (*)())
+ .text._GLOBAL__I__ZN7TwoWire8rxBufferE
+                0x00002b50        0x2 ./Wire/Wire.o
+ .text._ZN7TwoWire4sendEh
+                0x00002b52       0x48 ./Wire/Wire.o
+                0x00002b52                TwoWire::send(unsigned char)
+ .text._ZN7TwoWire4sendEPhh
+                0x00002b9a       0x44 ./Wire/Wire.o
+                0x00002b9a                TwoWire::send(unsigned char*, unsigned char)
+ .text._ZN7TwoWire5beginEv
+                0x00002bde       0x16 ./Wire/Wire.o
+                0x00002bde                TwoWire::begin()
+ .text._ZN7TwoWire5beginEh
+                0x00002bf4       0x28 ./Wire/Wire.o
+                0x00002bf4                TwoWire::begin(unsigned char)
+ .text._ZN7TwoWire5beginEi
+                0x00002c1c        0x6 ./Wire/Wire.o
+                0x00002c1c                TwoWire::begin(int)
+ .text._Z3maplllll
+                0x00002c22       0x92 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+                0x00002c22                map(long, long, long, long, long)
+ .text.__vector_16
+                0x00002cb4       0xa8 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                0x00002cb4                __vector_16
+ .text.millis   0x00002d5c       0x1c D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                0x00002d5c                millis
+ .text.delay    0x00002d78       0xb2 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                0x00002d78                delay
+ .text.delayMicroseconds
+                0x00002e2a       0x14 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                0x00002e2a                delayMicroseconds
+ .text.init     0x00002e3e       0x74 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                0x00002e3e                init
+ .text.pinMode  0x00002eb2       0x4c D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                0x00002eb2                pinMode
+ .text.digitalWrite
+                0x00002efe       0xa8 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                0x00002efe                digitalWrite
+ .text.digitalRead
+                0x00002fa6       0x9e D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                0x00002fa6                digitalRead
+ .text.fplib    0x00003044        0xa d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+                0x00003044                __subsf3
+                0x00003046                __addsf3
+ .text.fplib    0x0000304e       0xc0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+                0x00003068                __addsf3x
+ .text.fplib    0x0000310e        0x8 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+                0x0000310e                __lesf2
+                0x0000310e                __nesf2
+                0x0000310e                __eqsf2
+                0x0000310e                __cmpsf2
+                0x0000310e                __ltsf2
+ .text.fplib    0x00003116       0x58 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                0x00003116                __fixunssfsi
+ .text.fplib    0x0000316e       0x7a d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                0x00003172                __floatsisf
+                0x0000316e                __floatunsisf
+ .text.fplib    0x000031e8       0x48 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                0x000031e8                __fp_cmp
+ .text.fplib    0x00003230        0xc d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+                0x00003230                __fp_inf
+ .text.fplib    0x0000323c        0x6 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+                0x0000323c                __fp_nan
+ .text.fplib    0x00003242        0xe d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+                0x00003242                __fp_pscA
+ .text.fplib    0x00003250        0xe d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+                0x00003250                __fp_pscB
+ .text.fplib    0x0000325e       0x22 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_round.o)
+                0x0000325e                __fp_round
+ .text.fplib    0x00003280       0x44 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                0x00003280                __fp_split3
+                0x00003290                __fp_splitA
+ .text.fplib    0x000032c4        0xe d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+                0x000032c4                __fp_zero
+                0x000032c6                __fp_szero
+ .text.fplib    0x000032d2        0x8 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                0x000032d2                __gtsf2
+                0x000032d2                __gesf2
+ .text.libgcc   0x000032da       0x3e d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+                0x000032da                __mulsi3
+ .text.libgcc   0x00003318       0x36 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+                0x00003318                __divmodsi4
+ .text.libgcc   0x0000334e       0x44 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+                0x0000334e                __udivmodsi4
+ .text.libgcc   0x00003392        0xc d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_tablejump.o)
+                0x00003396                __tablejump__
+                0x00003392                __tablejump2__
+                0x0000339e                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000339e        0x0 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+                0x0000339e                exit
+                0x0000339e                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000339e        0x4 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ *(.fini0)
+                0x000033a2                _etext = .
+
+.data           0x00800100       0x4c load address 0x000033a2
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ *(.data*)
+ .data._ZL12enter_config
+                0x00800100        0x5 ./PS2X_lib.o
+ .data._ZL8set_mode
+                0x00800105        0x9 ./PS2X_lib.o
+ .data._ZL13enable_rumble
+                0x0080010e        0x5 ./PS2X_lib.o
+ .data._ZL15set_bytes_large
+                0x00800113        0x9 ./PS2X_lib.o
+ .data._ZL11exit_config
+                0x0080011c        0x9 ./PS2X_lib.o
+ .data.calbuf   0x00800125       0x10 ./wrc.o
+                0x00800125                calbuf
+ .data.pinMode1
+                0x00800135        0x2 ./wrc.o
+                0x00800135                pinMode1
+ .data.pinMode2
+                0x00800137        0x2 ./wrc.o
+                0x00800137                pinMode2
+ .data._ZL6curbuf
+                0x00800139        0x2 ./wrc.o
+ .data._ZZL14handle_requestvE10last_state
+                0x0080013b        0x1 ./wrc.o
+ *(.rodata)
+ *(.rodata*)
+ .rodata._ZL9type_read
+                0x0080013c        0x9 ./PS2X_lib.o
+ .rodata._ZL5idbuf
+                0x00800145        0x6 ./wrc.o
+ *(.gnu.linkonce.d*)
+                0x0080014c                . = ALIGN (0x2)
+ *fill*         0x0080014b        0x1 00
+                0x0080014c                _edata = .
+                0x0080014c                PROVIDE (__data_end, .)
+
+.bss            0x0080014c      0x218
+                0x0080014c                PROVIDE (__bss_start, .)
+ *(.bss)
+ *(.bss*)
+ .bss.wiimote_receive
+                0x0080014c        0x2 ./wrc.o
+                0x0080014c                wiimote_receive
+ .bss.wiimote_stream
+                0x0080014e        0x2 ./wrc.o
+                0x0080014e                wiimote_stream
+ .bss.wiimote_registers
+                0x00800150      0x100 ./wrc.o
+                0x00800150                wiimote_registers
+ .bss.pad_loop  0x00800250        0x2 ./wrc.o
+                0x00800250                pad_loop
+ .bss.bdl       0x00800252        0x2 ./wrc.o
+                0x00800252                bdl
+ .bss.bdr       0x00800254        0x2 ./wrc.o
+                0x00800254                bdr
+ .bss.bdu       0x00800256        0x2 ./wrc.o
+                0x00800256                bdu
+ .bss.bdd       0x00800258        0x2 ./wrc.o
+                0x00800258                bdd
+ .bss.ba        0x0080025a        0x2 ./wrc.o
+                0x0080025a                ba
+ .bss.bb        0x0080025c        0x2 ./wrc.o
+                0x0080025c                bb
+ .bss.bx        0x0080025e        0x2 ./wrc.o
+                0x0080025e                bx
+ .bss.by        0x00800260        0x2 ./wrc.o
+                0x00800260                by
+ .bss.bl        0x00800262        0x2 ./wrc.o
+                0x00800262                bl
+ .bss.br        0x00800264        0x2 ./wrc.o
+                0x00800264                br
+ .bss.bm        0x00800266        0x2 ./wrc.o
+                0x00800266                bm
+ .bss.bp        0x00800268        0x2 ./wrc.o
+                0x00800268                bp
+ .bss.bhome     0x0080026a        0x2 ./wrc.o
+                0x0080026a                bhome
+ .bss.bzl       0x0080026c        0x2 ./wrc.o
+                0x0080026c                bzl
+ .bss.bzr       0x0080026e        0x2 ./wrc.o
+                0x0080026e                bzr
+ .bss.lx        0x00800270        0x1 ./wrc.o
+                0x00800270                lx
+ .bss.ly        0x00800271        0x1 ./wrc.o
+                0x00800271                ly
+ .bss.rx        0x00800272        0x1 ./wrc.o
+                0x00800272                rx
+ .bss.ry        0x00800273        0x1 ./wrc.o
+                0x00800273                ry
+ .bss._ZL5state
+                0x00800274        0x1 ./wrc.o
+ .bss._ZZL14handle_requestvE6offset
+                0x00800275        0x1 ./wrc.o
+ .bss._ZL16crypt_setup_done
+                0x00800276        0x1 ./wrc.o
+ .bss._ZL5wm_ft
+                0x00800277        0x8 ./wrc.o
+ .bss._ZL5wm_sb
+                0x0080027f        0x8 ./wrc.o
+ .bss._ZZL9send_dataPhhhE6buffer
+                0x00800287        0x8 ./wrc.o
+ .bss._ZL7wm_rand
+                0x0080028f        0xa ./wrc.o
+ .bss._ZL6wm_key
+                0x00800299        0x6 ./wrc.o
+ .bss._ZL6outbuf
+                0x0080029f        0x6 ./wrc.o
+ .bss.twi_state
+                0x008002a5        0x1 ./Wire/utility/twi.o
+ .bss.twi_slarw
+                0x008002a6        0x1 ./Wire/utility/twi.o
+ .bss.twi_onSlaveTransmit
+                0x008002a7        0x2 ./Wire/utility/twi.o
+ .bss.twi_onSlaveReceive
+                0x008002a9        0x2 ./Wire/utility/twi.o
+ .bss.twi_masterBuffer
+                0x008002ab       0x20 ./Wire/utility/twi.o
+ .bss.twi_masterBufferIndex
+                0x008002cb        0x1 ./Wire/utility/twi.o
+ .bss.twi_masterBufferLength
+                0x008002cc        0x1 ./Wire/utility/twi.o
+ .bss.twi_txBuffer
+                0x008002cd       0x20 ./Wire/utility/twi.o
+ .bss.twi_txBufferIndex
+                0x008002ed        0x1 ./Wire/utility/twi.o
+ .bss.twi_txBufferLength
+                0x008002ee        0x1 ./Wire/utility/twi.o
+ .bss.twi_rxBuffer
+                0x008002ef       0x20 ./Wire/utility/twi.o
+ .bss.twi_rxBufferIndex
+                0x0080030f        0x1 ./Wire/utility/twi.o
+ .bss.twi_error
+                0x00800310        0x1 ./Wire/utility/twi.o
+ .bss._ZN7TwoWire8rxBufferE
+                0x00800311       0x20 ./Wire/Wire.o
+                0x00800311                TwoWire::rxBuffer
+ .bss._ZN7TwoWire13rxBufferIndexE
+                0x00800331        0x1 ./Wire/Wire.o
+                0x00800331                TwoWire::rxBufferIndex
+ .bss._ZN7TwoWire14rxBufferLengthE
+                0x00800332        0x1 ./Wire/Wire.o
+                0x00800332                TwoWire::rxBufferLength
+ .bss._ZN7TwoWire8txBufferE
+                0x00800333       0x20 ./Wire/Wire.o
+                0x00800333                TwoWire::txBuffer
+ .bss._ZN7TwoWire13txBufferIndexE
+                0x00800353        0x1 ./Wire/Wire.o
+                0x00800353                TwoWire::txBufferIndex
+ .bss._ZN7TwoWire14txBufferLengthE
+                0x00800354        0x1 ./Wire/Wire.o
+                0x00800354                TwoWire::txBufferLength
+ .bss._ZN7TwoWire12transmittingE
+                0x00800355        0x1 ./Wire/Wire.o
+                0x00800355                TwoWire::transmitting
+ .bss._ZN7TwoWire14user_onRequestE
+                0x00800356        0x2 ./Wire/Wire.o
+                0x00800356                TwoWire::user_onRequest
+ .bss._ZN7TwoWire14user_onReceiveE
+                0x00800358        0x2 ./Wire/Wire.o
+                0x00800358                TwoWire::user_onReceive
+ .bss.Wire      0x0080035a        0x1 ./Wire/Wire.o
+                0x0080035a                Wire
+ .bss.timer0_overflow_count
+                0x0080035b        0x4 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                0x0080035b                timer0_overflow_count
+ .bss.timer0_millis
+                0x0080035f        0x4 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                0x0080035f                timer0_millis
+ .bss.timer0_fract
+                0x00800363        0x1 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+ *(COMMON)
+                0x00800364                PROVIDE (__bss_end, .)
+                0x000033a2                __data_load_start = LOADADDR (.data)
+                0x000033ee                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800364        0x0
+                0x00800364                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800364                PROVIDE (__noinit_end, .)
+                0x00800364                _end = .
+                0x00800364                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(WiiRetroController.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+NESPad::NESPad()                                  ./NESPad.o
+                                                  ./wrc.o
+NESPad::NESPad()                                  ./NESPad.o
+NESPad::NESPad(int, int, int)                     ./NESPad.o
+NESPad::NESPad(int, int, int)                     ./NESPad.o
+NESPad::read(int)                                 ./NESPad.o
+                                                  ./wrc.o
+NESPad::setup(int, int, int)                      ./NESPad.o
+                                                  ./wrc.o
+PS2X::Analog(unsigned char)                       ./PS2X_lib.o
+                                                  ./wrc.o
+PS2X::Button(unsigned int)                        ./PS2X_lib.o
+                                                  ./wrc.o
+PS2X::ButtonDataByte()                            ./PS2X_lib.o
+PS2X::ButtonPressed(unsigned int)                 ./PS2X_lib.o
+PS2X::ButtonReleased(unsigned int)                ./PS2X_lib.o
+PS2X::NewButtonState()                            ./PS2X_lib.o
+PS2X::NewButtonState(unsigned int)                ./PS2X_lib.o
+PS2X::_gamepad_shiftinout(char)                   ./PS2X_lib.o
+PS2X::config_gamepad(unsigned char, unsigned char, unsigned char, unsigned char) ./PS2X_lib.o
+PS2X::config_gamepad(unsigned char, unsigned char, unsigned char, unsigned char, bool, bool) ./PS2X_lib.o
+                                                  ./wrc.o
+PS2X::enablePressures()                           ./PS2X_lib.o
+PS2X::enableRumble()                              ./PS2X_lib.o
+PS2X::maskToBitNum(unsigned char)                 ./PS2X_lib.o
+PS2X::readType()                                  ./PS2X_lib.o
+PS2X::read_gamepad()                              ./PS2X_lib.o
+                                                  ./wrc.o
+PS2X::read_gamepad(unsigned char, unsigned char)  ./PS2X_lib.o
+PS2X::reconfig_gamepad()                          ./PS2X_lib.o
+PS2X::sendCommandString(unsigned char*, unsigned char) ./PS2X_lib.o
+TwoWire::TwoWire()                                ./Wire/Wire.o
+TwoWire::TwoWire()                                ./Wire/Wire.o
+TwoWire::available()                              ./Wire/Wire.o
+TwoWire::begin()                                  ./Wire/Wire.o
+TwoWire::begin(int)                               ./Wire/Wire.o
+                                                  ./wrc.o
+TwoWire::begin(unsigned char)                     ./Wire/Wire.o
+TwoWire::beginTransmission(int)                   ./Wire/Wire.o
+TwoWire::beginTransmission(unsigned char)         ./Wire/Wire.o
+TwoWire::endTransmission()                        ./Wire/Wire.o
+TwoWire::onReceive(void (*)(int))                 ./Wire/Wire.o
+                                                  ./wrc.o
+TwoWire::onReceiveService(unsigned char*, int)    ./Wire/Wire.o
+TwoWire::onRequest(void (*)())                    ./Wire/Wire.o
+                                                  ./wrc.o
+TwoWire::onRequestService()                       ./Wire/Wire.o
+TwoWire::receive()                                ./Wire/Wire.o
+                                                  ./wrc.o
+TwoWire::requestFrom(int, int)                    ./Wire/Wire.o
+TwoWire::requestFrom(unsigned char, unsigned char) ./Wire/Wire.o
+TwoWire::rxBuffer                                 ./Wire/Wire.o
+TwoWire::rxBufferIndex                            ./Wire/Wire.o
+TwoWire::rxBufferLength                           ./Wire/Wire.o
+TwoWire::send(char*)                              ./Wire/Wire.o
+TwoWire::send(int)                                ./Wire/Wire.o
+TwoWire::send(unsigned char)                      ./Wire/Wire.o
+TwoWire::send(unsigned char*, unsigned char)      ./Wire/Wire.o
+                                                  ./wrc.o
+TwoWire::transmitting                             ./Wire/Wire.o
+TwoWire::txAddress                                ./Wire/Wire.o
+TwoWire::txBuffer                                 ./Wire/Wire.o
+TwoWire::txBufferIndex                            ./Wire/Wire.o
+TwoWire::txBufferLength                           ./Wire/Wire.o
+TwoWire::user_onReceive                           ./Wire/Wire.o
+TwoWire::user_onRequest                           ./Wire/Wire.o
+Wire                                              ./Wire/Wire.o
+                                                  ./wrc.o
+__addsf3                                          d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+__addsf3x                                         d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+__bad_interrupt                                   d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__bss_end                                         d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+__bss_start                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+__cmpsf2                                          d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+__ctors_end                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+__ctors_start                                     d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+__data_end                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+__data_load_start                                 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+__data_start                                      d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+__divmodsi4                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+__do_clear_bss                                    d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_clear_bss.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+                                                  ./Wire/Wire.o
+                                                  ./Wire/utility/twi.o
+                                                  ./wrc.o
+                                                  ./main.o
+                                                  ./genesis.o
+                                                  ./PS2X_lib.o
+                                                  ./NESPad.o
+__do_copy_data                                    d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_copy_data.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+                                                  ./Wire/Wire.o
+                                                  ./Wire/utility/twi.o
+                                                  ./wrc.o
+                                                  ./main.o
+                                                  ./genesis.o
+                                                  ./PS2X_lib.o
+                                                  ./NESPad.o
+__do_global_ctors                                 d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+                                                  ./Wire/Wire.o
+                                                  ./wrc.o
+__epilogue_restores__                             d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_epilogue.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+__eqsf2                                           d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+__fixunssfsi                                      d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                                                  ./PS2X_lib.o
+__floatsisf                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                                                  ./PS2X_lib.o
+__floatunsisf                                     d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                                                  ./PS2X_lib.o
+__fp_cmp                                          d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+__fp_inf                                          d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+__fp_nan                                          d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+__fp_pscA                                         d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+__fp_pscB                                         d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+__fp_round                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_round.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+__fp_split3                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+__fp_splitA                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+__fp_szero                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+__fp_zero                                         d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+__gesf2                                           d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(gesf2.o)
+__gtsf2                                           d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                                                  ./PS2X_lib.o
+__heap_end                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__init                                            d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__lesf2                                           d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+__ltsf2                                           d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+                                                  ./PS2X_lib.o
+__mulsi3                                          d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_mulsi3.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+__nesf2                                           d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+__prologue_saves__                                d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_prologue.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+__stack                                           d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__subsf3                                          d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libm.a(addsf3.o)
+                                                  ./PS2X_lib.o
+__tablejump2__                                    d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_tablejump.o)
+__tablejump__                                     d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_tablejump.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_ctors.o)
+__udivmodsi4                                      d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_udivmodsi4.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_divmodsi4.o)
+__vector_1                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_10                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_11                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_12                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_13                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_14                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_15                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_16                                       D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_17                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_18                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_19                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_2                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_20                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_21                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_22                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_23                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_24                                       ./Wire/utility/twi.o
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_25                                       d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_3                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_4                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_5                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_6                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_7                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_8                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_9                                        d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vector_default                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+__vectors                                         d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+_exit                                             d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+ba                                                ./wrc.o
+bb                                                ./wrc.o
+bdd                                               ./wrc.o
+bdl                                               ./wrc.o
+bdr                                               ./wrc.o
+bdu                                               ./wrc.o
+bhome                                             ./wrc.o
+bl                                                ./wrc.o
+bm                                                ./wrc.o
+bp                                                ./wrc.o
+br                                                ./wrc.o
+bx                                                ./wrc.o
+by                                                ./wrc.o
+bzl                                               ./wrc.o
+bzr                                               ./wrc.o
+calbuf                                            ./wrc.o
+delay                                             D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                                                  ./genesis.o
+                                                  ./PS2X_lib.o
+delayMicroseconds                                 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                                                  ./genesis.o
+                                                  ./PS2X_lib.o
+                                                  ./NESPad.o
+digitalRead                                       D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  ./wrc.o
+                                                  ./NESPad.o
+digitalWrite                                      D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  ./wrc.o
+                                                  ./PS2X_lib.o
+                                                  ./NESPad.o
+digital_pin_to_bit_mask_PGM                       D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  ./PS2X_lib.o
+digital_pin_to_port_PGM                           D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  ./PS2X_lib.o
+digital_pin_to_timer_PGM                          D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+exit                                              d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/avr5\libgcc.a(_exit.o)
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+genesis_init()                                    ./genesis.o
+                                                  ./wrc.o
+genesis_loop()                                    ./wrc.o
+genesis_read()                                    ./genesis.o
+                                                  ./wrc.o
+getPadMode()                                      ./wrc.o
+init                                              D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                                                  ./main.o
+loop                                              ./wrc.o
+                                                  ./main.o
+lx                                                ./wrc.o
+ly                                                ./wrc.o
+main                                              ./main.o
+                                                  d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5/crtm328p.o
+makeWord(unsigned char, unsigned char)            D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+makeWord(unsigned int)                            D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+map(long, long, long, long, long)                 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+                                                  ./PS2X_lib.o
+memcmp                                            d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memcmp.o)
+                                                  ./wrc.o
+memset                                            d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(memset.o)
+                                                  ./wrc.o
+micros                                            D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+millis                                            D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+                                                  ./PS2X_lib.o
+nes_loop()                                        ./wrc.o
+pad_loop                                          ./wrc.o
+pinMode                                           D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  ./wrc.o
+                                                  ./PS2X_lib.o
+                                                  ./NESPad.o
+pinMode1                                          ./wrc.o
+pinMode2                                          ./wrc.o
+port_to_input_PGM                                 D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  ./PS2X_lib.o
+port_to_mode_PGM                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+port_to_output_PGM                                D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(pins_arduino.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring_digital.o)
+                                                  ./PS2X_lib.o
+psx_loop()                                        ./wrc.o
+random                                            d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+random(long)                                      D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+random(long, long)                                D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+randomSeed(unsigned int)                          D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+random_r                                          d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+rx                                                ./wrc.o
+ry                                                ./wrc.o
+setup                                             ./wrc.o
+                                                  ./main.o
+srandom                                           d:/arquiv~1/arduino-0022/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/lib/avr5\libc.a(random.o)
+                                                  D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(WMath.o)
+stream_callback(unsigned char*)                   ./wrc.o
+timer0_millis                                     D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+timer0_overflow_count                             D:\Arquivos de Programas\eclipse\workspace\DuemilanoveCore8Mhz\Release\libDuemilanoveCore8Mhz.a(wiring.o)
+twi_attachSlaveRxEvent                            ./Wire/utility/twi.o
+                                                  ./Wire/Wire.o
+twi_attachSlaveTxEvent                            ./Wire/utility/twi.o
+                                                  ./Wire/Wire.o
+twi_init                                          ./Wire/utility/twi.o
+                                                  ./Wire/Wire.o
+twi_readFrom                                      ./Wire/utility/twi.o
+                                                  ./Wire/Wire.o
+twi_releaseBus                                    ./Wire/utility/twi.o
+twi_reply                                         ./Wire/utility/twi.o
+twi_setAddress                                    ./Wire/utility/twi.o
+                                                  ./Wire/Wire.o
+twi_stop                                          ./Wire/utility/twi.o
+twi_transmit                                      ./Wire/utility/twi.o
+                                                  ./Wire/Wire.o
+twi_writeTo                                       ./Wire/utility/twi.o
+                                                  ./Wire/Wire.o
+wiimote_init()                                    ./wrc.o
+wiimote_receive                                   ./wrc.o
+wiimote_registers                                 ./wrc.o
+wiimote_set_byte(int, unsigned char)              ./wrc.o
+wiimote_stream                                    ./wrc.o
+wiimote_swap_buffers(unsigned char*)              ./wrc.o
+wiimote_write_buffer(unsigned char*, int, int, int, int, int, int, int, int, int, int, int, int, int, unsigned char, unsigned char, unsigned char, unsigned char, int, int) ./wrc.o
+wm_gentabs()                                      ./wrc.o
+wm_ror8(unsigned char, unsigned char)             ./wrc.o

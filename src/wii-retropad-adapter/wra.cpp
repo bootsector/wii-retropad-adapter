@@ -25,7 +25,7 @@
 #include "digitalWriteFast.h"
 
 // Define if the extra port is a SNES or a PSX connector. Uncomment for SNES.
-//#define SNES_WRC
+//#define SNES_WRA
 
 // Main pad loop. Points to the loop function of the selected pad (via Mode jumpers)
 void (*pad_loop)(void) = NULL;
@@ -131,7 +131,7 @@ void nes_loop() {
 	}
 }
 
-#ifdef SNES_WRC
+#ifdef SNES_WRA
 
 // SNES pad loop
 void snes_loop() {
@@ -260,7 +260,7 @@ void setup() {
 		pad_loop = genesis_loop;
 		break;
 	case 3:
-#ifdef SNES_WRC
+#ifdef SNES_WRA
 		pad_loop = snes_loop;
 #else
 		pad_loop = psx_loop;

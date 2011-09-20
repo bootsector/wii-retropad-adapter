@@ -270,6 +270,7 @@ EXTMEMOPTS =
 #    --cref:    add cross reference to  map file
 LDFLAGS = -Wl,-Map=$(TARGET).map,--cref
 LDFLAGS += -Wl,--gc-sections
+LDFLAGS += -s
 LDFLAGS += $(EXTMEMOPTS)
 LDFLAGS += $(patsubst %,-L%,$(EXTRALIBDIRS))
 LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB) $(EXTRA_LIBS)
@@ -283,10 +284,12 @@ LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB) $(EXTRA_LIBS)
 # Type: avrdude -c ?
 # to get a full listing.
 #
-AVRDUDE_PROGRAMMER = stk500v2
+AVRDUDE_PROGRAMMER = stk500
+AVRDUDE_CONFIG = "D:\Arquivos de Programas\arduino-0022\hardware\tools\avr\etc\avrdude.conf"
 
 # com1 = serial port. Use lpt1 to connect to parallel port.
-AVRDUDE_PORT = com1    # programmer connected to serial device
+AVRDUDE_PORT = COM7    # programmer connected to serial device
+AVRDUDE_BAUD = 19200   # serial device baud rate
 
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep
@@ -306,7 +309,7 @@ AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 # to submit bug reports.
 #AVRDUDE_VERBOSE = -v -v
 
-AVRDUDE_FLAGS = -p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER)
+AVRDUDE_FLAGS = -C $(AVRDUDE_CONFIG) -p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER) -b $(AVRDUDE_BAUD)
 AVRDUDE_FLAGS += $(AVRDUDE_NO_VERIFY)
 AVRDUDE_FLAGS += $(AVRDUDE_VERBOSE)
 AVRDUDE_FLAGS += $(AVRDUDE_ERASE_COUNTER)
@@ -454,9 +457,15 @@ gccversion :
 
 
 
-# Program the device.  
+# Program the device.
+# Fuses config below are for the atmega328p  
 program: $(TARGET).hex $(TARGET).eep
-	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_WRITE_EEPROM)
+#$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_WRITE_EEPROM)
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -e
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -U lock:w:0x3f:m
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:w:0xda:m -U lfuse:w:0xe2:m -U efuse:w:0x05:m
+	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH)
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -U lock:w:0x0f:m
 
 
 # Generate avr-gdb config/init file which does the following:

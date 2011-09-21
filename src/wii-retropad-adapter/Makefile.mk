@@ -126,15 +126,15 @@ CSTANDARD = -std=gnu99
 
 
 # Place -D or -U options here for C sources
-CDEFS = -DF_CPU=$(F_CPU)UL -DARDUINO=18
+CDEFS = -DF_CPU=$(F_CPU)UL -DARDUINO=22
 
 
 # Place -D or -U options here for ASM sources
-ADEFS = -DF_CPU=$(F_CPU) -DARDUINO=18
+ADEFS = -DF_CPU=$(F_CPU) -DARDUINO=22
 
 
 # Place -D or -U options here for C++ sources
-CPPDEFS = -DF_CPU=$(F_CPU)UL -DARDUINO=18
+CPPDEFS = -DF_CPU=$(F_CPU)UL -DARDUINO=22
 #CPPDEFS += -D__STDC_LIMIT_MACROS
 #CPPDEFS += -D__STDC_CONSTANT_MACROS
 

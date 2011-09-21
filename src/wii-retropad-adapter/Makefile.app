@@ -291,6 +291,11 @@ AVRDUDE_CONFIG = "D:\Arquivos de Programas\arduino-0022\hardware\tools\avr\etc\a
 AVRDUDE_PORT = COM7    # programmer connected to serial device
 AVRDUDE_BAUD = 19200   # serial device baud rate
 
+# Fuses config
+AVRDUDE_HFUSE = 0xde
+AVRDUDE_LFUSE = 0xe2
+AVRDUDE_EFUSE = 0x05
+
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep
 
@@ -457,15 +462,12 @@ gccversion :
 
 
 
-# Program the device.
-# Fuses config below are for the atmega328p  
+# Program the device. 
 program: $(TARGET).hex $(TARGET).eep
 #$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_WRITE_EEPROM)
 	$(AVRDUDE) $(AVRDUDE_FLAGS) -e
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -U lock:w:0x3f:m
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:w:0xda:m -U lfuse:w:0xe2:m -U efuse:w:0x05:m
+	$(AVRDUDE) $(AVRDUDE_FLAGS) -U hfuse:w:$(AVRDUDE_HFUSE):m -U lfuse:w:$(AVRDUDE_LFUSE):m -U efuse:w:$(AVRDUDE_EFUSE):m
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH)
-	$(AVRDUDE) $(AVRDUDE_FLAGS) -U lock:w:0x0f:m
 
 
 # Generate avr-gdb config/init file which does the following:

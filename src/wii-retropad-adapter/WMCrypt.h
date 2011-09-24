@@ -16,15 +16,24 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <WProgram.h>
+#ifndef WMCRYPT_H_
+#define WMCRYPT_H_
 
-int main(void) {
-	init();
+#include <avr/pgmspace.h>
 
-	setup();
+class WMCrypt {
 
-	for (;;)
-		loop();
+public:
+	static volatile unsigned char wm_rand[10];
+	static volatile unsigned char wm_key[6];
+	static volatile unsigned char wm_ft[8];
+	static volatile unsigned char wm_sb[8];
 
-	return 0;
-}
+	static const unsigned char ans_tbl[7][6] PROGMEM;
+	static const unsigned char sboxes[10][256] PROGMEM;
+
+	static unsigned char wm_ror8(unsigned char a, unsigned char b);
+	static void wm_gentabs();
+};
+
+#endif /* WMCRYPT_H_ */

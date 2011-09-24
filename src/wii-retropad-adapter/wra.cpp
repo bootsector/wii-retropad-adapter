@@ -18,7 +18,7 @@
 
 #include <WProgram.h>
 
-#include "wiimote.h"
+#include "WMExtension.h"
 #include "PS2X_lib.h"
 #include "genesis.h"
 #include "NESPad.h"
@@ -48,10 +48,10 @@ int bzl = 0; // ZL button state
 int bzr = 0; // ZR button state
 
 // Analog Buttons
-byte lx = calbuf[2]>>2;
-byte ly = calbuf[5]>>2;
-byte rx = calbuf[8]>>3;
-byte ry = calbuf[11]>>3;
+byte lx = WMExtension::get_calibration_byte(2)>>2;
+byte ly = WMExtension::get_calibration_byte(5)>>2;
+byte rx = WMExtension::get_calibration_byte(8)>>3;
+byte ry = WMExtension::get_calibration_byte(11)>>3;
 
 // PS Pad neutral radius
 #define PSPAD_NEUTRAL_RADIUS 10
@@ -60,12 +60,10 @@ byte ry = calbuf[11]>>3;
 int pinMode1 = 9;
 int pinMode2 = 10;
 
-// Wiimote button data stream
-byte *stream_callback(byte *buffer) {
-	wiimote_write_buffer(buffer, bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+// Wiimote button data callback
+void button_data_callback() {
+	WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 			bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
-
-	return buffer;
 }
 
 /*
@@ -168,10 +166,10 @@ void psx_loop() {
 	byte center_lx, center_ly, center_rx, center_ry;
 	byte _lx, _ly, _rx, _ry;
 
-	byte clx = calbuf[2]>>2;
-	byte cly = calbuf[5]>>2;
-	byte crx = calbuf[8]>>3;
-	byte cry = calbuf[11]>>3;
+	byte clx = WMExtension::get_calibration_byte(2)>>2;
+	byte cly = WMExtension::get_calibration_byte(5)>>2;
+	byte crx = WMExtension::get_calibration_byte(8)>>3;
+	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
 	while (psPad.config_gamepad(5, 3, 4, 2, false, false) != 0)
 		;
@@ -248,8 +246,8 @@ void setup() {
 	digitalWriteFast(pinMode2, HIGH);
 
 	// Prepare wiimote communications
-	wiimote_stream = stream_callback;
-	wiimote_init();
+	WMExtension::set_button_data_callback(button_data_callback);
+	WMExtension::init();
 
 	// Select pad loop based on selected mode
 	switch (getPadMode()) {

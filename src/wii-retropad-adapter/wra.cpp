@@ -107,14 +107,13 @@ void genesis_loop() {
 
 // NES pad loop
 void nes_loop() {
-	NESPad nespad;
 	int button_data;
 
-	nespad.setup(2, 3, 4);
+	NESPad::init();
 
 	for (;;) {
 
-		button_data = nespad.read(8);
+		button_data = NESPad::read(8);
 
 		bdl = button_data & 64;
 		bdr = button_data & 128;
@@ -133,13 +132,12 @@ void nes_loop() {
 
 // SNES pad loop
 void snes_loop() {
-	NESPad nespad;
 	int button_data;
 
-	nespad.setup(2, 3, 4);
+	NESPad::init();
 
 	for (;;) {
-		button_data = nespad.read(16);
+		button_data = NESPad::read(16);
 
 		bdl = button_data & 64;
 		bdr = button_data & 128;

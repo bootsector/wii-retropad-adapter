@@ -18,48 +18,33 @@
 
 #include <WProgram.h>
 #include "NESPad.h"
+#include "digitalWriteFast.h"
 
-NESPad::NESPad() {
-	this->setup(-1, -1, -1);
-}
-
-NESPad::NESPad(int clockPin, int latchPin, int dataPin) {
-	this->setup(clockPin, latchPin, dataPin);
-}
-
-void NESPad::setup(int clockPin, int latchPin, int dataPin) {
-	_clockPin = clockPin;
-	_latchPin = latchPin;
-	_dataPin = dataPin;
-
-	nespadstate = 0;
-
-	pinMode(_clockPin, OUTPUT);
-	pinMode(_latchPin, OUTPUT);
-	pinMode(_dataPin, INPUT);
+void NESPad::init() {
+	pinModeFast(CLOCK_PIN, OUTPUT);
+	pinModeFast(LATCH_PIN, OUTPUT);
+	pinModeFast(DATA_PIN, INPUT);
 }
 
 int NESPad::read(int bits) {
 	int state, i;
+	byte nespadstate;
 
-	if (_dataPin < 0)
-		return 0;
+	digitalWriteFast(LATCH_PIN, LOW);
+	digitalWriteFast(CLOCK_PIN, LOW);
 
-	digitalWrite(_latchPin, LOW);
-	digitalWrite(_clockPin, LOW);
-
-	digitalWrite(_latchPin, HIGH);
+	digitalWriteFast(LATCH_PIN, HIGH);
 	delayMicroseconds(1);
-	digitalWrite(_latchPin, LOW);
+	digitalWriteFast(LATCH_PIN, LOW);
 
-	state = digitalRead(_dataPin);
+	state = digitalReadFast(DATA_PIN);
 
 	for (i = 1; i < bits; i++) {
-		digitalWrite(_clockPin, HIGH);
+		digitalWriteFast(CLOCK_PIN, HIGH);
 		delayMicroseconds(1);
-		digitalWrite(_clockPin, LOW);
+		digitalWriteFast(CLOCK_PIN, LOW);
 
-		state = state | (digitalRead(_dataPin) << i);
+		state = state | (digitalReadFast(DATA_PIN) << i);
 	}
 
 	nespadstate = ~state;

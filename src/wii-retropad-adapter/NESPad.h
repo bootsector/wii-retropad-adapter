@@ -61,20 +61,16 @@ SNES Clock pulse and corresponding button
 
 #include <WProgram.h>
 
+#define CLOCK_PIN 2
+#define LATCH_PIN 3
+#define DATA_PIN 4
+
 class NESPad {
 
-private:
-	int _clockPin;
-	int _latchPin;
-	int _dataPin;
-	unsigned char nespadstate;
-
 public:
-	NESPad();
-	NESPad(int clockPin, int latchPin, int dataPin);
+	static void init();
+	static int read(int bits);
 
-	void setup(int clockPin, int latchPin, int dataPin);
-	int read(int bits);
 };
 
 #endif /* NESPAD_H_ */

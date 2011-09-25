@@ -17,15 +17,14 @@
  */
 
 #include <Wire.h>
-
-#include "wiimote.h"
+#include "WMExtension.h"
 #include "PS2X_lib.h"
 #include "genesis.h"
 #include "NESPad.h"
 #include "digitalWriteFast.h"
 
 // Define if the extra port is a SNES or a PSX connector. Uncomment for SNES.
-//#define SNES_WRC
+//#define SNES_WRA
 
 // Main pad loop. Points to the loop function of the selected pad (via Mode jumpers)
 void (*pad_loop)(void) = NULL;
@@ -48,24 +47,22 @@ int bzl = 0; // ZL button state
 int bzr = 0; // ZR button state
 
 // Analog Buttons
-byte lx = calbuf[2]>>2;
-byte ly = calbuf[5]>>2;
-byte rx = calbuf[8]>>3;
-byte ry = calbuf[11]>>3;
+byte lx = WMExtension::get_calibration_byte(2)>>2;
+byte ly = WMExtension::get_calibration_byte(5)>>2;
+byte rx = WMExtension::get_calibration_byte(8)>>3;
+byte ry = WMExtension::get_calibration_byte(11)>>3;
 
 // PS Pad neutral radius
 #define PSPAD_NEUTRAL_RADIUS 10
 
 // Operation Mode pins
-int pinMode1 = 9;
-int pinMode2 = 10;
+#define PINMODE1 9
+#define PINMODE2 10
 
-// Wiimote button data stream
-byte *stream_callback(byte *buffer) {
-	wiimote_write_buffer(buffer, bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+// Wiimote button data callback
+void button_data_callback() {
+	WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 			bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
-
-	return buffer;
 }
 
 /*
@@ -77,7 +74,7 @@ byte *stream_callback(byte *buffer) {
 int getPadMode() {
 	int mode;
 
-	mode = (digitalReadFast(pinMode1) << 1) | digitalReadFast(pinMode2);
+	mode = (digitalReadFast(PINMODE1) << 1) | digitalReadFast(PINMODE2);
 
 	return mode;
 }
@@ -109,14 +106,13 @@ void genesis_loop() {
 
 // NES pad loop
 void nes_loop() {
-	NESPad nespad;
 	int button_data;
 
-	nespad.setup(2, 3, 4);
+	NESPad::init();
 
 	for (;;) {
 
-		button_data = nespad.read(8);
+		button_data = NESPad::read(8);
 
 		bdl = button_data & 64;
 		bdr = button_data & 128;
@@ -131,17 +127,16 @@ void nes_loop() {
 	}
 }
 
-#ifdef SNES_WRC
+#ifdef SNES_WRA
 
 // SNES pad loop
 void snes_loop() {
-	NESPad nespad;
 	int button_data;
 
-	nespad.setup(2, 3, 4);
+	NESPad::init();
 
 	for (;;) {
-		button_data = nespad.read(16);
+		button_data = NESPad::read(16);
 
 		bdl = button_data & 64;
 		bdr = button_data & 128;
@@ -168,10 +163,10 @@ void psx_loop() {
 	byte center_lx, center_ly, center_rx, center_ry;
 	byte _lx, _ly, _rx, _ry;
 
-	byte clx = calbuf[2]>>2;
-	byte cly = calbuf[5]>>2;
-	byte crx = calbuf[8]>>3;
-	byte cry = calbuf[11]>>3;
+	byte clx = WMExtension::get_calibration_byte(2)>>2;
+	byte cly = WMExtension::get_calibration_byte(5)>>2;
+	byte crx = WMExtension::get_calibration_byte(8)>>3;
+	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
 	while (psPad.config_gamepad(5, 3, 4, 2, false, false) != 0)
 		;
@@ -241,15 +236,15 @@ void psx_loop() {
 
 void setup() {
 	// Set mode pins as input, turning pull-ups on
-	pinModeFast(pinMode1, INPUT);
-	digitalWriteFast(pinMode1, HIGH);
+	pinModeFast(PINMODE1, INPUT);
+	digitalWriteFast(PINMODE1, HIGH);
 
-	pinModeFast(pinMode2, INPUT);
-	digitalWriteFast(pinMode2, HIGH);
+	pinModeFast(PINMODE2, INPUT);
+	digitalWriteFast(PINMODE2, HIGH);
 
 	// Prepare wiimote communications
-	wiimote_stream = stream_callback;
-	wiimote_init();
+	WMExtension::set_button_data_callback(button_data_callback);
+	WMExtension::init();
 
 	// Select pad loop based on selected mode
 	switch (getPadMode()) {
@@ -260,7 +255,7 @@ void setup() {
 		pad_loop = genesis_loop;
 		break;
 	case 3:
-#ifdef SNES_WRC
+#ifdef SNES_WRA
 		pad_loop = snes_loop;
 #else
 		pad_loop = psx_loop;

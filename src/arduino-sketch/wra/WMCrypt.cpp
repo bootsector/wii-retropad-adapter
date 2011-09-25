@@ -1,13 +1,30 @@
-#ifndef wm_crypto_h
+/*
+* Wii RetroPad Adapter - Nintendo Wiimote adapter for retro-controllers!
+* Copyright (c) 2011 Bruno Freitas - bootsector@ig.com.br
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
-#include <avr/pgmspace.h>
+#include <WProgram.h>
+#include "WMCrypt.h"
 
-static volatile unsigned char wm_rand[10];
-static volatile unsigned char wm_key[6];
-static volatile unsigned char wm_ft[8];
-static volatile unsigned char wm_sb[8];
+volatile unsigned char WMCrypt::wm_rand[10];
+volatile unsigned char WMCrypt::wm_key[6];
+volatile unsigned char WMCrypt::wm_ft[8];
+volatile unsigned char WMCrypt::wm_sb[8];
 
-const unsigned char ans_tbl[7][6] PROGMEM = {
+const unsigned char WMCrypt::ans_tbl[7][6] PROGMEM = {
 	{0xA8,0x77,0xA6,0xE0,0xF7,0x43},
 	{0x5A,0x35,0x85,0xE2,0x72,0x97},
 	{0x8F,0xB7,0x1A,0x62,0x87,0x38},
@@ -17,7 +34,7 @@ const unsigned char ans_tbl[7][6] PROGMEM = {
 	{0x30,0x7E,0x90, 0xE,0x85, 0xA},
 };
 
-const unsigned char sboxes[10][256] PROGMEM = {
+const unsigned char WMCrypt::sboxes[10][256] PROGMEM = {
 	{
 		0x70,0x51,   3,0x86,0x40, 0xD,0x4F,0xEB,0x3E,0xCC,0xD1,0x87,0x35,0xBD,0xF5, 0xB,
 		0x5E,0xD0,0xF8,0xF2,0xD5,0xE2,0x6C,0x31, 0xC,0xAD,0xFC,0x21,0xC3,0x78,0xC1,   6,
@@ -182,13 +199,13 @@ const unsigned char sboxes[10][256] PROGMEM = {
 	}
 };
 
-unsigned char wm_ror8(unsigned char a, unsigned char b)
+unsigned char WMCrypt::wm_ror8(unsigned char a, unsigned char b)
 {
 	// bit shift with roll-over
 	return (a >> b) | ((a << (8 - b)) & 0xFF);
 }
 
-void wm_gentabs()
+void WMCrypt::wm_gentabs()
 {
 	unsigned char idx;
 
@@ -239,7 +256,3 @@ void wm_gentabs()
 	wm_sb[6] = pgm_read_byte(&(sboxes[idx + 1][wm_rand[3]])) ^ pgm_read_byte(&(sboxes[idx + 2][wm_rand[5]]));
 	wm_sb[7] = pgm_read_byte(&(sboxes[idx + 1][wm_rand[2]])) ^ pgm_read_byte(&(sboxes[idx + 2][wm_rand[6]]));
 }
-
-
-#define wm_crypto_h
-#endif

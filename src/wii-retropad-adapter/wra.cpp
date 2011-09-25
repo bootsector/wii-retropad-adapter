@@ -57,8 +57,8 @@ byte ry = WMExtension::get_calibration_byte(11)>>3;
 #define PSPAD_NEUTRAL_RADIUS 10
 
 // Operation Mode pins
-int pinMode1 = 9;
-int pinMode2 = 10;
+#define PINMODE1 9
+#define PINMODE2 10
 
 // Wiimote button data callback
 void button_data_callback() {
@@ -75,7 +75,7 @@ void button_data_callback() {
 int getPadMode() {
 	int mode;
 
-	mode = (digitalReadFast(pinMode1) << 1) | digitalReadFast(pinMode2);
+	mode = (digitalReadFast(PINMODE1) << 1) | digitalReadFast(PINMODE2);
 
 	return mode;
 }
@@ -237,11 +237,11 @@ void psx_loop() {
 
 void setup() {
 	// Set mode pins as input, turning pull-ups on
-	pinModeFast(pinMode1, INPUT);
-	digitalWriteFast(pinMode1, HIGH);
+	pinModeFast(PINMODE1, INPUT);
+	digitalWriteFast(PINMODE1, HIGH);
 
-	pinModeFast(pinMode2, INPUT);
-	digitalWriteFast(pinMode2, HIGH);
+	pinModeFast(PINMODE2, INPUT);
+	digitalWriteFast(PINMODE2, HIGH);
 
 	// Prepare wiimote communications
 	WMExtension::set_button_data_callback(button_data_callback);

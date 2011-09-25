@@ -19,8 +19,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WMEXTENSION_CPP_
-#define WMEXTENSION_CPP_
+#ifndef WMEXTENSION_H_
+#define WMEXTENSION_H_
 
 #include <WProgram.h>
 
@@ -54,4 +54,4 @@ public:
 };
 
 
-#endif /* WMEXTENSION_CPP_ */
+#endif /* WMEXTENSION_H_ */

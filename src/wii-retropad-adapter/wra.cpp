@@ -27,6 +27,9 @@
 // Define if the extra port is a SNES or a PSX connector. Uncomment for SNES.
 //#define SNES_WRA
 
+// Define if we're using WMExtension's callback function for buttons update.
+#define ENABLE_BUTTONS_CALLBACK
+
 // Main pad loop. Points to the loop function of the selected pad (via Mode jumpers)
 void (*pad_loop)(void) = NULL;
 
@@ -60,11 +63,13 @@ byte ry = WMExtension::get_calibration_byte(11)>>3;
 #define PINMODE1 9
 #define PINMODE2 10
 
+#ifdef ENABLE_BUTTONS_CALLBACK
 // Wiimote button data callback
 void button_data_callback() {
 	WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 			bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
 }
+#endif
 
 /*
  * Return selected pad mode:
@@ -102,6 +107,11 @@ void genesis_loop() {
 		bm = button_data & GENESIS_MODE;
 		bp = button_data & GENESIS_START;
 		bhome = (bdu && bp); // UP + START == HOME
+
+#ifndef ENABLE_BUTTONS_CALLBACK
+		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+#endif
 	}
 }
 
@@ -124,6 +134,11 @@ void nes_loop() {
 		bm = button_data & 4;
 		bp = button_data & 8;
 		bhome = (bm && bp); // START + SELECT == HOME
+
+#ifndef ENABLE_BUTTONS_CALLBACK
+		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+#endif
 
 	}
 }
@@ -152,6 +167,11 @@ void snes_loop() {
 		bl = button_data & 2048;
 		br = button_data & 4096;
 		bhome = (bm && bp); // START + SELECT == HOME
+
+#ifndef ENABLE_BUTTONS_CALLBACK
+		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+#endif
 	}
 }
 
@@ -230,6 +250,10 @@ void psx_loop() {
 		rx = _rx;
 		ry = ~_ry;
 
+#ifndef ENABLE_BUTTONS_CALLBACK
+		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+#endif
 	}
 }
 
@@ -244,7 +268,9 @@ void setup() {
 	digitalWriteFast(PINMODE2, HIGH);
 
 	// Prepare wiimote communications
+#ifdef ENABLE_BUTTONS_CALLBACK
 	WMExtension::set_button_data_callback(button_data_callback);
+#endif
 	WMExtension::init();
 
 	// Select pad loop based on selected mode

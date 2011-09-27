@@ -28,7 +28,7 @@
 //#define SNES_WRA
 
 // Define if we're using WMExtension's callback function for buttons update.
-#define ENABLE_BUTTONS_CALLBACK
+//#define ENABLE_BUTTONS_CALLBACK
 
 // Main pad loop. Points to the loop function of the selected pad (via Mode jumpers)
 void (*pad_loop)(void) = NULL;

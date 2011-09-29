@@ -1,0 +1,16 @@
+From the Wiimote side:
+
+|~~_____~~|
+|         |
+|  6 4 2  |
+|  -----  |
+|  5 3 1  |
+\_________/
+
+Pin		Cable color		Description
+1		Red 			3.3V
+2		Yellow 			SCL. I²C Serial Clock. (400 kHz)
+3		Red 			Connected to 3.3V inside attachment connector
+4		Not connected.
+5		Green 			SDA. I²C Serial Data
+6		White 			Ground 

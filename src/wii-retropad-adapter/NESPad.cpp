@@ -28,7 +28,6 @@ void NESPad::init() {
 
 int NESPad::read(int bits) {
 	int state, i;
-	byte nespadstate;
 
 	digitalWriteFast(LATCH_PIN, LOW);
 	digitalWriteFast(CLOCK_PIN, LOW);
@@ -47,7 +46,5 @@ int NESPad::read(int bits) {
 		state = state | (digitalReadFast(DATA_PIN) << i);
 	}
 
-	nespadstate = ~state;
-
-	return (int) nespadstate;
+	return ~state;
 }

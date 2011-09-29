@@ -25,7 +25,7 @@
 #include "digitalWriteFast.h"
 
 // Define if the extra port is a SNES or a PSX connector. Uncomment for SNES.
-//#define SNES_WRA
+#define SNES_WRA
 
 // Define if we're using WMExtension's callback function for buttons update.
 //#define ENABLE_BUTTONS_CALLBACK
@@ -162,10 +162,10 @@ void snes_loop() {
 		by = button_data & 2;
 		bm = button_data & 4;
 		bp = button_data & 8;
-		ba = button_data & 512;
-		bx = button_data & 1024;
-		bl = button_data & 2048;
-		br = button_data & 4096;
+		ba = button_data & 256;
+		bx = button_data & 512;
+		bl = button_data & 1024;
+		br = button_data & 2048;
 		bhome = (bm && bp); // START + SELECT == HOME
 
 #ifndef ENABLE_BUTTONS_CALLBACK

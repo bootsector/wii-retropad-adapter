@@ -18,17 +18,12 @@
 
 #include <WProgram.h>
 
+#include "config.h"
 #include "WMExtension.h"
 #include "PS2X_lib.h"
 #include "genesis.h"
 #include "NESPad.h"
 #include "digitalWriteFast.h"
-
-// Define if the extra port is a SNES or a PSX connector. Uncomment for SNES.
-#define SNES_WRA
-
-// Define if we're using WMExtension's callback function for buttons update.
-//#define ENABLE_BUTTONS_CALLBACK
 
 // Main pad loop. Points to the loop function of the selected pad (via Mode jumpers)
 void (*pad_loop)(void) = NULL;
@@ -133,7 +128,7 @@ void nes_loop() {
 		bb = button_data & 2;
 		bm = button_data & 4;
 		bp = button_data & 8;
-		bhome = (bm && bp); // START + SELECT == HOME
+		bhome = (bdu && bp); // UP + START == HOME
 
 #ifndef ENABLE_BUTTONS_CALLBACK
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
@@ -166,7 +161,7 @@ void snes_loop() {
 		bx = button_data & 512;
 		bl = button_data & 1024;
 		br = button_data & 2048;
-		bhome = (bm && bp); // START + SELECT == HOME
+		bhome = (bdu && bp); // UP + START == HOME
 
 #ifndef ENABLE_BUTTONS_CALLBACK
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
@@ -221,7 +216,7 @@ void psx_loop() {
 		bm = psPad.Button(PSB_SELECT);
 		bp = psPad.Button(PSB_START);
 
-		bhome = (bzl && bzr);
+		bhome = (bdu && bp); // UP + START == HOME
 
 		_lx = psPad.Analog(PSS_LX)/4; //psPad.Analog(PSS_LX)>>2;
 		_ly = psPad.Analog(PSS_LY)/4; //psPad.Analog(PSS_LY)>>2;

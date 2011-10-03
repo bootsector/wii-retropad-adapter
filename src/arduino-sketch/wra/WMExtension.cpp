@@ -207,21 +207,25 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 		int ba, int bb, int bx, int by, int blt, int brt, int bminus, int bplus,
 		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr) {
 
+	static byte _tmp;
+
 	WMExtension::buttons_data[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
 	WMExtension::buttons_data[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
 	WMExtension::buttons_data[2] = ((rx & 0x01) << 7) | (ry & 0x1F);
 	WMExtension::buttons_data[3] = 0x00;
 
-	WMExtension::buttons_data[4] = ((bdr ? 1 : 0) << 7) | ((bdd ? 1 : 0) << 6) | ((blt ? 1 : 0)
+	_tmp = ((bdr ? 1 : 0) << 7) | ((bdd ? 1 : 0) << 6) | ((blt ? 1 : 0)
 			<< 5) | ((bminus ? 1 : 0) << 4) | ((bplus ? 1 : 0) << 2)
 			| ((brt ? 1 : 0) << 1) | ((bhome ? 1 : 0) << 3);
 
-	WMExtension::buttons_data[5] = ((bb ? 1 : 0) << 6) | ((by ? 1 : 0) << 5) | ((ba ? 1 : 0)
+	WMExtension::buttons_data[4] = ~_tmp;
+
+	_tmp = ((bb ? 1 : 0) << 6) | ((by ? 1 : 0) << 5) | ((ba ? 1 : 0)
 			<< 4) | ((bx ? 1 : 0) << 3) | ((bdl ? 1 : 0) << 1) | (bdu ? 1
 			: 0) | ((bzl ? 1 : 0) << 7) | ((bzr ? 1 : 0) << 2);
 
-	WMExtension::buttons_data[4] = ~WMExtension::buttons_data[4];
-	WMExtension::buttons_data[5] = ~WMExtension::buttons_data[5];
+
+	WMExtension::buttons_data[5] = ~_tmp;
 }
 
 /*

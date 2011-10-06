@@ -41,7 +41,14 @@ byte WMExtension::state = 0;
 byte WMExtension::crypt_setup_done = 0;
 
 /* Classic Controller buttons status */
-byte WMExtension::buttons_data[6];
+byte WMExtension::buttons_data[16];
+
+/*
+ * Starting position from buttons_data array to report data. This was made
+ * necessary to make this library compatible with reporting modes that query
+ * more than 6 bytes from the extension controller.
+ * */
+byte WMExtension::buttons_pos = 0;
 
 /* Classic Controller 256 data registers */
 byte WMExtension::registers[0x100];
@@ -124,6 +131,7 @@ void WMExtension::receive_bytes(int count) {
 
 	if (count == 1) {
 		WMExtension::state = Wire.receive();
+		WMExtension::buttons_pos = 0;
 	} else if (count > 1) {
 		byte addr = Wire.receive();
 		byte curr = addr;
@@ -168,7 +176,9 @@ void WMExtension::handle_request() {
 	switch (WMExtension::state) {
 
 	case 0x00:
-		WMExtension::send_data(WMExtension::buttons_data, 6, 0x00);
+		WMExtension::send_data(WMExtension::buttons_data + WMExtension::buttons_pos, 8, 0x00);
+
+		WMExtension::buttons_pos = 8;
 
 		if(WMExtension::cbPtr) {
 			WMExtension::cbPtr();
@@ -237,6 +247,8 @@ void WMExtension::init() {
 
 	memset(WMExtension::registers, 0xFF, 0x100);
 
+	memset(WMExtension::buttons_data, 0x00, 16);
+
 	// Set extension id on registers
 	for (int i = 0xFA; i <= 0xFF; i++) {
 		WMExtension::registers[i] = WMExtension::id[i - 0xFA];
@@ -259,8 +271,18 @@ void WMExtension::init() {
 	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2]>>2, WMExtension::calibration_data[5]>>2, WMExtension::calibration_data[8]>>3, WMExtension::calibration_data[11]>>3, 0, 0);
 
 	// Encryption disabled by default
-	WMExtension::registers[0xF0] = 0x55;
-	WMExtension::registers[0xFB] = 0x00;
+	//WMExtension::registers[0xF0] = 0x55;
+	//WMExtension::registers[0xFB] = 0x00;
+
+	// Encryption enabled by default
+	WMExtension::registers[0xF0] = 0xAA;
+
+	for(int i = 0; i < 8; i++) {
+		WMCrypt::wm_sb[i] = 0x17;
+		WMCrypt::wm_ft[i] = 0x17;
+	}
+
+	WMExtension::crypt_setup_done = 1;
 
 	// Join I2C bus
 	Wire.begin(0x52);

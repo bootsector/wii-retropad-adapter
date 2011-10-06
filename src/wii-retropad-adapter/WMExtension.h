@@ -30,7 +30,8 @@ private:
 
 	static const byte id[6];
 	static byte calibration_data[16];
-	static byte buttons_data[6];
+	static byte buttons_data[16];
+	static byte buttons_pos;
 	static byte state;
 	static byte crypt_setup_done;
 	static byte registers[0x100];

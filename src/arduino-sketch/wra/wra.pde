@@ -17,6 +17,7 @@
  */
 
 #include <Wire.h>
+
 #include "config.h"
 #include "WMExtension.h"
 #include "PS2X_lib.h"

@@ -39,7 +39,7 @@ private:
 	typedef void (*CBackPtr)();
 	static CBackPtr cbPtr;
 
-	static void setup_encryption();
+	static void setup_encryption(int old_mode);
 	static void send_data(uint8_t* data, uint8_t size, uint8_t addr);
 	static void receive_bytes(int count);
 	static void handle_request();

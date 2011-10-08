@@ -24,16 +24,19 @@
 class WMCrypt {
 
 public:
-	static volatile unsigned char wm_rand[10];
-	static volatile unsigned char wm_key[6];
-	static volatile unsigned char wm_ft[8];
-	static volatile unsigned char wm_sb[8];
+	static unsigned char wm_ft[8];
+	static unsigned char wm_sb[8];
+	static void wiimote_gen_key(const unsigned char* const keydata);
 
+private:
 	static const unsigned char ans_tbl[7][6] PROGMEM;
-	static const unsigned char sboxes[10][256] PROGMEM;
+	static const unsigned char tsbox[256] PROGMEM;
+	static const unsigned char sboxes[8][256] PROGMEM;
 
-	static unsigned char wm_ror8(unsigned char a, unsigned char b);
-	static void wm_gentabs();
+	static unsigned char ror8(const unsigned char a, const unsigned char b);
+	static void genkey(const unsigned char* const rand, const unsigned char idx, unsigned char* const key);
+	static void gentabs(const unsigned char* const rand, const unsigned char* const key, const unsigned char idx, unsigned char* const ft, unsigned char* const sb);
+
 };
 
 #endif /* WMCRYPT_H_ */

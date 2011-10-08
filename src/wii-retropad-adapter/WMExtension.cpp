@@ -89,29 +89,8 @@ byte WMExtension::get_calibration_byte(int b) {
  * Setup Wiimote <-> Extension I2C communication encryption, if requested by
  * the application (game/homebrew).
  */
-void WMExtension::setup_encryption(int old_mode) {
-	int i;
-
-	if(old_mode) {
-
-		for(i = 0; i < 8; i++) {
-			WMCrypt::wm_sb[i] = 0x17;
-			WMCrypt::wm_ft[i] = 0x17;
-		}
-
-	} else {
-
-		for (i = 0x40; i <= 0x49; i++) {
-			WMCrypt::wm_rand[9 - (i - 0x40)] = WMExtension::registers[i];
-		}
-
-		for (i = 0x4A; i <= 0x4F; i++) {
-			WMCrypt::wm_key[5 - (i - 0x4A)] = WMExtension::registers[i];
-		}
-
-		WMCrypt::wm_gentabs();
-
-	}
+void WMExtension::setup_encryption() {
+	WMCrypt::wiimote_gen_key(WMExtension::registers + 0x40);
 
 	WMExtension::crypt_setup_done = 1;
 }
@@ -183,13 +162,9 @@ void WMExtension::receive_bytes(int count) {
 
 	}
 
-
-	if (crypt_keys_received) {
-		// Setup encryption (new mode)
-		WMExtension::setup_encryption(false);
-	} else if (old_crypt_key_received) {
-		// Setup encryption (old mode)
-		WMExtension::setup_encryption(true);
+	// Setup encryption if requested by the Wii
+	if (crypt_keys_received || old_crypt_key_received) {
+		WMExtension::setup_encryption();
 	}
 }
 
@@ -291,6 +266,11 @@ void WMExtension::init() {
 	for (int i = 0x20; i <= 0x2F; i++) {
 		WMExtension::registers[i] = WMExtension::calibration_data[i - 0x20]; // 0x20
 		WMExtension::registers[i + 0x10] = WMExtension::calibration_data[i - 0x20]; // 0x30
+	}
+
+	// Zeroes encryption bytes on registers
+	for (int i = 0x40; i <= 0x4F; i++) {
+		WMExtension::registers[i] = 0x00;
 	}
 
 	// Initialize buttons_data, otherwise, "Up+Right locked" bug...

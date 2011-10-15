@@ -78,7 +78,7 @@ int genesis_read() {
 	delayMicroseconds(DELAY);
 
 	// Up, Down, Left and Right are low if 6-button controller
-	if(!(normalbuttons & 0x0F)) {
+	if(!digitalReadFast(DB9P1) && !digitalReadFast(DB9P2) && !digitalReadFast(DB9P3) && !digitalReadFast(DB9P4)) {
 		digitalWriteFast(DB9P7, HIGH);
 		delayMicroseconds(DELAY);
 

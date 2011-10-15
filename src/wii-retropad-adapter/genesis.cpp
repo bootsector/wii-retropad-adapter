@@ -76,13 +76,17 @@ int genesis_read() {
 	delayMicroseconds(DELAY);
 	digitalWriteFast(DB9P7, LOW);
 	delayMicroseconds(DELAY);
-	digitalWriteFast(DB9P7, HIGH);
-	delayMicroseconds(DELAY);
 
-	extrabuttons |= (!digitalReadFast(DB9P1) << 0);
-	extrabuttons |= (!digitalReadFast(DB9P2) << 1);
-	extrabuttons |= (!digitalReadFast(DB9P3) << 2);
-	extrabuttons |= (!digitalReadFast(DB9P4) << 3);
+	// Up, Down, Left and Right are low if 6-button controller
+	if(!(normalbuttons & 0x0F)) {
+		digitalWriteFast(DB9P7, HIGH);
+		delayMicroseconds(DELAY);
+
+		extrabuttons |= (!digitalReadFast(DB9P1) << 0);
+		extrabuttons |= (!digitalReadFast(DB9P2) << 1);
+		extrabuttons |= (!digitalReadFast(DB9P3) << 2);
+		extrabuttons |= (!digitalReadFast(DB9P4) << 3);
+	}
 
 	digitalWriteFast(DB9P7, LOW);
 	delayMicroseconds(DELAY);

@@ -44,6 +44,15 @@ You will also be able to buy it from both http://www.brunofreitas.com/ or
 http://www.faiscaefumaca.com.br/
 
 
+Legal
+-----
+
+Wii RetroPad Adapter source code (software) is licensed under GPLv3.
+
+Wii RetroPad Adapter is open hardware licenced under Creative Commons 
+Attribution-ShareAlike 3.0 Unported License. 
+
+
 Acknowledgements
 ----------------
 

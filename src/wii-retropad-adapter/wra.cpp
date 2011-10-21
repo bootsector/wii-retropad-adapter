@@ -18,7 +18,6 @@
 
 #include <WProgram.h>
 
-#include "config.h"
 #include "WMExtension.h"
 #include "PS2X_lib.h"
 #include "genesis.h"
@@ -54,30 +53,33 @@ byte ry = WMExtension::get_calibration_byte(11)>>3;
 // PS Pad neutral radius
 #define PSPAD_NEUTRAL_RADIUS 10
 
-// Operation Mode pins
-#define PINMODE1 9
-#define PINMODE2 10
+// WRA 2.0 now uses last 3 DB9 pins in order to detect the extension cable used.
+#define DETPIN1 6
+#define DETPIN2 7
+#define DETPIN3 8
 
-#ifdef ENABLE_BUTTONS_CALLBACK
-// Wiimote button data callback
-void button_data_callback() {
-	WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-			bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
-}
-#endif
+// Possible values (as of today) returned by the detectPad() routine
+#define PAD_GENESIS	0b111
+#define PAD_NES 	0b110
+#define PAD_SNES 	0b101
+#define PAD_PS2 	0b100
 
 /*
- * Return selected pad mode:
- * 1 - NES (7-Pin connector)
- * 2 - Genesis / Master System / Atari (DB9)
- * 3 - PSX / SNES (Extra)
+ * This is the new auto-detect function (non jumper based) which detects the extension
+ * cable plugged in the DB9 port. It uses last 3 data pins from DB9 (6, 7 and 9) for
+ * the detection.
+ *
+ * 111 - Sega Genesis (Default)
+ * 110 - NES
+ * 101 - SNES
+ * 100 - PS2
  */
-int getPadMode() {
-	int mode;
+int detectPad() {
+	int pad;
 
-	mode = (digitalReadFast(PINMODE1) << 1) | digitalReadFast(PINMODE2);
+	pad = (digitalReadFast(DETPIN1) << 2) | digitalReadFast(DETPIN2) << 1 | digitalReadFast(DETPIN3);
 
-	return mode;
+	return pad;
 }
 
 // Genesis pad loop
@@ -103,10 +105,8 @@ void genesis_loop() {
 		bp = button_data & GENESIS_START;
 		bhome = (bdu && bp); // UP + START == HOME
 
-#ifndef ENABLE_BUTTONS_CALLBACK
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
-#endif
 	}
 }
 
@@ -130,15 +130,10 @@ void nes_loop() {
 		bp = button_data & 8;
 		bhome = (bdu && bp); // UP + START == HOME
 
-#ifndef ENABLE_BUTTONS_CALLBACK
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
-#endif
-
 	}
 }
-
-#ifdef SNES_WRA
 
 // SNES pad loop
 void snes_loop() {
@@ -163,17 +158,13 @@ void snes_loop() {
 		br = button_data & 2048;
 		bhome = (bdu && bp); // UP + START == HOME
 
-#ifndef ENABLE_BUTTONS_CALLBACK
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
-#endif
 	}
 }
 
-#else
-
-// PSX pad loop
-void psx_loop() {
+// PS2 pad loop
+void ps2_loop() {
 	PS2X psPad;
 
 	byte center_lx, center_ly, center_rx, center_ry;
@@ -245,44 +236,38 @@ void psx_loop() {
 		rx = _rx;
 		ry = ~_ry;
 
-#ifndef ENABLE_BUTTONS_CALLBACK
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
-#endif
 	}
 }
 
-#endif
-
 void setup() {
-	// Set mode pins as input, turning pull-ups on
-	pinModeFast(PINMODE1, INPUT);
-	digitalWriteFast(PINMODE1, HIGH);
+	// Set pad detection pins as input, turning pull-ups on
+	pinModeFast(DETPIN1, INPUT);
+	digitalWriteFast(DETPIN1, HIGH);
 
-	pinModeFast(PINMODE2, INPUT);
-	digitalWriteFast(PINMODE2, HIGH);
+	pinModeFast(DETPIN2, INPUT);
+	digitalWriteFast(DETPIN2, HIGH);
+
+	pinModeFast(DETPIN3, INPUT);
+	digitalWriteFast(DETPIN3, HIGH);
 
 	// Prepare wiimote communications
-#ifdef ENABLE_BUTTONS_CALLBACK
-	WMExtension::set_button_data_callback(button_data_callback);
-#endif
 	WMExtension::init();
 
-	// Select pad loop based on selected mode
-	switch (getPadMode()) {
-	case 1:
+	// Select pad loop based on pad auto-detection routine. Genesis pad is the default.
+	switch (detectPad()) {
+	case PAD_NES:
 		pad_loop = nes_loop;
 		break;
-	case 2:
-		pad_loop = genesis_loop;
-		break;
-	case 3:
-#ifdef SNES_WRA
+	case PAD_SNES:
 		pad_loop = snes_loop;
-#else
-		pad_loop = psx_loop;
-#endif
-
+		break;
+	case PAD_PS2:
+		pad_loop = ps2_loop;
+		break;
+	default:
+		pad_loop = genesis_loop;
 		break;
 	}
 }

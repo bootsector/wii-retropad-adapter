@@ -128,7 +128,7 @@ void nes_loop() {
 		bb = button_data & 2;
 		bm = button_data & 4;
 		bp = button_data & 8;
-		bhome = (bdu && bp); // UP + START == HOME
+		bhome = (bm && bp); // SELECT + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
@@ -156,7 +156,7 @@ void snes_loop() {
 		bx = button_data & 512;
 		bl = button_data & 1024;
 		br = button_data & 2048;
-		bhome = (bdu && bp); // UP + START == HOME
+		bhome = (bm && bp); // SELECT + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
@@ -207,7 +207,7 @@ void ps2_loop() {
 		bm = psPad.Button(PSB_SELECT);
 		bp = psPad.Button(PSB_START);
 
-		bhome = (bdu && bp); // UP + START == HOME
+		bhome = (bm && bp); // SELECT + START == HOME
 
 		_lx = psPad.Analog(PSS_LX)/4; //psPad.Analog(PSS_LX)>>2;
 		_ly = psPad.Analog(PSS_LY)/4; //psPad.Analog(PSS_LY)>>2;

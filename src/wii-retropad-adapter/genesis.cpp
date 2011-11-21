@@ -86,18 +86,18 @@ int genesis_read() {
 		extrabuttons |= (!digitalReadFast(DB9P2) << 1);
 		extrabuttons |= (!digitalReadFast(DB9P3) << 2);
 		extrabuttons |= (!digitalReadFast(DB9P4) << 3);
+
+		digitalWriteFast(DB9P7, LOW);
+		delayMicroseconds(DELAY);
+		digitalWriteFast(DB9P7, HIGH);
+		delayMicroseconds(DELAY);
+		digitalWriteFast(DB9P7, LOW);
+
+		// Delay needed for settling joystick down
+		delay(2);
 	}
 
-	digitalWriteFast(DB9P7, LOW);
-	delayMicroseconds(DELAY);
-	digitalWriteFast(DB9P7, HIGH);
-	delayMicroseconds(DELAY);
-	digitalWriteFast(DB9P7, LOW);
-
 	retval = normalbuttons | (extrabuttons << 8);
-
-	// Delay needed for settling joystick down
-	delay(2);
 
 	return retval;
 }

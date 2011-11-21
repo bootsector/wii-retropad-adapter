@@ -24,6 +24,9 @@ void NESPad::init() {
 	pinModeFast(CLOCK_PIN, OUTPUT);
 	pinModeFast(LATCH_PIN, OUTPUT);
 	pinModeFast(DATA_PIN, INPUT);
+
+	// Turns data pin pull-out resistor ON
+	digitalWriteFast(DATA_PIN, HIGH);
 }
 
 int NESPad::read(int bits) {

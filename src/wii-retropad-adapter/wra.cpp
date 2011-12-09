@@ -22,6 +22,7 @@
 #include "PS2X_lib.h"
 #include "genesis.h"
 #include "NESPad.h"
+#include "GCPad.h"
 #include "digitalWriteFast.h"
 
 // Main pad loop. Points to the loop function of the selected pad (via Mode jumpers)
@@ -50,8 +51,8 @@ byte ly = WMExtension::get_calibration_byte(5)>>2;
 byte rx = WMExtension::get_calibration_byte(8)>>3;
 byte ry = WMExtension::get_calibration_byte(11)>>3;
 
-// PS Pad neutral radius
-#define PSPAD_NEUTRAL_RADIUS 10
+// Analog stick neutral radius
+#define ANALOG_NEUTRAL_RADIUS 10
 
 // WRA 2.0 now uses last 3 DB9 pins in order to detect the extension cable used.
 #define DETPIN1 6
@@ -63,6 +64,8 @@ byte ry = WMExtension::get_calibration_byte(11)>>3;
 #define PAD_NES 	0b110
 #define PAD_SNES 	0b101
 #define PAD_PS2 	0b100
+#define PAD_GC	 	0b011
+#define PAD_N64		0b010
 
 /*
  * This is the new auto-detect function (non jumper based) which detects the extension
@@ -73,6 +76,8 @@ byte ry = WMExtension::get_calibration_byte(11)>>3;
  * 110 - NES
  * 101 - SNES
  * 100 - PS2
+ * 011 - Game Cube
+ * 010 - Nintendo 64
  */
 int detectPad() {
 	int pad;
@@ -214,20 +219,20 @@ void ps2_loop() {
 		_rx = psPad.Analog(PSS_RX)/8; //psPad.Analog(PSS_RX)>>3;
 		_ry = psPad.Analog(PSS_RY)/8; //psPad.Analog(PSS_RY)>>3;
 
-		if(_lx >= (center_lx - PSPAD_NEUTRAL_RADIUS) && _lx <= (center_lx + PSPAD_NEUTRAL_RADIUS)) {
+		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
 			_lx = clx;
 		}
 
-		if(_ly >= (center_ly - PSPAD_NEUTRAL_RADIUS) && _ly <= (center_ly + PSPAD_NEUTRAL_RADIUS)) {
+		if(_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS) && _ly <= (center_ly + ANALOG_NEUTRAL_RADIUS)) {
 			_ly = cly;
 		}
 
 
-		if(_rx >= (center_rx - PSPAD_NEUTRAL_RADIUS) && _rx <= (center_rx + PSPAD_NEUTRAL_RADIUS)) {
+		if(_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS) && _rx <= (center_rx + ANALOG_NEUTRAL_RADIUS)) {
 			_rx = crx;
 		}
 
-		if(_ry >= (center_ry - PSPAD_NEUTRAL_RADIUS) && _ry <= (center_ry + PSPAD_NEUTRAL_RADIUS)) {
+		if(_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS) && _ry <= (center_ry + ANALOG_NEUTRAL_RADIUS)) {
 			_ry = cry;
 		}
 
@@ -235,6 +240,136 @@ void ps2_loop() {
 		ly = ~_ly;
 		rx = _rx;
 		ry = ~_ry;
+
+		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+	}
+}
+
+void gc_loop() {
+	byte *button_data;
+
+	byte center_lx, center_ly, center_rx, center_ry;
+	byte _lx, _ly, _rx, _ry;
+
+	byte clx = WMExtension::get_calibration_byte(2)>>2;
+	byte cly = WMExtension::get_calibration_byte(5)>>2;
+	byte crx = WMExtension::get_calibration_byte(8)>>3;
+	byte cry = WMExtension::get_calibration_byte(11)>>3;
+
+	GCPad_init();
+
+	button_data = GCPad_read();
+
+	center_lx = button_data[2]/4;
+	center_ly = button_data[3]/4;
+	center_rx = button_data[4]/8;
+	center_ry = button_data[5]/8;
+
+	for(;;) {
+		button_data = GCPad_read();
+
+		bdl = button_data[1] & 0x01;
+		bdr = button_data[1] & 0x02;
+		bdu = button_data[1] & 0x08;
+		bdd = button_data[1] & 0x04;
+
+		by = button_data[0] & 0x08;
+		bb = button_data[0] & 0x02;
+		bx = button_data[0] & 0x04;
+		ba = button_data[0] & 0x01;
+
+		bp = button_data[0] & 0x10;
+
+		bl = button_data[1] & 0x40;
+		br = button_data[1] & 0x20;
+
+		bzl = bzr = button_data[1] & 0x10;
+
+		bhome = (bdu && bp); // UP + START == HOME
+
+		_lx = button_data[2]/4;
+		_ly = button_data[3]/4;
+		_rx = button_data[4]/8;
+		_ry = button_data[5]/8;
+
+		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
+			_lx = clx;
+		}
+
+		if(_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS) && _ly <= (center_ly + ANALOG_NEUTRAL_RADIUS)) {
+			_ly = cly;
+		}
+
+		if(_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS) && _rx <= (center_rx + ANALOG_NEUTRAL_RADIUS)) {
+			_rx = crx;
+		}
+
+		if(_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS) && _ry <= (center_ry + ANALOG_NEUTRAL_RADIUS)) {
+			_ry = cry;
+		}
+
+		lx = _lx;
+		ly = _ly;
+		rx = _rx;
+		ry = _ry;
+
+		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+	}
+}
+
+void n64_loop() {
+	byte *button_data;
+
+	byte center_lx, center_ly;
+	byte _lx, _ly;
+
+	byte clx = WMExtension::get_calibration_byte(2)>>2;
+	byte cly = WMExtension::get_calibration_byte(5)>>2;
+
+	GCPad_init();
+
+	button_data = N64Pad_read();
+
+	center_lx = button_data[2]/4;
+	center_ly = button_data[3]/4;
+
+	for(;;) {
+		button_data = GCPad_read();
+
+		bdl = button_data[1] & 0x01;
+		bdr = button_data[1] & 0x02;
+		bdu = button_data[1] & 0x08;
+		bdd = button_data[1] & 0x04;
+
+		by = button_data[0] & 0x08;
+		bb = button_data[0] & 0x02;
+		bx = button_data[0] & 0x04;
+		ba = button_data[0] & 0x01;
+
+		bp = button_data[0] & 0x10;
+
+		bl = button_data[1] & 0x40;
+		br = button_data[1] & 0x20;
+
+		bzl = bzr = button_data[1] & 0x10;
+
+		bhome = (bdu && bp); // UP + START == HOME
+
+		_lx = button_data[2]/4;
+		_ly = button_data[3]/4;
+
+		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
+			_lx = clx;
+		}
+
+		if(_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS) && _ly <= (center_ly + ANALOG_NEUTRAL_RADIUS)) {
+			_ly = cly;
+		}
+
+		lx = _lx;
+		ly = _ly;
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
@@ -265,6 +400,12 @@ void setup() {
 		break;
 	case PAD_PS2:
 		pad_loop = ps2_loop;
+		break;
+	case PAD_GC:
+		pad_loop = gc_loop;
+		break;
+	case PAD_N64:
+		pad_loop = n64_loop;
 		break;
 	default:
 		pad_loop = genesis_loop;

@@ -323,10 +323,12 @@ void n64_loop() {
 	byte *button_data;
 
 	byte center_lx, center_ly;
-	byte _lx, _ly;
+	byte _lx, _ly, _rx, _ry;
 
 	byte clx = WMExtension::get_calibration_byte(2)>>2;
 	byte cly = WMExtension::get_calibration_byte(5)>>2;
+	byte crx = WMExtension::get_calibration_byte(8)>>3;
+	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
 	GCPad_init();
 
@@ -338,24 +340,31 @@ void n64_loop() {
 	for(;;) {
 		button_data = GCPad_read();
 
-		bdl = button_data[1] & 0x01;
-		bdr = button_data[1] & 0x02;
-		bdu = button_data[1] & 0x08;
-		bdd = button_data[1] & 0x04;
+		bdl = button_data[0] & 0x40;
+		bdr = button_data[0] & 0x80;
+		bdu = button_data[0] & 0x10;
+		bdd = button_data[0] & 0x20;
 
-		by = button_data[0] & 0x08;
 		bb = button_data[0] & 0x02;
-		bx = button_data[0] & 0x04;
 		ba = button_data[0] & 0x01;
 
-		bp = button_data[0] & 0x10;
+		bp = button_data[0] & 0x08;
 
-		bl = button_data[1] & 0x40;
-		br = button_data[1] & 0x20;
+		bl = button_data[1] & 0x04;
+		br = button_data[1] & 0x08;
 
-		bzl = bzr = button_data[1] & 0x10;
+		bzl = bzr = button_data[0] & 0x04;
 
 		bhome = (bdu && bp); // UP + START == HOME
+
+		_ry = button_data[1] & 0x10 ? 1 : cry; // C Up
+		_ry = button_data[1] & 0x20 ? 31 : cry; // C Down
+
+		_rx = button_data[1] & 0x40 ? 1 : crx; // C Left
+		_rx = button_data[1] & 0x80 ? 31 : crx; // C Right
+
+		by = button_data[1] & 0x40; // Y == C Left
+		bx = button_data[1] & 0x80; // X == C Right
 
 		_lx = button_data[2]/4;
 		_ly = button_data[3]/4;
@@ -370,6 +379,8 @@ void n64_loop() {
 
 		lx = _lx;
 		ly = _ly;
+		rx = _rx;
+		ry = _ry;
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);

@@ -180,8 +180,7 @@ void ps2_loop() {
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
-	while (psPad.config_gamepad(5, 3, 4, 2, false, false) != 0)
-		;
+	while (psPad.config_gamepad(5, 3, 4, 2, false, false) == 1);
 
 	psPad.read_gamepad();
 

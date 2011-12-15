@@ -337,7 +337,7 @@ void n64_loop() {
 	center_ly = button_data[3]/4;
 
 	for(;;) {
-		button_data = GCPad_read();
+		button_data = N64Pad_read();
 
 		bdl = button_data[0] & 0x40;
 		bdr = button_data[0] & 0x80;

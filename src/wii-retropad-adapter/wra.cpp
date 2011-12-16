@@ -322,6 +322,7 @@ void gc_loop() {
 
 void n64_loop() {
 	byte *button_data;
+	bool swap_l_z = false;
 
 	byte center_lx, center_ly;
 	byte _lx, _ly, _rx, _ry;
@@ -340,6 +341,11 @@ void n64_loop() {
 	center_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128) / 4;
 	center_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128) / 4;
 
+	// If plugged in with L pressed, L and Z buttons will be swapped (for Zelda games' sake!)
+	if (button_data[1] & 0x20) {
+		swap_l_z = true;
+	}
+
 	for(;;) {
 		button_data = N64Pad_read();
 
@@ -353,10 +359,15 @@ void n64_loop() {
 
 		bp = button_data[0] & 0x10;
 
-		bl = button_data[1] & 0x20;
 		br = button_data[1] & 0x10;
 
-		bzl = bzr = button_data[0] & 0x20;
+		if (!swap_l_z) {
+			bl = button_data[1] & 0x20;
+			bzl = bzr = button_data[0] & 0x20;
+		} else {
+			bl = button_data[0] & 0x20;
+			bzl = bzr = button_data[1] & 0x20;
+		}
 
 		bhome = (bdu && bp); // UP + START == HOME
 

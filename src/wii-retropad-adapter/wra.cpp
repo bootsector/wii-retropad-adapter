@@ -258,6 +258,8 @@ void gc_loop() {
 
 	GCPad_init();
 
+	delayMicroseconds(10);
+
 	button_data = GCPad_read();
 
 	center_lx = button_data[2]/4;
@@ -331,42 +333,54 @@ void n64_loop() {
 
 	GCPad_init();
 
+	delayMicroseconds(10);
+
 	button_data = N64Pad_read();
 
-	center_lx = button_data[2]/4;
-	center_ly = button_data[3]/4;
+	center_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128) / 4;
+	center_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128) / 4;
 
 	for(;;) {
 		button_data = N64Pad_read();
 
-		bdl = button_data[0] & 0x40;
-		bdr = button_data[0] & 0x80;
-		bdu = button_data[0] & 0x10;
-		bdd = button_data[0] & 0x20;
+		bdl = button_data[0] & 0x02;
+		bdr = button_data[0] & 0x01;
+		bdu = button_data[0] & 0x08;
+		bdd = button_data[0] & 0x04;
 
-		bb = button_data[0] & 0x02;
-		ba = button_data[0] & 0x01;
+		bb = button_data[0] & 0x40;
+		ba = button_data[0] & 0x80;
 
-		bp = button_data[0] & 0x08;
+		bp = button_data[0] & 0x10;
 
-		bl = button_data[1] & 0x04;
-		br = button_data[1] & 0x08;
+		bl = button_data[1] & 0x20;
+		br = button_data[1] & 0x10;
 
-		bzl = bzr = button_data[0] & 0x04;
+		bzl = bzr = button_data[0] & 0x20;
 
 		bhome = (bdu && bp); // UP + START == HOME
 
-		_ry = button_data[1] & 0x10 ? 1 : cry; // C Up
-		_ry = button_data[1] & 0x20 ? 31 : cry; // C Down
+		_ry = cry;
 
-		_rx = button_data[1] & 0x40 ? 1 : crx; // C Left
-		_rx = button_data[1] & 0x80 ? 31 : crx; // C Right
+		if(button_data[1] & 0x08) { // C Up
+			_ry = 30;
+		} else if(button_data[1] & 0x04) { // C Down
+			_ry = 1;
+		}
 
-		by = button_data[1] & 0x40; // Y == C Left
-		bx = button_data[1] & 0x80; // X == C Right
+		_rx = crx;
 
-		_lx = button_data[2]/4;
-		_ly = button_data[3]/4;
+		if(button_data[1] & 0x02) { // C Left
+			_rx = 1;
+		} else if(button_data[1] & 0x01) { // C Right
+			_rx = 30;
+		}
+
+		by = button_data[1] & 0x02; // Y == C Left
+		bx = button_data[1] & 0x01; // X == C Right
+
+		_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128) / 4;;
+		_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128) / 4;;
 
 		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
 			_lx = clx;
@@ -399,6 +413,9 @@ void setup() {
 
 	// Prepare wiimote communications
 	WMExtension::init();
+
+	// Delay 1s before entering very time consuming polling routines so Wiimote can nicely handshake
+	delay(1000);
 
 	// Select pad loop based on pad auto-detection routine. Genesis pad is the default.
 	switch (detectPad()) {

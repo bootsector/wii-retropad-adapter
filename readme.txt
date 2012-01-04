@@ -1,5 +1,5 @@
 Wii RetroPad Adapter
-(c)2011 - Bruno Freitas - bootsector@ig.com.br
+(c)2011/2012 - Bruno Freitas - bootsector@ig.com.br
 See COPYING.TXT for licensing information.
 
 
@@ -14,24 +14,29 @@ joysticks as if they were a Wii Classic Controller:
 
 :. Nintendo NES pad
 
-:. Super NES pad or Playstation 2 Dualshock, depending on the extension cable
-used and uC firmware.
+:. Super NES pad 
+
+:. Playstation digital pads and Playstation 2 pads
+
+:. Game Cube pad
+
+:. Nintendo 64 pad
 
 The Wii RetroPad adapter talks to the Wiimote that, ultimately, talks to the
 Wii wirelessly, so you get a real Classic Controller experience with no Game
 Cube extension cables involved! :)
 
-This adapter is compatible with both Nintendo official games ans also homebrews
+This adapter is compatible with both Nintendo official games and also homebrews
 (AKA, those great emulators out there!).
 
-If you are going to use a PS2 joystick with it, it even supports the analog
-sticks!
+Wii RetroPad Adapter 2.0 is released and now it comes with an enclosure, and 
+not like a "barebones" PCB anymore! :)
 
 
 How to get it
 -------------
 
-Wii RetroPad Adapter is Opensource / Openhardware, so you can construct your
+Wii RetroPad Adapter is Opensource / Open hardware, so you can construct your
 PCB, compile the source code, burn the firmware in the micro-controller and
 start using it. 
 

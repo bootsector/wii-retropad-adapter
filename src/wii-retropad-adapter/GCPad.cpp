@@ -143,10 +143,8 @@ void GCPad_init() {
 
 	pinModeFast(JOY_DATA_PIN, INPUT);
 
-	for (int x=0; x<64; x++) {
-		if (!(PIND & 0x04))
-			x = 0;
-	}
+	// Ignore incoming data for 500us
+	delayMicroseconds(500);
 }
 
 byte *GCPad_read() {

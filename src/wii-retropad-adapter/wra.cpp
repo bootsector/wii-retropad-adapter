@@ -425,9 +425,6 @@ void setup() {
 	// Prepare wiimote communications
 	WMExtension::init();
 
-	// Delay 1s before entering very time consuming polling routines so Wiimote can nicely handshake
-	delay(1000);
-
 	// Select pad loop based on pad auto-detection routine. Genesis pad is the default.
 	switch (detectPad()) {
 	case PAD_NES:

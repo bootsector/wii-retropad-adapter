@@ -289,7 +289,7 @@ AVRDUDE_PROGRAMMER = stk500
 AVRDUDE_CONFIG = "D:\Arquivos de Programas\arduino-0022\hardware\tools\avr\etc\avrdude.conf"
 
 # com1 = serial port. Use lpt1 to connect to parallel port.
-AVRDUDE_PORT = COM7    # programmer connected to serial device
+AVRDUDE_PORT = COM6    # programmer connected to serial device
 AVRDUDE_BAUD = 19200   # serial device baud rate
 
 # Fuses config

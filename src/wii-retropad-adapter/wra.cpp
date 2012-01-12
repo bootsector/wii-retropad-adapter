@@ -258,8 +258,6 @@ void gc_loop() {
 
 	GCPad_init();
 
-	delayMicroseconds(10);
-
 	button_data = GCPad_read();
 
 	center_lx = button_data[2]/4;
@@ -333,8 +331,6 @@ void n64_loop() {
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
 	GCPad_init();
-
-	delayMicroseconds(10);
 
 	button_data = N64Pad_read();
 

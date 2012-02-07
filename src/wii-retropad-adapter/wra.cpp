@@ -175,12 +175,18 @@ void ps2_loop() {
 
 	byte _lx, _ly, _rx, _ry;
 	byte center_lx, center_ly, center_rx, center_ry;
+
 	bool calibrated = false;
 
 	byte clx = WMExtension::get_calibration_byte(2)>>2;
 	byte cly = WMExtension::get_calibration_byte(5)>>2;
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
+
+	center_lx = clx;
+	center_ly = cly;
+	center_rx = crx;
+	center_ry = cry;
 
 	psx_init();
 

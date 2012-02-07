@@ -1,25 +1,25 @@
 /*
-* Wii RetroPad Adapter - Nintendo Wiimote adapter for retro-controllers!
-* Copyright (c) 2011 Bruno Freitas - bootsector@ig.com.br
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Wii RetroPad Adapter - Nintendo Wiimote adapter for retro-controllers!
+ * Copyright (c) 2011 Bruno Freitas - bootsector@ig.com.br
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include <WProgram.h>
 
 #include "WMExtension.h"
-#include "PS2X_lib.h"
+#include "psx.h"
 #include "genesis.h"
 #include "NESPad.h"
 #include "GCPad.h"
@@ -111,7 +111,7 @@ void genesis_loop() {
 		bhome = (bdu && bp); // UP + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
 	}
 }
 
@@ -136,7 +136,7 @@ void nes_loop() {
 		bhome = (bm && bp); // SELECT + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
 	}
 }
 
@@ -164,86 +164,101 @@ void snes_loop() {
 		bhome = (bm && bp); // SELECT + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
 	}
 }
 
 // PS2 pad loop
 void ps2_loop() {
-	PS2X psPad;
+	psxpad_state_t *psPad;
+	byte pad_id;
 
-	byte center_lx, center_ly, center_rx, center_ry;
 	byte _lx, _ly, _rx, _ry;
+	byte center_lx, center_ly, center_rx, center_ry;
+	bool calibrated = false;
 
 	byte clx = WMExtension::get_calibration_byte(2)>>2;
 	byte cly = WMExtension::get_calibration_byte(5)>>2;
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
-	while (psPad.config_gamepad(5, 3, 4, 2, false, false) == 1);
-
-	psPad.read_gamepad();
-
-	center_lx = psPad.Analog(PSS_LX)/4;
-	center_ly = psPad.Analog(PSS_LY)/4;
-	center_rx = psPad.Analog(PSS_RX)/8;
-	center_ry = psPad.Analog(PSS_RY)/8;
+	psx_init();
 
 	for (;;) {
-		psPad.read_gamepad();
+		psPad = psx_read(&pad_id);
 
-		bdl = psPad.Button(PSB_PAD_LEFT);
-		bdr = psPad.Button(PSB_PAD_RIGHT);
-		bdu = psPad.Button(PSB_PAD_UP);
-		bdd = psPad.Button(PSB_PAD_DOWN);
+		bdl = psPad->left_btn;
+		bdr = psPad->right_btn;
+		bdu = psPad->up_btn;
+		bdd = psPad->down_btn;
 
-		by = psPad.Button(PSB_SQUARE);
-		bb = psPad.Button(PSB_CROSS);
-		bx = psPad.Button(PSB_TRIANGLE);
-		ba = psPad.Button(PSB_CIRCLE);
+		by = psPad->square_btn;
+		bb = psPad->cross_btn;
+		bx = psPad->triangle_btn;
+		ba = psPad->circle_btn;
 
-		bl = psPad.Button(PSB_L1);
-		br = psPad.Button(PSB_R1);
+		bl = psPad->l1_btn;
+		br = psPad->r1_btn;
 
-		bzl = psPad.Button(PSB_L2);
-		bzr = psPad.Button(PSB_R2);
+		bzl = psPad->l2_btn;
+		bzr = psPad->r2_btn;
 
-		bm = psPad.Button(PSB_SELECT);
-		bp = psPad.Button(PSB_START);
+		bm = psPad->select_btn;
+		bp = psPad->start_btn;
 
 		bhome = (bm && bp); // SELECT + START == HOME
 
-		_lx = psPad.Analog(PSS_LX)/4; //psPad.Analog(PSS_LX)>>2;
-		_ly = psPad.Analog(PSS_LY)/4; //psPad.Analog(PSS_LY)>>2;
-		_rx = psPad.Analog(PSS_RX)/8; //psPad.Analog(PSS_RX)>>3;
-		_ry = psPad.Analog(PSS_RY)/8; //psPad.Analog(PSS_RY)>>3;
+		if(pad_id == PSX_ID_DIGITAL) {
 
-		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
-			_lx = clx;
+			lx = clx;
+			ly = cly;
+			rx = crx;
+			ry = cry;
+
+		} else {
+
+			if(!calibrated) {
+				center_lx = psPad->l_x_axis/4;
+				center_ly = psPad->l_y_axis/4;
+				center_rx = psPad->r_x_axis/8;
+				center_ry = psPad->r_y_axis/8;
+
+				calibrated = true;
+			}
+
+			_lx = psPad->l_x_axis / 4;
+			_ly = psPad->l_y_axis / 4;
+			_rx = psPad->r_x_axis / 8;
+			_ry = psPad->r_y_axis / 8;
+
+			if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
+				_lx = clx;
+			}
+
+			if(_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS) && _ly <= (center_ly + ANALOG_NEUTRAL_RADIUS)) {
+				_ly = cly;
+			}
+
+
+			if(_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS) && _rx <= (center_rx + ANALOG_NEUTRAL_RADIUS)) {
+				_rx = crx;
+			}
+
+			if(_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS) && _ry <= (center_ry + ANALOG_NEUTRAL_RADIUS)) {
+				_ry = cry;
+			}
+
+			lx = _lx;
+			ly = ~_ly;
+			rx = _rx;
+			ry = ~_ry;
 		}
-
-		if(_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS) && _ly <= (center_ly + ANALOG_NEUTRAL_RADIUS)) {
-			_ly = cly;
-		}
-
-
-		if(_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS) && _rx <= (center_rx + ANALOG_NEUTRAL_RADIUS)) {
-			_rx = crx;
-		}
-
-		if(_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS) && _ry <= (center_ry + ANALOG_NEUTRAL_RADIUS)) {
-			_ry = cry;
-		}
-
-		lx = _lx;
-		ly = ~_ly;
-		rx = _rx;
-		ry = ~_ry;
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
 	}
 }
+
 
 void gc_loop() {
 	byte *button_data;
@@ -314,7 +329,7 @@ void gc_loop() {
 		ry = _ry;
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
 	}
 }
 
@@ -403,7 +418,7 @@ void n64_loop() {
 		ry = _ry;
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
 	}
 }
 

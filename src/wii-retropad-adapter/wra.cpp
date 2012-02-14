@@ -25,9 +25,6 @@
 #include "GCPad.h"
 #include "digitalWriteFast.h"
 
-// Main pad loop. Points to the loop function of the selected pad (via Mode jumpers)
-void (*pad_loop)(void) = NULL;
-
 // Classic Controller Buttons
 int bdl = 0; // D-Pad Left state
 int bdr = 0; // D-Pad Right state
@@ -420,32 +417,28 @@ void setup() {
 
 	// Prepare wiimote communications
 	WMExtension::init();
-
-	// Select pad loop based on pad auto-detection routine. Genesis pad is the default.
-	switch (detectPad()) {
-	case PAD_NES:
-		pad_loop = nes_loop;
-		break;
-	case PAD_SNES:
-		pad_loop = snes_loop;
-		break;
-	case PAD_PS2:
-		pad_loop = ps2_loop;
-		break;
-	case PAD_GC:
-		pad_loop = gc_loop;
-		break;
-	case PAD_N64:
-		pad_loop = n64_loop;
-		break;
-	default:
-		pad_loop = genesis_loop;
-		break;
-	}
 }
 
 void loop() {
-	if (pad_loop) {
-		pad_loop();
+	// Select pad loop based on pad auto-detection routine. Genesis pad is the default.
+	switch (detectPad()) {
+	case PAD_NES:
+		nes_loop();
+		break;
+	case PAD_SNES:
+		snes_loop();
+		break;
+	case PAD_PS2:
+		ps2_loop();
+		break;
+	case PAD_GC:
+		gc_loop();
+		break;
+	case PAD_N64:
+		n64_loop();
+		break;
+	default:
+		genesis_loop();
+		break;
 	}
 }

@@ -50,6 +50,10 @@ byte WMExtension::buttons_data[16];
  * */
 byte WMExtension::buttons_pos = 0;
 
+
+/* Tells if extension has received a new address query. */
+bool WMExtension::new_addr = false;
+
 /* Classic Controller 256 data registers */
 byte WMExtension::registers[0x100];
 
@@ -120,6 +124,8 @@ void WMExtension::receive_bytes(int count) {
 	byte crypt_keys_received = 0;
 	byte old_crypt_key_received = 0;
 
+	WMExtension::new_addr = true;
+
 	if (count == 1) {
 
 		WMExtension::state = Wire.receive();
@@ -171,7 +177,6 @@ void WMExtension::receive_bytes(int count) {
 /* I2C slave handler for data request from the Wiimote */
 void WMExtension::handle_request() {
 
-	static byte last_state = 0xFF;
 	static byte offset = 0;
 
 	switch (WMExtension::state) {
@@ -193,14 +198,16 @@ void WMExtension::handle_request() {
 		break;
 
 	default:
-		if(last_state == WMExtension::state) {
-			offset += 8;
-		} else {
-			last_state = WMExtension::state;
+		if(WMExtension::new_addr) {
 			offset = 0;
+		} else {
+			offset += 8;
 		}
 
 		WMExtension::send_data(WMExtension::registers + WMExtension::state + offset, 8, WMExtension::state + offset);
+
+		WMExtension::new_addr = false;
+
 		break;
 	}
 }

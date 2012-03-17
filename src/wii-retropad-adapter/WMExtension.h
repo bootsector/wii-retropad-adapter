@@ -35,6 +35,7 @@ private:
 	static byte state;
 	static byte crypt_setup_done;
 	static byte registers[0x100];
+	static bool new_addr;
 
 	typedef void (*CBackPtr)();
 	static CBackPtr cbPtr;

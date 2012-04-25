@@ -63,6 +63,7 @@ byte ry = WMExtension::get_calibration_byte(11)>>3;
 #define PAD_PS2 	0b100
 #define PAD_GC	 	0b011
 #define PAD_N64		0b010
+#define PAD_NEOGEO	0b001
 
 /*
  * This is the new auto-detect function (non jumper based) which detects the extension
@@ -75,6 +76,7 @@ byte ry = WMExtension::get_calibration_byte(11)>>3;
  * 100 - PS2
  * 011 - Game Cube
  * 010 - Nintendo 64
+ * 001 - Neo Geo
  */
 int detectPad() {
 	int pad;
@@ -404,6 +406,31 @@ void n64_loop() {
 	}
 }
 
+void neogeo_loop() {
+	int button_data;
+
+	NESPad::init();
+
+	for (;;) {
+		button_data = NESPad::read(16);
+
+		bdl = button_data & 0x02;
+		bdr = button_data & 0x800;
+		bdu = button_data & 0x03;
+		bdd = button_data & 0x1000;
+		bb = button_data & 0x01;
+		by = button_data & 0x8000;
+		bm = button_data & 0x100;
+		bp = button_data & 0x4000;
+		ba = button_data & 0x400;
+		bx = button_data & 0x200; // D button is also 0x2000
+		bhome = (bm && bp); // SELECT + START == HOME
+
+		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+	}
+}
+
 void setup() {
 	// Set pad detection pins as input, turning pull-ups on
 	pinModeFast(DETPIN1, INPUT);
@@ -436,6 +463,9 @@ void loop() {
 		break;
 	case PAD_N64:
 		n64_loop();
+		break;
+	case PAD_NEOGEO:
+		neogeo_loop();
 		break;
 	default:
 		genesis_loop();

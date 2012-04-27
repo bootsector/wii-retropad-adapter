@@ -145,7 +145,7 @@ byte GCPad_init() {
 	pinModeFast(JOY_DATA_PIN, INPUT);
 	digitalWriteFast(JOY_DATA_PIN, HIGH);
 
-	while((PIND & 0x04) && (timeout--));
+	while((PIND & 0x04) && (--timeout));
 
 	interrupts();
 

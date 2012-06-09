@@ -21,6 +21,7 @@
 #include "WMExtension.h"
 #include "PS2X_lib.h"
 #include "genesis.h"
+#include "saturn.h"
 #include "NESPad.h"
 #include "GCPad.h"
 #include "digitalWriteFast.h"
@@ -431,6 +432,38 @@ void neogeo_loop() {
 	}
 }
 
+void saturn_loop() {
+	int button_data;
+
+	saturn_init();
+
+	for (;;) {
+		button_data = saturn_read();
+
+		bdl = button_data & SATURN_LEFT;
+		bdr = button_data & SATURN_RIGHT;
+		bdu = button_data & SATURN_UP;
+		bdd = button_data & SATURN_DOWN;
+		ba = button_data & SATURN_C;
+		bb = button_data & SATURN_B;
+		bx = button_data & SATURN_Y;
+		by = button_data & SATURN_A;
+		bl = button_data & SATURN_X;
+		br = button_data & SATURN_Z;
+
+		bzl = button_data & SATURN_L;
+		bzr = button_data & SATURN_R;
+
+		bp = button_data & SATURN_START;
+
+		bhome = (bdu && bp); // UP + START == HOME
+
+		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);
+	}
+}
+
+
 void setup() {
 	// Set pad detection pins as input, turning pull-ups on
 	pinModeFast(DETPIN1, INPUT);
@@ -468,7 +501,11 @@ void loop() {
 		neogeo_loop();
 		break;
 	default:
+#if SATURN == 1
+		saturn_loop();
+#else
 		genesis_loop();
+#endif
 		break;
 	}
 }

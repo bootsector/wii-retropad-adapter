@@ -52,37 +52,68 @@ byte ry = WMExtension::get_calibration_byte(11)>>3;
 // Analog stick neutral radius
 #define ANALOG_NEUTRAL_RADIUS 10
 
-// WRA 2.0 now uses last 3 DB9 pins in order to detect the extension cable used.
+// Extension cable detection pins
+#define DETPIN0 5 // DB9 pin 4
 #define DETPIN1 6
 #define DETPIN2 7
 #define DETPIN3 8
 
 // Possible values (as of today) returned by the detectPad() routine
-#define PAD_GENESIS	0b111
-#define PAD_NES 	0b110
-#define PAD_SNES 	0b101
-#define PAD_PS2 	0b100
-#define PAD_GC	 	0b011
-#define PAD_N64		0b010
-#define PAD_NEOGEO	0b001
+// Normal pads
+#define PAD_GENESIS		0b0111
+#define PAD_NES 		0b0110
+#define PAD_SNES 		0b0101
+#define PAD_PS2 		0b0100
+#define PAD_GC	 		0b0011
+#define PAD_N64			0b0010
+#define PAD_NEOGEO		0b0001
+#define PAD_RESERVED1	0b0000
+// Extended pads (uses DB9 pin 4 for identification)
+#define PAD_SATURN		0b1111
+#define PAD_DO_NOT_USE	0b1100 // 3 LSB overlaps with PS2 pad, which uses DB9 pin 4 for CLK.
 
 /*
  * This is the new auto-detect function (non jumper based) which detects the extension
- * cable plugged in the DB9 port. It uses last 3 data pins from DB9 (6, 7 and 9) for
+ * cable plugged in the DB9 port. It uses grounded pins from DB9 (4, 6, 7 and 9) for
  * the detection.
  *
- * 111 - Sega Genesis (Default)
- * 110 - NES
- * 101 - SNES
- * 100 - PS2
- * 011 - Game Cube
- * 010 - Nintendo 64
- * 001 - Neo Geo
+ *  -1 - Arcade
+ * 0111 - Sega Genesis (Default)
+ * 0110 - NES
+ * 0101 - SNES
+ * 0100 - PS2
+ * 0011 - Game Cube
+ * 0010 - Nintendo 64
+ * 0001 - Neo Geo
+ * 0000 - Reserved 1
+ * 1111 - Sega Saturn
  */
 int detectPad() {
 	int pad;
 
+	// Set pad detection pins as input, turning pull-ups on
+	pinModeFast(DETPIN1, INPUT);
+	digitalWriteFast(DETPIN1, HIGH);
+
+	pinModeFast(DETPIN2, INPUT);
+	digitalWriteFast(DETPIN2, HIGH);
+
+	pinModeFast(DETPIN3, INPUT);
+	digitalWriteFast(DETPIN3, HIGH);
+
+	// Read extension detection pins statuses
 	pad = (digitalReadFast(DETPIN1) << 2) | digitalReadFast(DETPIN2) << 1 | digitalReadFast(DETPIN3);
+
+	// Check if pad is not PS2 pad, that uses DB9 pin 4.
+	// If not, then use pin 4 for additional pads
+	if(pad != PAD_PS2) {
+		pinModeFast(DETPIN0, INPUT);
+		digitalWriteFast(DETPIN0, HIGH);
+
+		pad |= (!digitalReadFast(DETPIN0) << 3);
+
+		digitalWriteFast(DETPIN0, LOW);
+	}
 
 	return pad;
 }
@@ -465,16 +496,6 @@ void saturn_loop() {
 
 
 void setup() {
-	// Set pad detection pins as input, turning pull-ups on
-	pinModeFast(DETPIN1, INPUT);
-	digitalWriteFast(DETPIN1, HIGH);
-
-	pinModeFast(DETPIN2, INPUT);
-	digitalWriteFast(DETPIN2, HIGH);
-
-	pinModeFast(DETPIN3, INPUT);
-	digitalWriteFast(DETPIN3, HIGH);
-
 	// Prepare wiimote communications
 	WMExtension::init();
 }
@@ -500,12 +521,11 @@ void loop() {
 	case PAD_NEOGEO:
 		neogeo_loop();
 		break;
-	default:
-#if SATURN == 1
+	case PAD_SATURN:
 		saturn_loop();
-#else
+		break;
+	default:
 		genesis_loop();
-#endif
 		break;
 	}
 }

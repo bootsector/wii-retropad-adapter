@@ -24,7 +24,6 @@
 #include "saturn.h"
 #include "NESPad.h"
 #include "GCPad.h"
-#include "digitalWriteFast.h"
 
 // Classic Controller Buttons
 int bdl = 0; // D-Pad Left state
@@ -92,27 +91,27 @@ int detectPad() {
 	int pad;
 
 	// Set pad detection pins as input, turning pull-ups on
-	pinModeFast(DETPIN1, INPUT);
-	digitalWriteFast(DETPIN1, HIGH);
+	pinMode(DETPIN1, INPUT);
+	digitalWrite(DETPIN1, HIGH);
 
-	pinModeFast(DETPIN2, INPUT);
-	digitalWriteFast(DETPIN2, HIGH);
+	pinMode(DETPIN2, INPUT);
+	digitalWrite(DETPIN2, HIGH);
 
-	pinModeFast(DETPIN3, INPUT);
-	digitalWriteFast(DETPIN3, HIGH);
+	pinMode(DETPIN3, INPUT);
+	digitalWrite(DETPIN3, HIGH);
 
 	// Read extension detection pins statuses
-	pad = (digitalReadFast(DETPIN1) << 2) | digitalReadFast(DETPIN2) << 1 | digitalReadFast(DETPIN3);
+	pad = (digitalRead(DETPIN1) << 2) | (digitalRead(DETPIN2) << 1) | (digitalRead(DETPIN3));
 
 	// Check if pad is not PS2 pad, that uses DB9 pin 4.
 	// If not, then use pin 4 for additional pads
 	if(pad != PAD_PS2) {
-		pinModeFast(DETPIN0, INPUT);
-		digitalWriteFast(DETPIN0, HIGH);
+		pinMode(DETPIN0, INPUT);
+		digitalWrite(DETPIN0, HIGH);
 
-		pad |= (!digitalReadFast(DETPIN0) << 3);
+		pad |= ((!digitalRead(DETPIN0)) << 3);
 
-		digitalWriteFast(DETPIN0, LOW);
+		digitalWrite(DETPIN0, LOW);
 	}
 
 	return pad;

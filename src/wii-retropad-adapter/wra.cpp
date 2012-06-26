@@ -19,7 +19,7 @@
 #include <WProgram.h>
 
 #include "WMExtension.h"
-#include "PS2X_lib.h"
+#include "PS2Pad.h"
 #include "genesis.h"
 #include "saturn.h"
 #include "NESPad.h"
@@ -200,7 +200,6 @@ void snes_loop() {
 
 // PS2 pad loop
 void ps2_loop() {
-	PS2X psPad;
 
 	byte center_lx, center_ly, center_rx, center_ry;
 	byte _lx, _ly, _rx, _ry;
@@ -210,43 +209,43 @@ void ps2_loop() {
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
-	while (psPad.config_gamepad(5, 3, 4, 2, false, false) == 1);
+	while (PS2Pad::init());
 
-	psPad.read_gamepad();
+	PS2Pad::read();
 
-	center_lx = psPad.Analog(PSS_LX)/4;
-	center_ly = psPad.Analog(PSS_LY)/4;
-	center_rx = psPad.Analog(PSS_RX)/8;
-	center_ry = psPad.Analog(PSS_RY)/8;
+	center_lx = PS2Pad::stick(PSS_LX)/4;
+	center_ly = PS2Pad::stick(PSS_LY)/4;
+	center_rx = PS2Pad::stick(PSS_RX)/8;
+	center_ry = PS2Pad::stick(PSS_RY)/8;
 
 	for (;;) {
-		psPad.read_gamepad();
+		PS2Pad::read();
 
-		bdl = psPad.Button(PSB_PAD_LEFT);
-		bdr = psPad.Button(PSB_PAD_RIGHT);
-		bdu = psPad.Button(PSB_PAD_UP);
-		bdd = psPad.Button(PSB_PAD_DOWN);
+		bdl = PS2Pad::button(PSB_PAD_LEFT);
+		bdr = PS2Pad::button(PSB_PAD_RIGHT);
+		bdu = PS2Pad::button(PSB_PAD_UP);
+		bdd = PS2Pad::button(PSB_PAD_DOWN);
 
-		by = psPad.Button(PSB_SQUARE);
-		bb = psPad.Button(PSB_CROSS);
-		bx = psPad.Button(PSB_TRIANGLE);
-		ba = psPad.Button(PSB_CIRCLE);
+		by = PS2Pad::button(PSB_SQUARE);
+		bb = PS2Pad::button(PSB_CROSS);
+		bx = PS2Pad::button(PSB_TRIANGLE);
+		ba = PS2Pad::button(PSB_CIRCLE);
 
-		bl = psPad.Button(PSB_L1);
-		br = psPad.Button(PSB_R1);
+		bl = PS2Pad::button(PSB_L1);
+		br = PS2Pad::button(PSB_R1);
 
-		bzl = psPad.Button(PSB_L2);
-		bzr = psPad.Button(PSB_R2);
+		bzl = PS2Pad::button(PSB_L2);
+		bzr = PS2Pad::button(PSB_R2);
 
-		bm = psPad.Button(PSB_SELECT);
-		bp = psPad.Button(PSB_START);
+		bm = PS2Pad::button(PSB_SELECT);
+		bp = PS2Pad::button(PSB_START);
 
 		bhome = (bm && bp); // SELECT + START == HOME
 
-		_lx = psPad.Analog(PSS_LX)/4; //psPad.Analog(PSS_LX)>>2;
-		_ly = psPad.Analog(PSS_LY)/4; //psPad.Analog(PSS_LY)>>2;
-		_rx = psPad.Analog(PSS_RX)/8; //psPad.Analog(PSS_RX)>>3;
-		_ry = psPad.Analog(PSS_RY)/8; //psPad.Analog(PSS_RY)>>3;
+		_lx = PS2Pad::stick(PSS_LX)/4; //psPad.Analog(PSS_LX)>>2;
+		_ly = PS2Pad::stick(PSS_LY)/4; //psPad.Analog(PSS_LY)>>2;
+		_rx = PS2Pad::stick(PSS_RX)/8; //psPad.Analog(PSS_RX)>>3;
+		_ry = PS2Pad::stick(PSS_RY)/8; //psPad.Analog(PSS_RY)>>3;
 
 		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
 			_lx = clx;

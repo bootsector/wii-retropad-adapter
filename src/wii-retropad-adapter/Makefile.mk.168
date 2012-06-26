@@ -39,9 +39,12 @@
 # To rebuild project do "make clean" then "make all".
 #----------------------------------------------------------------------------
 
+# SATURN = 1 - Default pad is a Sega Saturn one
+# SATURN = 0 - Default pad is a Sega Genesis one
+SATURN = 0
 
 # MCU name
-MCU = atmega328p
+MCU = atmega168p
 
 
 # Processor frequency.
@@ -127,15 +130,15 @@ CSTANDARD = -std=gnu99
 
 
 # Place -D or -U options here for C sources
-CDEFS = -DF_CPU=$(F_CPU)UL -DARDUINO=22
+CDEFS = -DF_CPU=$(F_CPU)UL -DARDUINO=22 -DSATURN=$(SATURN)
 
 
 # Place -D or -U options here for ASM sources
-ADEFS = -DF_CPU=$(F_CPU) -DARDUINO=22
+ADEFS = -DF_CPU=$(F_CPU) -DARDUINO=22 -DSATURN=$(SATURN)
 
 
 # Place -D or -U options here for C++ sources
-CPPDEFS = -DF_CPU=$(F_CPU)UL -DARDUINO=22
+CPPDEFS = -DF_CPU=$(F_CPU)UL -DARDUINO=22 -DSATURN=$(SATURN)
 #CPPDEFS += -D__STDC_LIMIT_MACROS
 #CPPDEFS += -D__STDC_CONSTANT_MACROS
 
@@ -293,9 +296,9 @@ AVRDUDE_PORT = COM6    # programmer connected to serial device
 AVRDUDE_BAUD = 19200   # serial device baud rate
 
 # Fuses config
-AVRDUDE_HFUSE = 0xde
+AVRDUDE_HFUSE = 0xdd
 AVRDUDE_LFUSE = 0xe2
-AVRDUDE_EFUSE = 0x05
+AVRDUDE_EFUSE = 0x06
 
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep

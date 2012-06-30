@@ -446,7 +446,7 @@ void neogeo_loop() {
 
 		bdl = button_data & 0x02;
 		bdr = button_data & 0x800;
-		bdu = button_data & 0x03;
+		bdu = button_data & 0x04;
 		bdd = button_data & 0x1000;
 		bb = button_data & 0x01;
 		by = button_data & 0x8000;

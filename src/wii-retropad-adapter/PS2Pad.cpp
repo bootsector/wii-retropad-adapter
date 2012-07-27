@@ -56,7 +56,7 @@ byte PS2Pad::gamepad_spi(byte send_data) {
 
 void PS2Pad::send_command(byte data[], byte size) {
 
-	noInterrupts();
+	//noInterrupts();
 
 	digitalWriteFast(ATT_PIN, LOW);
 	digitalWriteFast(CMD_PIN, HIGH);
@@ -71,7 +71,7 @@ void PS2Pad::send_command(byte data[], byte size) {
 
 	digitalWriteFast(ATT_PIN, HIGH);
 
-	interrupts();
+	//interrupts();
 
 	delayMicroseconds(PS2Pad::_read_delay * 1000);
 }

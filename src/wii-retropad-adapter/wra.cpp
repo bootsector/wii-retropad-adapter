@@ -210,7 +210,7 @@ void ps2_loop() {
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
-	while (PS2Pad::init());
+	while (PS2Pad::init(false));
 
 	PS2Pad::read();
 

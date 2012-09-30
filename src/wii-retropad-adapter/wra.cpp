@@ -139,7 +139,7 @@ void genesis_loop() {
 		br = button_data & GENESIS_Z;
 		bm = button_data & GENESIS_MODE;
 		bp = button_data & GENESIS_START;
-		bhome = (bdu && bp && !ba); // UP + START == HOME
+		bhome = (bdu && bp); // UP + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr);

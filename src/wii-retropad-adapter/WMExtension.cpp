@@ -223,14 +223,14 @@ void WMExtension::handle_request() {
  */
 void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 		int ba, int bb, int bx, int by, int blt, int brt, int bminus, int bplus,
-		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr) {
+		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt) {
 
 	static byte _tmp;
 
 	WMExtension::buttons_data[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
 	WMExtension::buttons_data[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
-	WMExtension::buttons_data[2] = ((rx & 0x01) << 7) | (ry & 0x1F);
-	WMExtension::buttons_data[3] = 0x00;
+	WMExtension::buttons_data[2] = ((rx & 0x01) << 7) | ((lt & 0x18) << 2) | (ry & 0x1F);
+	WMExtension::buttons_data[3] = ((lt & 0x07) << 5) | (rt & 0x1F);
 
 	_tmp = ((bdr ? 1 : 0) << 7) | ((bdd ? 1 : 0) << 6) | ((blt ? 1 : 0)
 			<< 5) | ((bminus ? 1 : 0) << 4) | ((bplus ? 1 : 0) << 2)
@@ -281,7 +281,7 @@ void WMExtension::init() {
 	}
 
 	// Initialize buttons_data, otherwise, "Up+Right locked" bug...
-	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2]>>2, WMExtension::calibration_data[5]>>2, WMExtension::calibration_data[8]>>3, WMExtension::calibration_data[11]>>3, 0, 0);
+	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2]>>2, WMExtension::calibration_data[5]>>2, WMExtension::calibration_data[8]>>3, WMExtension::calibration_data[11]>>3, 0, 0, 0, 0);
 
 	// Join I2C bus
 	Wire.begin(0x52);

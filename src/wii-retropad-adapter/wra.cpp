@@ -245,25 +245,25 @@ void ps2_loop() {
 
 		bhome = (bm && bp); // SELECT + START == HOME
 
-		_lx = PS2Pad::stick(PSS_LX)/4; //psPad.Analog(PSS_LX)>>2;
-		_ly = PS2Pad::stick(PSS_LY)/4; //psPad.Analog(PSS_LY)>>2;
-		_rx = PS2Pad::stick(PSS_RX)/8; //psPad.Analog(PSS_RX)>>3;
-		_ry = PS2Pad::stick(PSS_RY)/8; //psPad.Analog(PSS_RY)>>3;
+		_lx = PS2Pad::stick(PSS_LX) >> 2;
+		_ly = PS2Pad::stick(PSS_LY) >> 2;
+		_rx = PS2Pad::stick(PSS_RX) >> 3;
+		_ry = PS2Pad::stick(PSS_RY) >> 3;
 
-		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
+		if((_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS)) && (_lx <= (center_lx + ANALOG_NEUTRAL_RADIUS))) {
 			_lx = clx;
 		}
 
-		if(_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS) && _ly <= (center_ly + ANALOG_NEUTRAL_RADIUS)) {
+		if((_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS)) && (_ly <= (center_ly + ANALOG_NEUTRAL_RADIUS))) {
 			_ly = cly;
 		}
 
 
-		if(_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS) && _rx <= (center_rx + ANALOG_NEUTRAL_RADIUS)) {
+		if((_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS/2)) && (_rx <= (center_rx + ANALOG_NEUTRAL_RADIUS/2))) {
 			_rx = crx;
 		}
 
-		if(_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS) && _ry <= (center_ry + ANALOG_NEUTRAL_RADIUS)) {
+		if((_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS/2)) && (_ry <= (center_ry + ANALOG_NEUTRAL_RADIUS/2))) {
 			_ry = cry;
 		}
 
@@ -292,10 +292,10 @@ void gc_loop() {
 
 	button_data = GCPad_read();
 
-	center_lx = button_data[2]/4;
-	center_ly = button_data[3]/4;
-	center_rx = button_data[4]/8;
-	center_ry = button_data[5]/8;
+	center_lx = button_data[2] >> 2;
+	center_ly = button_data[3] >> 2;
+	center_rx = button_data[4] >> 3;
+	center_ry = button_data[5] >> 3;
 
 	for(;;) {
 		button_data = GCPad_read();
@@ -319,24 +319,24 @@ void gc_loop() {
 
 		bhome = (bdu && bp); // UP + START == HOME
 
-		_lx = button_data[2]/4;
-		_ly = button_data[3]/4;
-		_rx = button_data[4]/8;
-		_ry = button_data[5]/8;
+		_lx = button_data[2] >> 2;
+		_ly = button_data[3] >> 2;
+		_rx = button_data[4] >> 3;
+		_ry = button_data[5] >> 3;
 
-		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
+		if((_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS)) && (_lx <= (center_lx + ANALOG_NEUTRAL_RADIUS))) {
 			_lx = clx;
 		}
 
-		if(_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS) && _ly <= (center_ly + ANALOG_NEUTRAL_RADIUS)) {
+		if((_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS)) && (_ly <= (center_ly + ANALOG_NEUTRAL_RADIUS))) {
 			_ly = cly;
 		}
 
-		if(_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS) && _rx <= (center_rx + ANALOG_NEUTRAL_RADIUS)) {
+		if((_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS/2)) && (_rx <= (center_rx + ANALOG_NEUTRAL_RADIUS/2))) {
 			_rx = crx;
 		}
 
-		if(_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS) && _ry <= (center_ry + ANALOG_NEUTRAL_RADIUS)) {
+		if((_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS/2)) && (_ry <= (center_ry + ANALOG_NEUTRAL_RADIUS/2))) {
 			_ry = cry;
 		}
 
@@ -345,8 +345,8 @@ void gc_loop() {
 		rx = _rx;
 		ry = _ry;
 
-		lt = map(button_data[6], 0, 255, 0, 31);
-		rt = map(button_data[7], 0, 255, 0, 31);
+		lt = button_data[6] >> 3; //map(button_data[6], 0, 255, 0, 31);
+		rt = button_data[7] >> 3; //map(button_data[7], 0, 255, 0, 31);
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
@@ -424,11 +424,11 @@ void n64_loop() {
 		_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128) / 4;;
 		_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128) / 4;;
 
-		if(_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS) && _lx <= (center_lx + ANALOG_NEUTRAL_RADIUS)) {
+		if((_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS)) && (_lx <= (center_lx + ANALOG_NEUTRAL_RADIUS))) {
 			_lx = clx;
 		}
 
-		if(_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS) && _ly <= (center_ly + ANALOG_NEUTRAL_RADIUS)) {
+		if((_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS)) && (_ly <= (center_ly + ANALOG_NEUTRAL_RADIUS))) {
 			_ly = cly;
 		}
 

@@ -34,7 +34,7 @@ byte n64_joy_data[4];
  * It was specially crafted to work with an 8Mhz Atmega328/168 (int. resonator).
  *
  * */
-void GCPad_send(byte *cmd, byte length) {
+static inline void GCPad_send(byte *cmd, byte length) {
 	byte bit = 128;
 	byte high;
 
@@ -94,7 +94,7 @@ void GCPad_send(byte *cmd, byte length) {
  * It was specially crafted to work with an 8Mhz Atmega328/168 (int. resonator).
  *
  * */
-void GCPad_recv(byte *buffer, byte bits) {
+static inline void GCPad_recv(byte *buffer, byte bits) {
 
 	pinModeFast(JOY_DATA_PIN, INPUT);
 	digitalWriteFast(JOY_DATA_PIN, HIGH);
@@ -104,9 +104,14 @@ void GCPad_recv(byte *buffer, byte bits) {
 	while(PIND & 0x04);
 
 
+//	asm volatile (
+//			"nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\n"
+//			"nop\nnop\nnop\nnop\nnop\n"
+//	);
+
 	asm volatile (
 			"nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\n"
-			"nop\nnop\nnop\nnop\nnop\n"
+			"nop\nnop\nnop\nnop\n"
 	);
 
 	*buffer = PIND & 0x04; //*buffer = digitalReadFast(JOY_DATA_PIN);

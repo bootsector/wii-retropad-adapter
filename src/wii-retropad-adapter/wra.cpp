@@ -351,7 +351,7 @@ void gc_loop() {
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
 
-		delayMicroseconds(6000);
+		delayMicroseconds(5000);
 	}
 }
 

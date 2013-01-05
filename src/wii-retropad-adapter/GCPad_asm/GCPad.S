@@ -146,8 +146,9 @@ _Z10GCPad_readv:
 	st X+,r0
 	subi r24,lo8(-(-1))
 	brne .L12
+	in r17,__SREG__
 /* #APP */
- ;  168 "GCPad.cpp" 1
+ ;  172 "GCPad.cpp" 1
 	cli
  ;  0 "" 2
 /* #NOAPP */
@@ -192,11 +193,7 @@ nop
 	adiw r30,1
 	rjmp .L29
 .L14:
-/* #APP */
- ;  173 "GCPad.cpp" 1
-	sei
- ;  0 "" 2
-/* #NOAPP */
+	out __SREG__,r17
 	ldi r30,lo8(gc_joy_data)
 	ldi r31,hi8(gc_joy_data)
 	ldi r20,lo8(7)
@@ -291,8 +288,9 @@ _Z11N64Pad_readv:
 /* frame size = 1 */
 	ldi r24,lo8(1)
 	std Y+1,r24
+	in r17,__SREG__
 /* #APP */
- ;  201 "GCPad.cpp" 1
+ ;  207 "GCPad.cpp" 1
 	cli
  ;  0 "" 2
 /* #NOAPP */
@@ -337,11 +335,7 @@ nop
 	adiw r30,1
 	rjmp .L47
 .L33:
-/* #APP */
- ;  206 "GCPad.cpp" 1
-	sei
- ;  0 "" 2
-/* #NOAPP */
+	out __SREG__,r17
 	ldi r30,lo8(n64_joy_data)
 	ldi r31,hi8(n64_joy_data)
 	ldi r20,lo8(7)
@@ -421,6 +415,7 @@ nop
 .global	_Z10GCPad_initv
 	.type	_Z10GCPad_initv, @function
 _Z10GCPad_initv:
+	push r16
 	push r17
 	push r29
 	push r28
@@ -449,8 +444,9 @@ _Z10GCPad_initv:
 	sts n64_joy_data+1,__zero_reg__
 	sts n64_joy_data+2,__zero_reg__
 	sts n64_joy_data+3,__zero_reg__
+	in r16,__SREG__
 /* #APP */
- ;  146 "GCPad.cpp" 1
+ ;  148 "GCPad.cpp" 1
 	cli
  ;  0 "" 2
 /* #NOAPP */
@@ -468,11 +464,7 @@ _Z10GCPad_initv:
 	subi r17,lo8(-(-1))
 	brne .L53
 .L52:
-/* #APP */
- ;  155 "GCPad.cpp" 1
-	sei
- ;  0 "" 2
-/* #NOAPP */
+	out __SREG__,r16
 	ldi r24,lo8(500)
 	ldi r25,hi8(500)
 	call delayMicroseconds
@@ -482,6 +474,7 @@ _Z10GCPad_initv:
 	pop r28
 	pop r29
 	pop r17
+	pop r16
 	ret
 	.size	_Z10GCPad_initv, .-_Z10GCPad_initv
 .global	raw_joy_data

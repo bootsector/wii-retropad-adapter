@@ -345,7 +345,6 @@ void gc_loop() {
 		rx = _rx;
 		ry = _ry;
 
-
 		lt = button_data[6] >> 3; //map(button_data[6], 0, 255, 0, 31);
 		rt = button_data[7] >> 3; //map(button_data[7], 0, 255, 0, 31);
 

@@ -130,6 +130,7 @@ static inline void GCPad_recv(byte *buffer, byte bits) {
 byte GCPad_init() {
 	byte init = 0x00;
 	byte timeout = 64;
+	uint8_t old_sreg;
 
 	for(int x = 0; x < 64; x++) {
 		raw_joy_data[x] = 0x00;
@@ -143,6 +144,7 @@ byte GCPad_init() {
 		n64_joy_data[x] = 0x00;
 	}
 
+	old_sreg = SREG;
 	noInterrupts();
 
 	GCPad_send(&init, 1);
@@ -152,7 +154,7 @@ byte GCPad_init() {
 
 	while((PIND & 0x04) && (--timeout));
 
-	interrupts();
+	SREG = old_sreg;
 
 	// Ignore incoming data for 500us
 	delayMicroseconds(500);
@@ -162,15 +164,17 @@ byte GCPad_init() {
 
 byte *GCPad_read() {
 	int bit;
+	uint8_t old_sreg;
 
 	byte cmd[3] = {0x40, 0x03, 0x00};
 
+	old_sreg = SREG;
 	noInterrupts();
 
 	GCPad_send(cmd, 3);
 	GCPad_recv(raw_joy_data, 64);
 
-	interrupts();
+	SREG = old_sreg;
 
 	bit = 7;
 
@@ -195,15 +199,17 @@ byte *GCPad_read() {
 
 byte *N64Pad_read() {
 	int bit;
+	uint8_t old_sreg;
 
 	byte cmd[1] = {0x01};
 
+	old_sreg = SREG;
 	noInterrupts();
 
 	GCPad_send(cmd, 1);
 	GCPad_recv(raw_joy_data, 32);
 
-	interrupts();
+	SREG = old_sreg;
 
 	bit = 7;
 

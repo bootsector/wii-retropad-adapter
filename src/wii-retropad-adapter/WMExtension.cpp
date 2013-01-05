@@ -225,10 +225,13 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 		int ba, int bb, int bx, int by, int blt, int brt, int bminus, int bplus,
 		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt, bool disable_ints) {
 
-	static byte _tmp;
+	byte _tmp;
+	uint8_t old_sreg;
 
-	if(disable_ints)
+	if(disable_ints) {
+		old_sreg = SREG;
 		noInterrupts();
+	}
 
 	WMExtension::buttons_data[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
 	WMExtension::buttons_data[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
@@ -245,11 +248,10 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 			<< 4) | ((bx ? 1 : 0) << 3) | ((bdl ? 1 : 0) << 1) | (bdu ? 1
 			: 0) | ((bzl ? 1 : 0) << 7) | ((bzr ? 1 : 0) << 2);
 
-
 	WMExtension::buttons_data[5] = ~_tmp;
 
 	if(disable_ints)
-		interrupts();
+		SREG = old_sreg;
 }
 
 /*

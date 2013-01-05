@@ -31,11 +31,11 @@ private:
 	static const byte id[6];
 	static byte calibration_data[16];
 	static byte buttons_data[16];
-	static byte buttons_pos;
-	static byte state;
-	static byte crypt_setup_done;
+	static volatile byte buttons_pos;
+	static volatile byte state;
+	static volatile byte crypt_setup_done;
 	static byte registers[0x100];
-	static bool new_addr;
+	static volatile bool new_addr;
 
 	typedef void (*CBackPtr)();
 	static CBackPtr cbPtr;
@@ -51,7 +51,7 @@ public:
 	static void set_button_data_callback(CBackPtr cb);
 	static void set_button_data(int bdl, int bdr, int bdu, int bdd,
 		int ba, int bb, int bx, int by, int blt, int brt, int bminus, int bplus,
-		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt);
+		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt, bool disable_ints);
 	static byte get_calibration_byte(int b);
 };
 

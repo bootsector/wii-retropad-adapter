@@ -35,10 +35,10 @@ byte WMExtension::calibration_data[16] = { 0xFC, 0x04, 0x7E, 0xFC, 0x04,
 		0x7E, 0xFC, 0x04, 0x7E,	0xFC, 0x04, 0x7E, 0x00, 0x00, 0x00, 0x00 };
 
 /* Address or command requested by the I2C Master Device (i.e., the Wiimote) */
-byte WMExtension::state = 0;
+volatile byte WMExtension::state = 0;
 
 /* Tells whether encryption was setup (enabled) or not */
-byte WMExtension::crypt_setup_done = 0;
+volatile byte WMExtension::crypt_setup_done = 0;
 
 /* Classic Controller buttons status */
 byte WMExtension::buttons_data[16];
@@ -48,11 +48,11 @@ byte WMExtension::buttons_data[16];
  * necessary to make this library compatible with reporting modes that query
  * more than 6 bytes from the extension controller.
  * */
-byte WMExtension::buttons_pos = 0;
+volatile byte WMExtension::buttons_pos = 0;
 
 
 /* Tells if extension has received a new address query. */
-bool WMExtension::new_addr = false;
+volatile bool WMExtension::new_addr = false;
 
 /* Classic Controller 256 data registers */
 byte WMExtension::registers[0x100];
@@ -223,9 +223,12 @@ void WMExtension::handle_request() {
  */
 void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 		int ba, int bb, int bx, int by, int blt, int brt, int bminus, int bplus,
-		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt) {
+		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt, bool disable_ints) {
 
 	static byte _tmp;
+
+	if(disable_ints)
+		noInterrupts();
 
 	WMExtension::buttons_data[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
 	WMExtension::buttons_data[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
@@ -244,6 +247,9 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 
 
 	WMExtension::buttons_data[5] = ~_tmp;
+
+	if(disable_ints)
+		interrupts();
 }
 
 /*
@@ -281,7 +287,7 @@ void WMExtension::init() {
 	}
 
 	// Initialize buttons_data, otherwise, "Up+Right locked" bug...
-	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2]>>2, WMExtension::calibration_data[5]>>2, WMExtension::calibration_data[8]>>3, WMExtension::calibration_data[11]>>3, 0, 0, 0, 0);
+	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2]>>2, WMExtension::calibration_data[5]>>2, WMExtension::calibration_data[8]>>3, WMExtension::calibration_data[11]>>3, 0, 0, 0, 0, false);
 
 	// Join I2C bus
 	Wire.begin(0x52);

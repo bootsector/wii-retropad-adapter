@@ -144,7 +144,7 @@ void genesis_loop() {
 		bhome = (bdu && bp); // UP + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt, false);
 	}
 }
 
@@ -169,7 +169,7 @@ void nes_loop() {
 		bhome = (bm && bp); // SELECT + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt, false);
 	}
 }
 
@@ -197,7 +197,7 @@ void snes_loop() {
 		bhome = (bm && bp); // SELECT + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt, false);
 	}
 }
 
@@ -273,7 +273,7 @@ void ps2_loop() {
 		ry = ~_ry;
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
+					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt, false);
 	}
 }
 
@@ -345,11 +345,12 @@ void gc_loop() {
 		rx = _rx;
 		ry = _ry;
 
+
 		lt = button_data[6] >> 3; //map(button_data[6], 0, 255, 0, 31);
 		rt = button_data[7] >> 3; //map(button_data[7], 0, 255, 0, 31);
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt, true);
 
 		delayMicroseconds(5000);
 	}
@@ -440,7 +441,9 @@ void n64_loop() {
 		ry = _ry;
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt, true);
+
+		delayMicroseconds(5000);
 	}
 }
 
@@ -465,7 +468,7 @@ void neogeo_loop() {
 		bhome = (bm && bp); // SELECT + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt, false);
 	}
 }
 
@@ -496,7 +499,7 @@ void saturn_loop() {
 		bhome = (bdu && bp); // UP + START == HOME
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
-				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
+				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt, false);
 	}
 }
 

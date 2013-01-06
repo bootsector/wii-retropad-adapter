@@ -141,7 +141,7 @@ void WMExtension::receive_bytes(int count) {
 			byte d = Wire.receive();
 
 			// Wii is trying to disable encryption...
-			if(addr == 0xF0 && d == 0x55) {
+			if(addr == 0xF0 && (d == 0x55 || d == 0xAA)) {
 				WMExtension::crypt_setup_done = 0;
 			}
 

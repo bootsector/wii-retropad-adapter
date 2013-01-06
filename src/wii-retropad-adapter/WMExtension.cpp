@@ -136,7 +136,6 @@ void WMExtension::receive_bytes(int count) {
 	} else if (count > 1) {
 
 		byte addr = Wire.receive();
-		byte curr = addr;
 
 		for (int i = 1; i < count; i++) {
 			byte d = Wire.receive();
@@ -153,17 +152,18 @@ void WMExtension::receive_bytes(int count) {
 
 			if (WMExtension::crypt_setup_done) {
 				// Decrypt
-				WMExtension::registers[curr] = (d ^ WMCrypt::wm_sb[curr % 8]) + WMCrypt::wm_ft[curr
+				WMExtension::registers[addr] = (d ^ WMCrypt::wm_sb[addr % 8]) + WMCrypt::wm_ft[addr
 						% 8];
-				curr++;
 			} else {
-				WMExtension::registers[curr++] = d;
+				WMExtension::registers[addr] = d;
 			}
 
 			// Check if last crypt key setup byte was received...
-			if (curr == 0x50) {
+			if (addr == 0x4F) {
 				crypt_keys_received = 1;
 			}
+
+			addr++;
 		}
 
 	}

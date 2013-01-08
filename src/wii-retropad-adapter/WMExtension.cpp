@@ -170,6 +170,10 @@ void WMExtension::receive_bytes(int count) {
 
 	// Setup encryption if requested by the Wii
 	if (crypt_keys_received || old_crypt_key_received) {
+
+		if(old_crypt_key_received)
+			memset(WMExtension::registers + 0x40, 0x00, 16);
+
 		WMExtension::setup_encryption();
 	}
 }
@@ -223,15 +227,9 @@ void WMExtension::handle_request() {
  */
 void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 		int ba, int bb, int bx, int by, int blt, int brt, int bminus, int bplus,
-		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt, bool disable_ints) {
+		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt) {
 
 	byte _tmp;
-	uint8_t old_sreg;
-
-	if(disable_ints) {
-		old_sreg = SREG;
-		noInterrupts();
-	}
 
 	WMExtension::buttons_data[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
 	WMExtension::buttons_data[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
@@ -249,9 +247,6 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 			: 0) | ((bzl ? 1 : 0) << 7) | ((bzr ? 1 : 0) << 2);
 
 	WMExtension::buttons_data[5] = ~_tmp;
-
-	if(disable_ints)
-		SREG = old_sreg;
 }
 
 /*
@@ -289,7 +284,7 @@ void WMExtension::init() {
 	}
 
 	// Initialize buttons_data, otherwise, "Up+Right locked" bug...
-	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2]>>2, WMExtension::calibration_data[5]>>2, WMExtension::calibration_data[8]>>3, WMExtension::calibration_data[11]>>3, 0, 0, 0, 0, false);
+	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2]>>2, WMExtension::calibration_data[5]>>2, WMExtension::calibration_data[8]>>3, WMExtension::calibration_data[11]>>3, 0, 0, 0, 0);
 
 	// Join I2C bus
 	Wire.begin(0x52);

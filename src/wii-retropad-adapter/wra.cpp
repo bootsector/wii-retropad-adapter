@@ -279,6 +279,7 @@ void ps2_loop() {
 
 void gc_loop() {
 	byte *button_data;
+	bool poll_pad = true;
 
 	byte center_lx, center_ly, center_rx, center_ry;
 	byte _lx, _ly, _rx, _ry;
@@ -298,7 +299,13 @@ void gc_loop() {
 	center_ry = button_data[5] >> 3;
 
 	for(;;) {
-		button_data = GCPad_read();
+
+		// Since TWI doesn't like interrupts to be disabled too much, we're only polling controller
+		// every other time to give it some time to breath.
+		if(poll_pad)
+			button_data = GCPad_read();
+
+		poll_pad = !poll_pad;
 
 		bdl = button_data[1] & 0x01;
 		bdr = button_data[1] & 0x02;
@@ -358,6 +365,7 @@ void gc_loop() {
 void n64_loop() {
 	byte *button_data;
 	bool swap_l_z = false;
+	bool poll_pad = true;
 
 	byte center_lx, center_ly;
 	byte _lx, _ly, _rx, _ry;
@@ -380,7 +388,13 @@ void n64_loop() {
 	}
 
 	for(;;) {
-		button_data = N64Pad_read();
+
+		// Since TWI doesn't like interrupts to be disabled too much, we're only polling controller
+		// every other time to give it some time to breath.
+		if(poll_pad)
+			button_data = N64Pad_read();
+
+		poll_pad = !poll_pad;
 
 		bdl = button_data[0] & 0x02;
 		bdr = button_data[0] & 0x01;

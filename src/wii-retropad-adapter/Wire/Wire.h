@@ -59,6 +59,7 @@ class TwoWire
     uint8_t receive(void);
     void onReceive( void (*)(int) );
     void onRequest( void (*)(void) );
+    uint8_t slaveTransmitting(void);
 };
 
 extern TwoWire Wire;

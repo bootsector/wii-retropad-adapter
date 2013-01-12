@@ -298,6 +298,10 @@ void gc_loop() {
 	center_ry = button_data[5] >> 3;
 
 	for(;;) {
+		while(WMExtension::is_transmitting());
+
+		noInterrupts();
+
 		button_data = GCPad_read();
 
 		bdl = button_data[1] & 0x01;
@@ -351,10 +355,6 @@ void gc_loop() {
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
 
-		// Gives TWI/I2C some time (12ms) to "breath" after interrupts are completely
-		// disabled during GC/N64 pad reading. Without this, garbage might be
-		// sent to the Wiimote.
-		delayMicroseconds(12000);
 	}
 }
 
@@ -383,6 +383,11 @@ void n64_loop() {
 	}
 
 	for(;;) {
+
+		while(WMExtension::is_transmitting());
+
+		noInterrupts();
+
 		button_data = N64Pad_read();
 
 		bdl = button_data[0] & 0x02;
@@ -445,10 +450,6 @@ void n64_loop() {
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
 
-		// Gives TWI/I2C some time (12ms) to "breath" after interrupts are completely
-		// disabled during GC/N64 pad reading. Without this, garbage might be
-		// sent to the Wiimote.
-		delayMicroseconds(12000);
 
 	}
 }

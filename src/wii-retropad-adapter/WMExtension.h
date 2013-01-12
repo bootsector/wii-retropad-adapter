@@ -53,6 +53,7 @@ public:
 		int ba, int bb, int bx, int by, int blt, int brt, int bminus, int bplus,
 		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt);
 	static byte get_calibration_byte(int b);
+	static byte is_transmitting(void);
 };
 
 

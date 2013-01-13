@@ -390,6 +390,8 @@ void n64_loop() {
 		swap_l_z = true;
 	}
 
+	WMExtension::set_button_data_callback(n64_loop_helper);
+
 	for(;;) {
 		button_data = N64Pad_data();
 

@@ -277,6 +277,10 @@ void ps2_loop() {
 	}
 }
 
+void gc_loop_helper(void) {
+	GCPad_read(false);
+}
+
 void gc_loop() {
 	byte *button_data;
 
@@ -290,19 +294,18 @@ void gc_loop() {
 
 	GCPad_init();
 
-	button_data = GCPad_read();
+	GCPad_read(true);
+	button_data = GCPad_data();
 
 	center_lx = button_data[2] >> 2;
 	center_ly = button_data[3] >> 2;
 	center_rx = button_data[4] >> 3;
 	center_ry = button_data[5] >> 3;
 
+	WMExtension::set_button_data_callback(gc_loop_helper);
+
 	for(;;) {
-		while(WMExtension::is_transmitting());
-
-		noInterrupts();
-
-		button_data = GCPad_read();
+		button_data = GCPad_data();
 
 		bdl = button_data[1] & 0x01;
 		bdr = button_data[1] & 0x02;
@@ -358,6 +361,10 @@ void gc_loop() {
 	}
 }
 
+void n64_loop_helper(void) {
+	N64Pad_read(false);
+}
+
 void n64_loop() {
 	byte *button_data;
 	bool swap_l_z = false;
@@ -372,7 +379,8 @@ void n64_loop() {
 
 	GCPad_init();
 
-	button_data = N64Pad_read();
+	N64Pad_read(true);
+	button_data = N64Pad_data();
 
 	center_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128) / 4;
 	center_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128) / 4;
@@ -383,12 +391,7 @@ void n64_loop() {
 	}
 
 	for(;;) {
-
-		while(WMExtension::is_transmitting());
-
-		noInterrupts();
-
-		button_data = N64Pad_read();
+		button_data = N64Pad_data();
 
 		bdl = button_data[0] & 0x02;
 		bdr = button_data[0] & 0x01;

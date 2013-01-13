@@ -160,17 +160,8 @@ byte GCPad_init() {
 	return timeout;
 }
 
-byte *GCPad_read() {
+byte *GCPad_data() {
 	int bit;
-
-	byte cmd[3] = {0x40, 0x03, 0x00};
-
-	noInterrupts();
-
-	GCPad_send(cmd, 3);
-	GCPad_recv(raw_joy_data, 64);
-
-	interrupts();
 
 	bit = 7;
 
@@ -193,17 +184,21 @@ byte *GCPad_read() {
 	return gc_joy_data;
 }
 
-byte *N64Pad_read() {
+void GCPad_read(bool disable_ints) {
+	byte cmd[3] = {0x40, 0x03, 0x00};
+
+	if(disable_ints)
+		noInterrupts();
+
+	GCPad_send(cmd, 3);
+	GCPad_recv(raw_joy_data, 64);
+
+	if(disable_ints)
+		interrupts();
+}
+
+byte *N64Pad_data() {
 	int bit;
-
-	byte cmd[1] = {0x01};
-
-	noInterrupts();
-
-	GCPad_send(cmd, 1);
-	GCPad_recv(raw_joy_data, 32);
-
-	interrupts();
 
 	bit = 7;
 
@@ -224,4 +219,17 @@ byte *N64Pad_read() {
 	}
 
 	return n64_joy_data;
+}
+
+void N64Pad_read(bool disable_ints) {
+	byte cmd[1] = {0x01};
+
+	if(disable_ints)
+		noInterrupts();
+
+	GCPad_send(cmd, 1);
+	GCPad_recv(raw_joy_data, 32);
+
+	if(disable_ints)
+		interrupts();
 }

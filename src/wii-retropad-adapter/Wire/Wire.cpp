@@ -255,10 +255,6 @@ void TwoWire::onRequest( void (*function)(void) )
   user_onRequest = function;
 }
 
-uint8_t TwoWire::slaveTransmitting(void) {
-	return twi_slaveTransmitting();
-}
-
 // Preinstantiate Objects //////////////////////////////////////////////////////
 
 TwoWire Wire = TwoWire();

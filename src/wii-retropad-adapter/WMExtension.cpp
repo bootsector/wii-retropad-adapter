@@ -293,6 +293,3 @@ void WMExtension::init() {
 	Wire.onRequest(WMExtension::handle_request);
 }
 
-byte WMExtension::is_transmitting(void) {
-	return Wire.slaveTransmitting();
-}

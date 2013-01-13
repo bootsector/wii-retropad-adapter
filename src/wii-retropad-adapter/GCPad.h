@@ -22,7 +22,9 @@
 static inline void GCPad_send(byte *cmd, byte length);
 static inline void GCPad_recv(byte *buffer, byte bits);
 byte GCPad_init();
-byte *GCPad_read();
-byte *N64Pad_read();
+void GCPad_read(bool disable_ints);
+byte *GCPad_data();
+void N64Pad_read(bool disable_ints);
+byte *N64Pad_data();
 
 #endif /* GCPAD_H_ */

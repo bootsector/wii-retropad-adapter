@@ -53,8 +53,6 @@ static volatile uint8_t twi_rxBufferIndex;
 
 static volatile uint8_t twi_error;
 
-static volatile uint8_t twi_slave_transmitting = 0;
-
 /* 
  * Function twi_init
  * Desc     readys twi pins and sets twi bitrate
@@ -331,11 +329,6 @@ void twi_releaseBus(void)
   twi_state = TWI_READY;
 }
 
-uint8_t twi_slaveTransmitting(void)
-{
-	return twi_slave_transmitting;
-}
-
 SIGNAL(TWI_vect)
 {
   switch(TW_STATUS){
@@ -440,7 +433,6 @@ SIGNAL(TWI_vect)
     case TW_ST_ARB_LOST_SLA_ACK: // arbitration lost, returned ack
       // enter slave transmitter mode
       twi_state = TWI_STX;
-      twi_slave_transmitting = 1;
       // ready the tx buffer index for iteration
       twi_txBufferIndex = 0;
       // set tx buffer length to be zero, to verify if user changes it
@@ -470,7 +462,6 @@ SIGNAL(TWI_vect)
       twi_reply(1);
       // leave slave receiver state
       twi_state = TWI_READY;
-      twi_slave_transmitting = 0;
       break;
 
     // All

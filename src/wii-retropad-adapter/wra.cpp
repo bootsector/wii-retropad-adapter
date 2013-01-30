@@ -292,9 +292,12 @@ void gc_loop() {
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
-	GCPad_init();
+	while(!GCPad_init(true, true)) {
+		delayMicroseconds(10000);
+	}
 
 	GCPad_read(true);
+
 	button_data = GCPad_data();
 
 	center_lx = button_data[2] >> 2;
@@ -377,9 +380,12 @@ void n64_loop() {
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
-	GCPad_init();
+	while(!GCPad_init(true, true)) {
+		delayMicroseconds(10000);
+	}
 
 	N64Pad_read(true);
+
 	button_data = N64Pad_data();
 
 	center_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128) / 4;
@@ -454,7 +460,6 @@ void n64_loop() {
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
-
 
 	}
 }

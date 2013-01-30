@@ -29,6 +29,8 @@ byte raw_joy_data[64];
 byte gc_joy_data[8];
 byte n64_joy_data[4];
 
+byte timeouted;
+
 /* DO NOT CHANGE ANYTHING IN THE FUNCTION BELOW!!!
  *
  * It was specially crafted to work with an 8Mhz Atmega328/168 (int. resonator).
@@ -99,9 +101,18 @@ static inline void GCPad_recv(byte *buffer, byte bits) {
 	pinModeFast(JOY_DATA_PIN, INPUT);
 	digitalWriteFast(JOY_DATA_PIN, HIGH);
 
+	timeouted = 0;
+
 	loop:
 
-	while(PIND & 0x04);
+	byte timeout = 64;
+
+	while(PIND & 0x04) {
+		if(--timeout == 0) {
+			timeouted = 1;
+			return;
+		}
+	}
 
 
 //	asm volatile (
@@ -111,7 +122,7 @@ static inline void GCPad_recv(byte *buffer, byte bits) {
 
 	asm volatile (
 			"nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\n"
-			"nop\nnop\nnop\nnop\n"
+			"nop\nnop\nnop\n"
 	);
 
 	*buffer = PIND & 0x04; //*buffer = digitalReadFast(JOY_DATA_PIN);
@@ -127,41 +138,41 @@ static inline void GCPad_recv(byte *buffer, byte bits) {
     goto loop;
 }
 
-byte GCPad_init() {
+bool GCPad_init(bool disable_ints, bool clear_regs) {
+
 	byte init = 0x00;
-	byte timeout = 64;
 
-	for(int x = 0; x < 64; x++) {
-		raw_joy_data[x] = 0x00;
-	}
-
-	for(int x = 0; x < 8; x++) {
-		gc_joy_data[x] = 0x00;
-	}
-
-	for(int x = 0; x < 4; x++) {
-		n64_joy_data[x] = 0x00;
-	}
-
-	noInterrupts();
+	if(disable_ints)
+		noInterrupts();
 
 	GCPad_send(&init, 1);
+	GCPad_recv(raw_joy_data, 24);
 
-	pinModeFast(JOY_DATA_PIN, INPUT);
-	digitalWriteFast(JOY_DATA_PIN, HIGH);
+	if(disable_ints)
+		interrupts();
 
-	while((PIND & 0x04) && (--timeout));
+	if(clear_regs) {
+		for(int x = 0; x < 64; x++) {
+			raw_joy_data[x] = 0x00;
+		}
 
-	interrupts();
+		for(int x = 0; x < 8; x++) {
+			gc_joy_data[x] = 0x00;
+		}
 
-	// Ignore incoming data for 500us
-	delayMicroseconds(500);
+		for(int x = 0; x < 4; x++) {
+			n64_joy_data[x] = 0x00;
+		}
+	}
 
-	return timeout;
+	return !timeouted;
 }
 
 byte *GCPad_data() {
 	int bit;
+
+	if(timeouted)
+		return gc_joy_data;
 
 	bit = 7;
 
@@ -184,7 +195,7 @@ byte *GCPad_data() {
 	return gc_joy_data;
 }
 
-void GCPad_read(bool disable_ints) {
+bool GCPad_read(bool disable_ints) {
 	byte cmd[3] = {0x40, 0x03, 0x00};
 
 	if(disable_ints)
@@ -195,10 +206,15 @@ void GCPad_read(bool disable_ints) {
 
 	if(disable_ints)
 		interrupts();
+
+	return (!timeouted);
 }
 
 byte *N64Pad_data() {
 	int bit;
+
+	if(timeouted)
+		return n64_joy_data;
 
 	bit = 7;
 
@@ -221,7 +237,7 @@ byte *N64Pad_data() {
 	return n64_joy_data;
 }
 
-void N64Pad_read(bool disable_ints) {
+bool N64Pad_read(bool disable_ints) {
 	byte cmd[1] = {0x01};
 
 	if(disable_ints)
@@ -232,4 +248,10 @@ void N64Pad_read(bool disable_ints) {
 
 	if(disable_ints)
 		interrupts();
+
+	return (!timeouted);
+}
+
+bool GCPad_timeouted() {
+	return timeouted;
 }

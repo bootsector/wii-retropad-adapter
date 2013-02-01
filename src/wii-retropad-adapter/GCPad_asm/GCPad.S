@@ -142,9 +142,8 @@ _ZL10GCPad_recvPhh:
 	sbic 41-32,2
 	rjmp .L15
 /* #APP */
- ;  126 "GCPad.cpp" 1
+ ;  125 "GCPad.cpp" 1
 	nop
-nop
 nop
 nop
 nop
@@ -170,84 +169,6 @@ nop
 .L17:
 	ret
 	.size	_ZL10GCPad_recvPhh, .-_ZL10GCPad_recvPhh
-	.section	.text._Z10GCPad_initbb,"ax",@progbits
-.global	_Z10GCPad_initbb
-	.type	_Z10GCPad_initbb, @function
-_Z10GCPad_initbb:
-	push r16
-	push r17
-	push r29
-	push r28
-	push __tmp_reg__
-	in r28,__SP_L__
-	in r29,__SP_H__
-/* prologue: function */
-/* frame size = 1 */
-	mov r17,r24
-	mov r16,r22
-	tst r24
-	breq .L22
-/* #APP */
- ;  146 "GCPad.cpp" 1
-	cli
- ;  0 "" 2
-/* #NOAPP */
-.L22:
-	std Y+1,__zero_reg__
-	movw r24,r28
-	adiw r24,1
-	ldi r22,lo8(1)
-	call _ZL10GCPad_sendPhh
-	ldi r24,lo8(raw_joy_data)
-	ldi r25,hi8(raw_joy_data)
-	ldi r22,lo8(24)
-	call _ZL10GCPad_recvPhh
-	tst r17
-	breq .L23
-/* #APP */
- ;  152 "GCPad.cpp" 1
-	sei
- ;  0 "" 2
-/* #NOAPP */
-.L23:
-	tst r16
-	breq .L24
-	ldi r30,lo8(raw_joy_data)
-	ldi r31,hi8(raw_joy_data)
-.L25:
-	st Z+,__zero_reg__
-	ldi r24,hi8(raw_joy_data+64)
-	cpi r30,lo8(raw_joy_data+64)
-	cpc r31,r24
-	brne .L25
-	ldi r30,lo8(gc_joy_data)
-	ldi r31,hi8(gc_joy_data)
-.L26:
-	st Z+,__zero_reg__
-	ldi r24,hi8(gc_joy_data+8)
-	cpi r30,lo8(gc_joy_data+8)
-	cpc r31,r24
-	brne .L26
-	sts n64_joy_data,__zero_reg__
-	sts n64_joy_data+1,__zero_reg__
-	sts n64_joy_data+2,__zero_reg__
-	sts n64_joy_data+3,__zero_reg__
-.L24:
-	ldi r25,lo8(0)
-	lds r24,timeouted
-	tst r24
-	brne .L27
-	ldi r25,lo8(1)
-.L27:
-	mov r24,r25
-/* epilogue start */
-	pop __tmp_reg__
-	pop r28
-	pop r29
-	pop r17
-	pop r16
-	ret
-	.size	_Z10GCPad_initbb, .-_Z10GCPad_initbb
 	.section	.text._Z10GCPad_datav,"ax",@progbits
 .global	_Z10GCPad_datav
 	.type	_Z10GCPad_datav, @function
@@ -260,9 +181,92 @@ _Z10GCPad_datav:
 /* frame size = 0 */
 	lds r24,timeouted
 	tst r24
-	brne .L32
+	brne .L22
 	ldi r30,lo8(gc_joy_data)
 	ldi r31,hi8(gc_joy_data)
+	ldi r20,lo8(7)
+	ldi r21,hi8(7)
+	ldi r28,lo8(0)
+	ldi r29,hi8(0)
+	ldi r16,lo8(1)
+	ldi r17,hi8(1)
+	rjmp .L23
+.L27:
+	ld r24,X
+	ld r18,Z
+	tst r24
+	breq .L24
+	movw r24,r16
+	mov r0,r20
+	rjmp 2f
+1:	lsl r24
+	rol r25
+2:	dec r0
+	brpl 1b
+	or r18,r24
+	rjmp .L30
+.L24:
+	movw r24,r16
+	mov r0,r20
+	rjmp 2f
+1:	lsl r24
+	rol r25
+2:	dec r0
+	brpl 1b
+	com r24
+	and r18,r24
+.L30:
+	st Z,r18
+	subi r20,lo8(-(-1))
+	sbci r21,hi8(-(-1))
+	sbrs r21,7
+	rjmp .L26
+	ldi r20,lo8(7)
+	ldi r21,hi8(7)
+.L26:
+	subi r22,lo8(-(1))
+	sbci r23,hi8(-(1))
+	adiw r26,1
+	cpi r22,8
+	cpc r23,__zero_reg__
+	brne .L27
+	adiw r28,8
+	adiw r30,1
+	cpi r28,64
+	cpc r29,__zero_reg__
+	breq .L22
+.L23:
+	movw r26,r28
+	subi r26,lo8(-(raw_joy_data))
+	sbci r27,hi8(-(raw_joy_data))
+	ldi r22,lo8(0)
+	ldi r23,hi8(0)
+	rjmp .L27
+.L22:
+	ldi r24,lo8(gc_joy_data)
+	ldi r25,hi8(gc_joy_data)
+/* epilogue start */
+	pop r29
+	pop r28
+	pop r17
+	pop r16
+	ret
+	.size	_Z10GCPad_datav, .-_Z10GCPad_datav
+	.section	.text._Z11N64Pad_datav,"ax",@progbits
+.global	_Z11N64Pad_datav
+	.type	_Z11N64Pad_datav, @function
+_Z11N64Pad_datav:
+	push r16
+	push r17
+	push r28
+	push r29
+/* prologue: function */
+/* frame size = 0 */
+	lds r24,timeouted
+	tst r24
+	brne .L32
+	ldi r30,lo8(n64_joy_data)
+	ldi r31,hi8(n64_joy_data)
 	ldi r20,lo8(7)
 	ldi r21,hi8(7)
 	ldi r28,lo8(0)
@@ -311,7 +315,7 @@ _Z10GCPad_datav:
 	brne .L37
 	adiw r28,8
 	adiw r30,1
-	cpi r28,64
+	cpi r28,32
 	cpc r29,__zero_reg__
 	breq .L32
 .L33:
@@ -322,15 +326,87 @@ _Z10GCPad_datav:
 	ldi r23,hi8(0)
 	rjmp .L37
 .L32:
-	ldi r24,lo8(gc_joy_data)
-	ldi r25,hi8(gc_joy_data)
+	ldi r24,lo8(n64_joy_data)
+	ldi r25,hi8(n64_joy_data)
 /* epilogue start */
 	pop r29
 	pop r28
 	pop r17
 	pop r16
 	ret
-	.size	_Z10GCPad_datav, .-_Z10GCPad_datav
+	.size	_Z11N64Pad_datav, .-_Z11N64Pad_datav
+	.section	.text._Z15GCPad_timeoutedv,"ax",@progbits
+.global	_Z15GCPad_timeoutedv
+	.type	_Z15GCPad_timeoutedv, @function
+_Z15GCPad_timeoutedv:
+/* prologue: function */
+/* frame size = 0 */
+	lds r24,timeouted
+	cpse r24,__zero_reg__
+	ldi r24,lo8(1)
+.L42:
+	ret
+	.size	_Z15GCPad_timeoutedv, .-_Z15GCPad_timeoutedv
+	.section	.text._Z11N64Pad_readb,"ax",@progbits
+.global	_Z11N64Pad_readb
+	.type	_Z11N64Pad_readb, @function
+_Z11N64Pad_readb:
+	push r17
+	push r29
+	push r28
+	push __tmp_reg__
+	in r28,__SP_L__
+	in r29,__SP_H__
+/* prologue: function */
+/* frame size = 1 */
+	mov r17,r24
+	tst r24
+	breq .L45
+/* #APP */
+ ;  253 "GCPad.cpp" 1
+	cli
+ ;  0 "" 2
+/* #NOAPP */
+.L45:
+	ldi r24,lo8(1)
+	std Y+1,r24
+	movw r24,r28
+	adiw r24,1
+	ldi r22,lo8(1)
+	call _ZL10GCPad_sendPhh
+	ldi r24,lo8(raw_joy_data)
+	ldi r25,hi8(raw_joy_data)
+	ldi r22,lo8(32)
+	call _ZL10GCPad_recvPhh
+	tst r17
+	breq .L46
+/* #APP */
+ ;  259 "GCPad.cpp" 1
+	sei
+ ;  0 "" 2
+/* #NOAPP */
+.L46:
+	lds r24,timeouted
+	tst r24
+	breq .L47
+	ldi r24,lo8(128)
+	ldi r25,hi8(128)
+	call delayMicroseconds
+.L47:
+	ldi r25,lo8(0)
+	lds r24,timeouted
+	tst r24
+	brne .L48
+	ldi r25,lo8(1)
+.L48:
+	mov r24,r25
+/* epilogue start */
+	pop __tmp_reg__
+	pop r28
+	pop r29
+	pop r17
+	ret
+	.size	_Z11N64Pad_readb, .-_Z11N64Pad_readb
 	.section	.text._Z10GCPad_readb,"ax",@progbits
 .global	_Z10GCPad_readb
 	.type	_Z10GCPad_readb, @function
@@ -347,22 +423,22 @@ _Z10GCPad_readb:
 	mov r17,r24
 	movw r26,r28
 	adiw r26,1
-	ldi r30,lo8(_ZZ10GCPad_readbE4C.10)
-	ldi r31,hi8(_ZZ10GCPad_readbE4C.10)
+	ldi r30,lo8(_ZZ10GCPad_readbE3C.9)
+	ldi r31,hi8(_ZZ10GCPad_readbE3C.9)
 	ldi r24,lo8(3)
-.L42:
+.L51:
 	ld r0,Z+
 	st X+,r0
 	subi r24,lo8(-(-1))
-	brne .L42
+	brne .L51
 	tst r17
-	breq .L43
+	breq .L52
 /* #APP */
- ;  202 "GCPad.cpp" 1
+ ;  208 "GCPad.cpp" 1
 	cli
  ;  0 "" 2
 /* #NOAPP */
-.L43:
+.L52:
 	movw r24,r28
 	adiw r24,1
 	ldi r22,lo8(3)
@@ -372,19 +448,26 @@ _Z10GCPad_readb:
 	ldi r22,lo8(64)
 	call _ZL10GCPad_recvPhh
 	tst r17
-	breq .L44
+	breq .L53
 /* #APP */
- ;  208 "GCPad.cpp" 1
+ ;  214 "GCPad.cpp" 1
 	sei
  ;  0 "" 2
 /* #NOAPP */
-.L44:
+.L53:
+	lds r24,timeouted
+	tst r24
+	breq .L54
+	ldi r24,lo8(256)
+	ldi r25,hi8(256)
+	call delayMicroseconds
+.L54:
 	ldi r25,lo8(0)
 	lds r24,timeouted
 	tst r24
-	brne .L45
+	brne .L55
 	ldi r25,lo8(1)
-.L45:
+.L55:
 	mov r24,r25
 /* epilogue start */
 	pop __tmp_reg__
@@ -395,93 +478,11 @@ _Z10GCPad_readb:
 	pop r17
 	ret
 	.size	_Z10GCPad_readb, .-_Z10GCPad_readb
-	.section	.text._Z11N64Pad_datav,"ax",@progbits
-.global	_Z11N64Pad_datav
-	.type	_Z11N64Pad_datav, @function
-_Z11N64Pad_datav:
+	.section	.text._Z10GCPad_initbb,"ax",@progbits
+.global	_Z10GCPad_initbb
+	.type	_Z10GCPad_initbb, @function
+_Z10GCPad_initbb:
 	push r16
-	push r17
-	push r28
-	push r29
-/* prologue: function */
-/* frame size = 0 */
-	lds r24,timeouted
-	tst r24
-	brne .L49
-	ldi r30,lo8(n64_joy_data)
-	ldi r31,hi8(n64_joy_data)
-	ldi r20,lo8(7)
-	ldi r21,hi8(7)
-	ldi r28,lo8(0)
-	ldi r29,hi8(0)
-	ldi r16,lo8(1)
-	ldi r17,hi8(1)
-	rjmp .L50
-.L54:
-	ld r24,X
-	ld r18,Z
-	tst r24
-	breq .L51
-	movw r24,r16
-	mov r0,r20
-	rjmp 2f
-1:	lsl r24
-	rol r25
-2:	dec r0
-	brpl 1b
-	or r18,r24
-	rjmp .L57
-.L51:
-	movw r24,r16
-	mov r0,r20
-	rjmp 2f
-1:	lsl r24
-	rol r25
-2:	dec r0
-	brpl 1b
-	com r24
-	and r18,r24
-.L57:
-	st Z,r18
-	subi r20,lo8(-(-1))
-	sbci r21,hi8(-(-1))
-	sbrs r21,7
-	rjmp .L53
-	ldi r20,lo8(7)
-	ldi r21,hi8(7)
-.L53:
-	subi r22,lo8(-(1))
-	sbci r23,hi8(-(1))
-	adiw r26,1
-	cpi r22,8
-	cpc r23,__zero_reg__
-	brne .L54
-	adiw r28,8
-	adiw r30,1
-	cpi r28,32
-	cpc r29,__zero_reg__
-	breq .L49
-.L50:
-	movw r26,r28
-	subi r26,lo8(-(raw_joy_data))
-	sbci r27,hi8(-(raw_joy_data))
-	ldi r22,lo8(0)
-	ldi r23,hi8(0)
-	rjmp .L54
-.L49:
-	ldi r24,lo8(n64_joy_data)
-	ldi r25,hi8(n64_joy_data)
-/* epilogue start */
-	pop r29
-	pop r28
-	pop r17
-	pop r16
-	ret
-	.size	_Z11N64Pad_datav, .-_Z11N64Pad_datav
-	.section	.text._Z11N64Pad_readb,"ax",@progbits
-.global	_Z11N64Pad_readb
-	.type	_Z11N64Pad_readb, @function
-_Z11N64Pad_readb:
 	push r17
 	push r29
 	push r28
@@ -491,58 +492,79 @@ _Z11N64Pad_readb:
 /* prologue: function */
 /* frame size = 1 */
 	mov r17,r24
+	mov r16,r22
 	tst r24
 	breq .L59
 /* #APP */
- ;  244 "GCPad.cpp" 1
+ ;  145 "GCPad.cpp" 1
 	cli
  ;  0 "" 2
 /* #NOAPP */
 .L59:
-	ldi r24,lo8(1)
-	std Y+1,r24
+	std Y+1,__zero_reg__
 	movw r24,r28
 	adiw r24,1
 	ldi r22,lo8(1)
 	call _ZL10GCPad_sendPhh
 	ldi r24,lo8(raw_joy_data)
 	ldi r25,hi8(raw_joy_data)
-	ldi r22,lo8(32)
+	ldi r22,lo8(24)
 	call _ZL10GCPad_recvPhh
 	tst r17
 	breq .L60
 /* #APP */
- ;  250 "GCPad.cpp" 1
+ ;  151 "GCPad.cpp" 1
 	sei
  ;  0 "" 2
 /* #NOAPP */
 .L60:
+	lds r24,timeouted
+	tst r24
+	breq .L61
+	ldi r24,lo8(96)
+	ldi r25,hi8(96)
+	call delayMicroseconds
+.L61:
+	ldi r30,lo8(raw_joy_data)
+	ldi r31,hi8(raw_joy_data)
+.L62:
+	st Z+,__zero_reg__
+	ldi r24,hi8(raw_joy_data+64)
+	cpi r30,lo8(raw_joy_data+64)
+	cpc r31,r24
+	brne .L62
+	tst r16
+	breq .L63
+	sts gc_joy_data,__zero_reg__
+	sts gc_joy_data+1,__zero_reg__
+	ldi r24,lo8(127)
+	sts gc_joy_data+2,r24
+	sts gc_joy_data+3,r24
+	sts gc_joy_data+4,r24
+	sts gc_joy_data+5,r24
+	sts gc_joy_data+6,r24
+	sts gc_joy_data+7,r24
+	sts n64_joy_data,__zero_reg__
+	sts n64_joy_data+1,__zero_reg__
+	ldi r24,lo8(-128)
+	sts n64_joy_data+2,r24
+	sts n64_joy_data+3,r24
+.L63:
 	ldi r25,lo8(0)
 	lds r24,timeouted
 	tst r24
-	brne .L61
+	brne .L64
 	ldi r25,lo8(1)
-.L61:
+.L64:
 	mov r24,r25
 /* epilogue start */
 	pop __tmp_reg__
 	pop r28
 	pop r29
 	pop r17
+	pop r16
 	ret
-	.size	_Z11N64Pad_readb, .-_Z11N64Pad_readb
-	.section	.text._Z15GCPad_timeoutedv,"ax",@progbits
-.global	_Z15GCPad_timeoutedv
-	.type	_Z15GCPad_timeoutedv, @function
-_Z15GCPad_timeoutedv:
-/* prologue: function */
-/* frame size = 0 */
-	lds r24,timeouted
-	cpse r24,__zero_reg__
-	ldi r24,lo8(1)
-.L64:
-	ret
-	.size	_Z15GCPad_timeoutedv, .-_Z15GCPad_timeoutedv
+	.size	_Z10GCPad_initbb, .-_Z10GCPad_initbb
 .global	raw_joy_data
 	.section	.bss.raw_joy_data,"aw",@nobits
 	.type	raw_joy_data, @object
@@ -567,10 +589,10 @@ n64_joy_data:
 	.size	timeouted, 1
 timeouted:
 	.skip 1,0
-	.section	.rodata._ZZ10GCPad_readbE4C.10,"a",@progbits
-	.type	_ZZ10GCPad_readbE4C.10, @object
-	.size	_ZZ10GCPad_readbE4C.10, 3
-_ZZ10GCPad_readbE4C.10:
+	.section	.rodata._ZZ10GCPad_readbE3C.9,"a",@progbits
+	.type	_ZZ10GCPad_readbE3C.9, @object
+	.size	_ZZ10GCPad_readbE3C.9, 3
+_ZZ10GCPad_readbE3C.9:
 	.byte	64
 	.byte	3
 	.byte	0

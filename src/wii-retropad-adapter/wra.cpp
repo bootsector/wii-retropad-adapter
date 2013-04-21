@@ -111,7 +111,7 @@ int detectPad() {
 	digitalWrite(DETPIN3, HIGH);
 
 	pinMode(DETPIN4, INPUT);
-	digitalWrite(DETPIN3, HIGH);
+	digitalWrite(DETPIN4, HIGH);
 
 	pad = (!digitalRead(DETPIN0) << 4) | (!digitalRead(DETPIN1) << 3) | (digitalRead(DETPIN2) << 2) | (digitalRead(DETPIN3) << 1) | (digitalRead(DETPIN4));
 

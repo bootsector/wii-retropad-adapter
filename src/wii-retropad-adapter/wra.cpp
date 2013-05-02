@@ -234,10 +234,18 @@ void ps2_loop() {
 
 	PS2Pad::read();
 
-	center_lx = PS2Pad::stick(PSS_LX)/4;
-	center_ly = PS2Pad::stick(PSS_LY)/4;
-	center_rx = PS2Pad::stick(PSS_RX)/8;
-	center_ry = PS2Pad::stick(PSS_RY)/8;
+	// If Pad mode is digital
+	if(PS2Pad::PS2Pad_mode() == 4) {
+		center_lx = clx;
+		center_ly = cly;
+		center_rx = crx;
+		center_ry = cry;
+	} else {
+		center_lx = PS2Pad::stick(PSS_LX)/4;
+		center_ly = PS2Pad::stick(PSS_LY)/4;
+		center_rx = PS2Pad::stick(PSS_RX)/8;
+		center_ry = PS2Pad::stick(PSS_RY)/8;
+	}
 
 	for (;;) {
 		PS2Pad::read();

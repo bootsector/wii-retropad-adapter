@@ -296,8 +296,7 @@ void ps2_loop() {
 }
 
 void gc_loop_helper(void) {
-	if(!GCPad_timeouted())
-		GCPad_read(false);
+	GCPad_read(false);
 }
 
 void gc_loop() {
@@ -311,7 +310,9 @@ void gc_loop() {
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
-	GCPad_init(true, true);
+	while(!GCPad_init(true, true)) {
+		delayMicroseconds(10000);
+	}
 
 	GCPad_read(true);
 
@@ -326,14 +327,6 @@ void gc_loop() {
 
 	for(;;) {
 		button_data = GCPad_data();
-
-		if(GCPad_timeouted()) {
-			WMExtension::set_button_data_callback(NULL);
-
-			// TODO: Working controller init/reset code here...
-
-			WMExtension::set_button_data_callback(gc_loop_helper);
-		}
 
 		bdl = button_data[1] & 0x01;
 		bdr = button_data[1] & 0x02;
@@ -390,8 +383,7 @@ void gc_loop() {
 }
 
 void n64_loop_helper(void) {
-	if(!GCPad_timeouted())
-		N64Pad_read(false);
+	N64Pad_read(false);
 }
 
 void n64_loop() {
@@ -406,7 +398,9 @@ void n64_loop() {
 	byte crx = WMExtension::get_calibration_byte(8)>>3;
 	byte cry = WMExtension::get_calibration_byte(11)>>3;
 
-	GCPad_init(true, true);
+	while(!GCPad_init(true, true)) {
+		delayMicroseconds(10000);
+	}
 
 	N64Pad_read(true);
 
@@ -424,14 +418,6 @@ void n64_loop() {
 
 	for(;;) {
 		button_data = N64Pad_data();
-
-		if(GCPad_timeouted()) {
-			WMExtension::set_button_data_callback(NULL);
-
-			// TODO: Working controller init/reset code here...
-
-			WMExtension::set_button_data_callback(n64_loop_helper);
-		}
 
 		bdl = button_data[0] & 0x02;
 		bdr = button_data[0] & 0x01;

@@ -114,6 +114,7 @@ static inline void GCPad_recv(byte *buffer, byte bits) {
 		}
 	}
 
+
 //	asm volatile (
 //			"nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\n"
 //			"nop\nnop\nnop\nnop\nnop\n"
@@ -121,7 +122,7 @@ static inline void GCPad_recv(byte *buffer, byte bits) {
 
 	asm volatile (
 			"nop\nnop\nnop\nnop\nnop\nnop\nnop\nnop\n"
-			"nop\nnop\n"
+			"nop\nnop\nnop\n"
 	);
 
 	*buffer = PIND & 0x04; //*buffer = digitalReadFast(JOY_DATA_PIN);
@@ -150,34 +151,27 @@ bool GCPad_init(bool disable_ints, bool clear_regs) {
 	if(disable_ints)
 		interrupts();
 
-	if(GCPad_timeouted())
-		delayMicroseconds(24 * 4);
-
-	for(int x = 0; x < 64; x++) {
-		raw_joy_data[x] = 0x00;
-	}
-
 	if(clear_regs) {
-		gc_joy_data[0] = 0;
-		gc_joy_data[1] = 0;
-
-		for(int x = 2; x < 8; x++) {
-			gc_joy_data[x] = 0x7F;
+		for(int x = 0; x < 64; x++) {
+			raw_joy_data[x] = 0x00;
 		}
 
-		n64_joy_data[0] = 0x00;
-		n64_joy_data[1] = 0x00;
-		n64_joy_data[2] = 0x80;
-		n64_joy_data[3] = 0x80;
+		for(int x = 0; x < 8; x++) {
+			gc_joy_data[x] = 0x00;
+		}
+
+		for(int x = 0; x < 4; x++) {
+			n64_joy_data[x] = 0x00;
+		}
 	}
 
-	return !GCPad_timeouted();
+	return !timeouted;
 }
 
 byte *GCPad_data() {
 	int bit;
 
-	if(GCPad_timeouted())
+	if(timeouted)
 		return gc_joy_data;
 
 	bit = 7;
@@ -213,16 +207,13 @@ bool GCPad_read(bool disable_ints) {
 	if(disable_ints)
 		interrupts();
 
-	if(GCPad_timeouted())
-		delayMicroseconds(64 * 4);
-
-	return (!GCPad_timeouted());
+	return (!timeouted);
 }
 
 byte *N64Pad_data() {
 	int bit;
 
-	if(GCPad_timeouted())
+	if(timeouted)
 		return n64_joy_data;
 
 	bit = 7;
@@ -258,12 +249,9 @@ bool N64Pad_read(bool disable_ints) {
 	if(disable_ints)
 		interrupts();
 
-	if(GCPad_timeouted())
-		delayMicroseconds(32 * 4);
-
-	return (!GCPad_timeouted());
+	return (!timeouted);
 }
 
 bool GCPad_timeouted() {
-	return (timeouted != 0);
+	return timeouted;
 }

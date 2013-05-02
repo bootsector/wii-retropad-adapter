@@ -172,3 +172,8 @@ byte PS2Pad::type() {
 
 	return 0;
 }
+
+byte PS2Pad::PS2Pad_mode(void) {
+	return PS2Pad::_pad_data[1] >> 4;
+}
+

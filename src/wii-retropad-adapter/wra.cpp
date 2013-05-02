@@ -263,32 +263,41 @@ void ps2_loop() {
 
 		bhome = (bm && bp); // SELECT + START == HOME
 
-		_lx = PS2Pad::stick(PSS_LX) >> 2;
-		_ly = PS2Pad::stick(PSS_LY) >> 2;
-		_rx = PS2Pad::stick(PSS_RX) >> 3;
-		_ry = PS2Pad::stick(PSS_RY) >> 3;
+		// If Pad mode is Digital
+		if(PS2Pad::PS2Pad_mode() == 4) {
+			lx = clx;
+			ly = cly;
+			rx = crx;
+			ry = cry;
+		} else {
+			_lx = PS2Pad::stick(PSS_LX) >> 2;
+			_ly = PS2Pad::stick(PSS_LY) >> 2;
+			_rx = PS2Pad::stick(PSS_RX) >> 3;
+			_ry = PS2Pad::stick(PSS_RY) >> 3;
 
-		if((_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS)) && (_lx <= (center_lx + ANALOG_NEUTRAL_RADIUS))) {
-			_lx = clx;
+			if((_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS)) && (_lx <= (center_lx + ANALOG_NEUTRAL_RADIUS))) {
+				_lx = clx;
+			}
+
+			if((_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS)) && (_ly <= (center_ly + ANALOG_NEUTRAL_RADIUS))) {
+				_ly = cly;
+			}
+
+
+			if((_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS/2)) && (_rx <= (center_rx + ANALOG_NEUTRAL_RADIUS/2))) {
+				_rx = crx;
+			}
+
+			if((_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS/2)) && (_ry <= (center_ry + ANALOG_NEUTRAL_RADIUS/2))) {
+				_ry = cry;
+			}
+
+			lx = _lx;
+			ly = ~_ly;
+			rx = _rx;
+			ry = ~_ry;
+
 		}
-
-		if((_ly >= (center_ly - ANALOG_NEUTRAL_RADIUS)) && (_ly <= (center_ly + ANALOG_NEUTRAL_RADIUS))) {
-			_ly = cly;
-		}
-
-
-		if((_rx >= (center_rx - ANALOG_NEUTRAL_RADIUS/2)) && (_rx <= (center_rx + ANALOG_NEUTRAL_RADIUS/2))) {
-			_rx = crx;
-		}
-
-		if((_ry >= (center_ry - ANALOG_NEUTRAL_RADIUS/2)) && (_ry <= (center_ry + ANALOG_NEUTRAL_RADIUS/2))) {
-			_ry = cry;
-		}
-
-		lx = _lx;
-		ly = ~_ly;
-		rx = _rx;
-		ry = ~_ry;
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 					bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);

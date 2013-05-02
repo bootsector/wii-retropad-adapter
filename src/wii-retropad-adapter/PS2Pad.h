@@ -71,6 +71,7 @@ public:
 	static byte type();
 	static byte button(word button);
 	static byte stick(word analog);
+	static byte PS2Pad_mode(void);
 };
 
 

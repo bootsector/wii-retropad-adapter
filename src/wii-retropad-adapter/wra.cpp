@@ -331,6 +331,8 @@ void gc_loop() {
 		delayMicroseconds(10000);
 	}
 
+	delayMicroseconds(10000);
+
 	GCPad_read(true);
 
 	button_data = GCPad_data();
@@ -418,6 +420,8 @@ void n64_loop() {
 	while(!GCPad_init(true, true)) {
 		delayMicroseconds(10000);
 	}
+
+	delayMicroseconds(10000);
 
 	N64Pad_read(true);
 

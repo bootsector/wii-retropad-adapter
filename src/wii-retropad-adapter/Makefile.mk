@@ -1,6 +1,6 @@
 # Hey Emacs, this is a -*- makefile -*-
 #----------------------------------------------------------------------------
-# WinAVR Makefile Template written by Eric B. Weddington, Jörg Wunsch, et al.
+# WinAVR Makefile Template written by Eric B. Weddington, Jï¿½rg Wunsch, et al.
 #
 # Released to the Public Domain
 #
@@ -286,7 +286,7 @@ LDFLAGS += $(PRINTF_LIB) $(SCANF_LIB) $(MATH_LIB) $(EXTRA_LIBS)
 # to get a full listing.
 #
 AVRDUDE_PROGRAMMER = stk500v1
-AVRDUDE_CONFIG = "/Applications/Arduino105.app/Contents/Resources/Java/hardware/tools/avr/etc/avrdude.conf"
+AVRDUDE_CONFIG = "/usr/local/etc/avrdude.conf" #"/Applications/Arduino105.app/Contents/Resources/Java/hardware/tools/avr/etc/avrdude.conf"
 
 # com1 = serial port. Use lpt1 to connect to parallel port.
 AVRDUDE_PORT = /dev/tty.usbmodem12341    # programmer connected to serial device
@@ -295,7 +295,7 @@ AVRDUDE_BAUD = 19200   # serial device baud rate
 # Fuses config
 AVRDUDE_HFUSE = 0xde
 AVRDUDE_LFUSE = 0xe2
-AVRDUDE_EFUSE = 0x05
+AVRDUDE_EFUSE = 0xfd
 
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep

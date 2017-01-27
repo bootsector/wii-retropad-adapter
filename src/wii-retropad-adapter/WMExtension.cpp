@@ -229,24 +229,43 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 		int ba, int bb, int bx, int by, int blt, int brt, int bminus, int bplus,
 		int bhome, byte lx, byte ly, byte rx, byte ry, int bzl, int bzr, int lt, int rt) {
 
-	byte _tmp;
+	byte _tmp1, _tmp2;
 
-	WMExtension::buttons_data[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
-	WMExtension::buttons_data[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
-	WMExtension::buttons_data[2] = ((rx & 0x01) << 7) | ((lt & 0x18) << 2) | (ry & 0x1F);
-	WMExtension::buttons_data[3] = ((lt & 0x07) << 5) | (rt & 0x1F);
-
-	_tmp = ((bdr ? 1 : 0) << 7) | ((bdd ? 1 : 0) << 6) | ((blt ? 1 : 0)
+	_tmp1 = ((bdr ? 1 : 0) << 7) | ((bdd ? 1 : 0) << 6) | ((blt ? 1 : 0)
 			<< 5) | ((bminus ? 1 : 0) << 4) | ((bplus ? 1 : 0) << 2)
 			| ((brt ? 1 : 0) << 1) | ((bhome ? 1 : 0) << 3);
 
-	WMExtension::buttons_data[4] = ~_tmp;
-
-	_tmp = ((bb ? 1 : 0) << 6) | ((by ? 1 : 0) << 5) | ((ba ? 1 : 0)
+	_tmp2 = ((bb ? 1 : 0) << 6) | ((by ? 1 : 0) << 5) | ((ba ? 1 : 0)
 			<< 4) | ((bx ? 1 : 0) << 3) | ((bdl ? 1 : 0) << 1) | (bdu ? 1
 			: 0) | ((bzl ? 1 : 0) << 7) | ((bzr ? 1 : 0) << 2);
 
-	WMExtension::buttons_data[5] = ~_tmp;
+	// registers[0xFE] == 0x03: Read mode encoding used by the NES Classic Edition
+	if(WMExtension::registers[0xFE] == 0x03) {
+		WMExtension::buttons_data[0] = lx;
+		WMExtension::buttons_data[1] = rx;
+		WMExtension::buttons_data[2] = ly;
+		WMExtension::buttons_data[3] = ry;
+		WMExtension::buttons_data[4] = lt;
+		WMExtension::buttons_data[5] = rt;
+		WMExtension::buttons_data[6] = ~_tmp1;
+		WMExtension::buttons_data[7] = ~_tmp2;
+	} else {
+		lx = lx >> 2;
+		ly = ly >> 2;
+		rx = rx >> 3;
+		ry = ry >> 3;
+		lt = lt >> 3;
+		rt = rt >> 3;
+
+		WMExtension::buttons_data[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
+		WMExtension::buttons_data[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
+		WMExtension::buttons_data[2] = ((rx & 0x01) << 7) | ((lt & 0x18) << 2) | (ry & 0x1F);
+		WMExtension::buttons_data[3] = ((lt & 0x07) << 5) | (rt & 0x1F);
+		WMExtension::buttons_data[4] = ~_tmp1;
+		WMExtension::buttons_data[5] = ~_tmp2;
+		WMExtension::buttons_data[6] = 0;
+		WMExtension::buttons_data[7] = 0;
+	}
 }
 
 /*
@@ -284,7 +303,7 @@ void WMExtension::init() {
 	}
 
 	// Initialize buttons_data, otherwise, "Up+Right locked" bug...
-	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2]>>2, WMExtension::calibration_data[5]>>2, WMExtension::calibration_data[8]>>3, WMExtension::calibration_data[11]>>3, 0, 0, 0, 0);
+	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2], WMExtension::calibration_data[5], WMExtension::calibration_data[8], WMExtension::calibration_data[11], 0, 0, 0, 0);
 
 	// Join I2C bus
 	Wire.begin(0x52);

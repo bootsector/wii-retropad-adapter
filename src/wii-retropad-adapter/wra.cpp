@@ -46,10 +46,10 @@ int lt = 0; // L analog value
 int rt = 0; // R analog value
 
 // Analog Buttons
-byte lx = WMExtension::get_calibration_byte(2)>>2;
-byte ly = WMExtension::get_calibration_byte(5)>>2;
-byte rx = WMExtension::get_calibration_byte(8)>>3;
-byte ry = WMExtension::get_calibration_byte(11)>>3;
+byte lx = WMExtension::get_calibration_byte(2);
+byte ly = WMExtension::get_calibration_byte(5);
+byte rx = WMExtension::get_calibration_byte(8);
+byte ry = WMExtension::get_calibration_byte(11);
 
 // Analog stick neutral radius
 #define ANALOG_NEUTRAL_RADIUS 10
@@ -225,10 +225,10 @@ void ps2_loop() {
 	byte center_lx, center_ly, center_rx, center_ry;
 	byte _lx, _ly, _rx, _ry;
 
-	byte clx = WMExtension::get_calibration_byte(2)>>2;
-	byte cly = WMExtension::get_calibration_byte(5)>>2;
-	byte crx = WMExtension::get_calibration_byte(8)>>3;
-	byte cry = WMExtension::get_calibration_byte(11)>>3;
+	byte clx = WMExtension::get_calibration_byte(2);
+	byte cly = WMExtension::get_calibration_byte(5);
+	byte crx = WMExtension::get_calibration_byte(8);
+	byte cry = WMExtension::get_calibration_byte(11);
 
 	while (PS2Pad::init(false));
 
@@ -241,10 +241,10 @@ void ps2_loop() {
 		center_rx = crx;
 		center_ry = cry;
 	} else {
-		center_lx = PS2Pad::stick(PSS_LX)/4;
-		center_ly = PS2Pad::stick(PSS_LY)/4;
-		center_rx = PS2Pad::stick(PSS_RX)/8;
-		center_ry = PS2Pad::stick(PSS_RY)/8;
+		center_lx = PS2Pad::stick(PSS_LX);
+		center_ly = PS2Pad::stick(PSS_LY);
+		center_rx = PS2Pad::stick(PSS_RX);
+		center_ry = PS2Pad::stick(PSS_RY);
 	}
 
 	for (;;) {
@@ -278,10 +278,10 @@ void ps2_loop() {
 			rx = crx;
 			ry = cry;
 		} else {
-			_lx = PS2Pad::stick(PSS_LX) >> 2;
-			_ly = PS2Pad::stick(PSS_LY) >> 2;
-			_rx = PS2Pad::stick(PSS_RX) >> 3;
-			_ry = PS2Pad::stick(PSS_RY) >> 3;
+			_lx = PS2Pad::stick(PSS_LX);
+			_ly = PS2Pad::stick(PSS_LY);
+			_rx = PS2Pad::stick(PSS_RX);
+			_ry = PS2Pad::stick(PSS_RY);
 
 			if((_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS)) && (_lx <= (center_lx + ANALOG_NEUTRAL_RADIUS))) {
 				_lx = clx;
@@ -322,10 +322,10 @@ void gc_loop() {
 	byte center_lx, center_ly, center_rx, center_ry;
 	byte _lx, _ly, _rx, _ry;
 
-	byte clx = WMExtension::get_calibration_byte(2)>>2;
-	byte cly = WMExtension::get_calibration_byte(5)>>2;
-	byte crx = WMExtension::get_calibration_byte(8)>>3;
-	byte cry = WMExtension::get_calibration_byte(11)>>3;
+	byte clx = WMExtension::get_calibration_byte(2);
+	byte cly = WMExtension::get_calibration_byte(5);
+	byte crx = WMExtension::get_calibration_byte(8);
+	byte cry = WMExtension::get_calibration_byte(11);
 
 	while(!GCPad_init(true, true)) {
 		delayMicroseconds(10000);
@@ -337,10 +337,10 @@ void gc_loop() {
 
 	button_data = GCPad_data();
 
-	center_lx = button_data[2] >> 2;
-	center_ly = button_data[3] >> 2;
-	center_rx = button_data[4] >> 3;
-	center_ry = button_data[5] >> 3;
+	center_lx = button_data[2];
+	center_ly = button_data[3];
+	center_rx = button_data[4];
+	center_ry = button_data[5];
 
 	WMExtension::set_button_data_callback(gc_loop_helper);
 
@@ -366,10 +366,10 @@ void gc_loop() {
 
 		bhome = (bdu && bp); // UP + START == HOME
 
-		_lx = button_data[2] >> 2;
-		_ly = button_data[3] >> 2;
-		_rx = button_data[4] >> 3;
-		_ry = button_data[5] >> 3;
+		_lx = button_data[2];
+		_ly = button_data[3];
+		_rx = button_data[4];
+		_ry = button_data[5];
 
 		if((_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS)) && (_lx <= (center_lx + ANALOG_NEUTRAL_RADIUS))) {
 			_lx = clx;
@@ -392,8 +392,8 @@ void gc_loop() {
 		rx = _rx;
 		ry = _ry;
 
-		lt = button_data[6] >> 3; //map(button_data[6], 0, 255, 0, 31);
-		rt = button_data[7] >> 3; //map(button_data[7], 0, 255, 0, 31);
+		lt = button_data[6]; //map(button_data[6], 0, 255, 0, 31);
+		rt = button_data[7]; //map(button_data[7], 0, 255, 0, 31);
 
 		WMExtension::set_button_data(bdl, bdr, bdu, bdd, ba, bb, bx, by, bl, br,
 				bm, bp, bhome, lx, ly, rx, ry, bzl, bzr, lt, rt);
@@ -412,10 +412,10 @@ void n64_loop() {
 	byte center_lx, center_ly;
 	byte _lx, _ly, _rx, _ry;
 
-	byte clx = WMExtension::get_calibration_byte(2)>>2;
-	byte cly = WMExtension::get_calibration_byte(5)>>2;
-	byte crx = WMExtension::get_calibration_byte(8)>>3;
-	byte cry = WMExtension::get_calibration_byte(11)>>3;
+	byte clx = WMExtension::get_calibration_byte(2);
+	byte cly = WMExtension::get_calibration_byte(5);
+	byte crx = WMExtension::get_calibration_byte(8);
+	byte cry = WMExtension::get_calibration_byte(11);
 
 	while(!GCPad_init(true, true)) {
 		delayMicroseconds(10000);
@@ -427,8 +427,8 @@ void n64_loop() {
 
 	button_data = N64Pad_data();
 
-	center_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128) / 4;
-	center_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128) / 4;
+	center_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128);
+	center_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128);
 
 	// If plugged in with L pressed, L and Z buttons will be swapped (for Zelda games' sake!)
 	if (button_data[1] & 0x20) {
@@ -481,8 +481,8 @@ void n64_loop() {
 		by = button_data[1] & 0x02; // Y == C Left
 		bx = button_data[1] & 0x01; // X == C Right
 
-		_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128) / 4;;
-		_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128) / 4;;
+		_lx = ((button_data[2] >= 128) ? button_data[2] - 128 : button_data[2] + 128);
+		_ly = ((button_data[3] >= 128) ? button_data[3] - 128 : button_data[3] + 128);
 
 		if((_lx >= (center_lx - ANALOG_NEUTRAL_RADIUS)) && (_lx <= (center_lx + ANALOG_NEUTRAL_RADIUS))) {
 			_lx = clx;

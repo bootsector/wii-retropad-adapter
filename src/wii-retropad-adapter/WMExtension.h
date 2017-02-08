@@ -30,18 +30,15 @@ private:
 
 	static const byte id[6];
 	static byte calibration_data[16];
-	static byte buttons_data[16];
-	static volatile byte buttons_pos;
-	static volatile byte state;
+	static volatile byte address;
 	static volatile byte crypt_setup_done;
 	static byte registers[0x100];
-	static volatile bool new_addr;
 
 	typedef void (*CBackPtr)();
 	static CBackPtr cbPtr;
 
 	static void setup_encryption();
-	static void send_data(uint8_t* data, uint8_t size, uint8_t addr);
+	static void send_data(uint8_t* data, uint8_t addr);
 	static void receive_bytes(int count);
 	static void handle_request();
 

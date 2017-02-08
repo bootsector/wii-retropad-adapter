@@ -34,25 +34,11 @@ const byte WMExtension::id[6] = { 0x00, 0x00, 0xa4, 0x20, 0x01, 0x01 };
 byte WMExtension::calibration_data[16] = { 0xFC, 0x04, 0x7E, 0xFC, 0x04,
 		0x7E, 0xFC, 0x04, 0x7E,	0xFC, 0x04, 0x7E, 0x00, 0x00, 0x00, 0x00 };
 
-/* Address or command requested by the I2C Master Device (i.e., the Wiimote) */
-volatile byte WMExtension::state = 0;
+/* Address requested by the I2C Master Device (i.e., the Wiimote) */
+volatile byte WMExtension::address = 0;
 
 /* Tells whether encryption was setup (enabled) or not */
 volatile byte WMExtension::crypt_setup_done = 0;
-
-/* Classic Controller buttons status */
-byte WMExtension::buttons_data[16];
-
-/*
- * Starting position from buttons_data array to report data. This was made
- * necessary to make this library compatible with reporting modes that query
- * more than 6 bytes from the extension controller.
- * */
-volatile byte WMExtension::buttons_pos = 0;
-
-
-/* Tells if extension has received a new address query. */
-volatile bool WMExtension::new_addr = false;
 
 /* Classic Controller 256 data registers */
 byte WMExtension::registers[0x100];
@@ -100,22 +86,27 @@ void WMExtension::setup_encryption() {
 }
 
 /*
- * Generic function for sending data via Wire.send().
+ * Send 8 bytes data via Wire.send().
  * Supports Wiimote encryption, if enabled.
   */
-void WMExtension::send_data(uint8_t* data, uint8_t size, uint8_t addr) {
-	static uint8_t buffer[8];
-	int i;
+void WMExtension::send_data(uint8_t* data, uint8_t addr) {
+	static uint8_t buffer[21];
+	int i, lim;
+
+	lim = 0xFF - addr + 1;
+
+	if(lim >= 21) {
+		lim = 21;
+	}
 
 	if (WMExtension::crypt_setup_done) {
-		for (i = 0; i < size; i++) {
-			buffer[i] = (data[i] - WMCrypt::wm_ft[(addr + i) % 8]) ^ WMCrypt::wm_sb[(addr + i)
-					% 8];
+		for (i = 0; i < lim; i++) {
+			buffer[i] = (data[i] - WMCrypt::wm_ft[(addr + i) % 8]) ^ WMCrypt::wm_sb[(addr + i) % 8];
 		}
 
-		Wire.send(buffer, size);
+		Wire.send(buffer, lim);
 	} else {
-		Wire.send(data, size);
+		Wire.send(data, lim);
 	}
 }
 
@@ -124,12 +115,9 @@ void WMExtension::receive_bytes(int count) {
 	byte crypt_keys_received = 0;
 	byte old_crypt_key_received = 0;
 
-	WMExtension::new_addr = true;
-
 	if (count == 1) {
 
-		WMExtension::state = Wire.receive();
-		WMExtension::buttons_pos = 0;
+		WMExtension::address = Wire.receive();
 
 		return;
 
@@ -181,38 +169,12 @@ void WMExtension::receive_bytes(int count) {
 /* I2C slave handler for data request from the Wiimote */
 void WMExtension::handle_request() {
 
-	static byte offset = 0;
+	WMExtension::send_data(WMExtension::registers + WMExtension::address, WMExtension::address);
 
-	switch (WMExtension::state) {
-
-	case 0x00:
-		WMExtension::send_data(WMExtension::buttons_data + WMExtension::buttons_pos, 8, 0x00);
-
-		WMExtension::buttons_pos = 8;
-
+	if(WMExtension::address == 0x00) {
 		if(WMExtension::cbPtr) {
 			WMExtension::cbPtr();
 		}
-
-		break;
-
-	case 0xFA:
-		WMExtension::send_data(WMExtension::registers + WMExtension::state, 6, WMExtension::state);
-
-		break;
-
-	default:
-		if(WMExtension::new_addr) {
-			offset = 0;
-		} else {
-			offset += 8;
-		}
-
-		WMExtension::send_data(WMExtension::registers + WMExtension::state + offset, 8, WMExtension::state + offset);
-
-		WMExtension::new_addr = false;
-
-		break;
 	}
 }
 
@@ -241,14 +203,14 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 
 	// registers[0xFE] == 0x03: Read mode encoding used by the NES Classic Edition
 	if(WMExtension::registers[0xFE] == 0x03) {
-		WMExtension::buttons_data[0] = lx;
-		WMExtension::buttons_data[1] = rx;
-		WMExtension::buttons_data[2] = ly;
-		WMExtension::buttons_data[3] = ry;
-		WMExtension::buttons_data[4] = lt;
-		WMExtension::buttons_data[5] = rt;
-		WMExtension::buttons_data[6] = ~_tmp1;
-		WMExtension::buttons_data[7] = ~_tmp2;
+		WMExtension::registers[0] = lx;
+		WMExtension::registers[1] = rx;
+		WMExtension::registers[2] = ly;
+		WMExtension::registers[3] = ry;
+		WMExtension::registers[4] = lt;
+		WMExtension::registers[5] = rt;
+		WMExtension::registers[6] = ~_tmp1;
+		WMExtension::registers[7] = ~_tmp2;
 	} else {
 		lx = lx >> 2;
 		ly = ly >> 2;
@@ -257,14 +219,14 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 		lt = lt >> 3;
 		rt = rt >> 3;
 
-		WMExtension::buttons_data[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
-		WMExtension::buttons_data[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
-		WMExtension::buttons_data[2] = ((rx & 0x01) << 7) | ((lt & 0x18) << 2) | (ry & 0x1F);
-		WMExtension::buttons_data[3] = ((lt & 0x07) << 5) | (rt & 0x1F);
-		WMExtension::buttons_data[4] = ~_tmp1;
-		WMExtension::buttons_data[5] = ~_tmp2;
-		WMExtension::buttons_data[6] = 0;
-		WMExtension::buttons_data[7] = 0;
+		WMExtension::registers[0] = ((rx & 0x18) << 3) | (lx & 0x3F);
+		WMExtension::registers[1] = ((rx & 0x06) << 5) | (ly & 0x3F);
+		WMExtension::registers[2] = ((rx & 0x01) << 7) | ((lt & 0x18) << 2) | (ry & 0x1F);
+		WMExtension::registers[3] = ((lt & 0x07) << 5) | (rt & 0x1F);
+		WMExtension::registers[4] = ~_tmp1;
+		WMExtension::registers[5] = ~_tmp2;
+		WMExtension::registers[6] = 0;
+		WMExtension::registers[7] = 0;
 	}
 }
 
@@ -275,9 +237,7 @@ void WMExtension::set_button_data(int bdl, int bdr, int bdu, int bdd,
 void WMExtension::init() {
 	byte calchecksum = 0;
 
-	memset(WMExtension::registers, 0xFF, 0x100);
-
-	memset(WMExtension::buttons_data, 0x00, 16);
+	memset(WMExtension::registers, 0x00, 0x100);
 
 	// Set extension id on registers
 	for (int i = 0xFA; i <= 0xFF; i++) {
@@ -297,11 +257,6 @@ void WMExtension::init() {
 		WMExtension::registers[i + 0x10] = WMExtension::calibration_data[i - 0x20]; // 0x30
 	}
 
-	// Zeroes encryption bytes on registers
-	for (int i = 0x40; i <= 0x4F; i++) {
-		WMExtension::registers[i] = 0x00;
-	}
-
 	// Initialize buttons_data, otherwise, "Up+Right locked" bug...
 	WMExtension::set_button_data(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, WMExtension::calibration_data[2], WMExtension::calibration_data[5], WMExtension::calibration_data[8], WMExtension::calibration_data[11], 0, 0, 0, 0);
 
@@ -311,4 +266,6 @@ void WMExtension::init() {
 	Wire.onReceive(WMExtension::receive_bytes);
 	Wire.onRequest(WMExtension::handle_request);
 }
+
+
 

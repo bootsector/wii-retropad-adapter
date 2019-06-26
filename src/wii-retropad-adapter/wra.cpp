@@ -465,17 +465,17 @@ void n64_loop() {
 		_ry = cry;
 
 		if(button_data[1] & 0x08) { // C Up
-			_ry = 30;
+			_ry = 240;
 		} else if(button_data[1] & 0x04) { // C Down
-			_ry = 1;
+			_ry = 15;
 		}
 
 		_rx = crx;
 
 		if(button_data[1] & 0x02) { // C Left
-			_rx = 1;
+			_rx = 15;
 		} else if(button_data[1] & 0x01) { // C Right
-			_rx = 30;
+			_rx = 240;
 		}
 
 		by = button_data[1] & 0x02; // Y == C Left

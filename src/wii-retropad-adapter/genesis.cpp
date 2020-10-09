@@ -65,11 +65,13 @@ int genesis_read() {
 	normalbuttons |= (!digitalReadFast(DB9P6) << 4);
 	normalbuttons |= (!digitalReadFast(DB9P9) << 5);
 
+	// 1
 	digitalWriteFast(DB9P7, LOW);
 	delayMicroseconds(DELAY);
 
-	// Is using a SEGA Genesis controller, LEFT and RIGHT will be ACTIVE here
+	// If using a SEGA Genesis controller, LEFT and RIGHT will be ACTIVE here
 	if(!(!digitalReadFast(DB9P3) && !digitalReadFast(DB9P4))) {
+		digitalWriteFast(DB9P7, HIGH);
 		retval = normalbuttons | (extrabuttons << 8);
 		return retval;
 	}
@@ -80,6 +82,14 @@ int genesis_read() {
 
 	digitalWriteFast(DB9P7, HIGH);
 	delayMicroseconds(DELAY);
+
+	// 2
+	digitalWriteFast(DB9P7, LOW);
+	delayMicroseconds(DELAY);
+	digitalWriteFast(DB9P7, HIGH);
+	delayMicroseconds(DELAY);
+
+	// 3
 	digitalWriteFast(DB9P7, LOW);
 	delayMicroseconds(DELAY);
 
@@ -93,11 +103,10 @@ int genesis_read() {
 		extrabuttons |= (!digitalReadFast(DB9P3) << 2);
 		extrabuttons |= (!digitalReadFast(DB9P4) << 3);
 
+		// 4
 		digitalWriteFast(DB9P7, LOW);
 		delayMicroseconds(DELAY);
 		digitalWriteFast(DB9P7, HIGH);
-		delayMicroseconds(DELAY);
-		digitalWriteFast(DB9P7, LOW);
 
 		// Delay needed for settling joystick down
 		delayMicroseconds(2000);
